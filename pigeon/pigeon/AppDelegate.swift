@@ -9,13 +9,28 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
 
     var window: UIWindow?
+    
+    let authStoryBoard:UIStoryboard = UIStoryboard(name: "Auth", bundle: nil)
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // WXApi.registerApp("wx6002977c97c410d4")
+        println(1)
+        WeiboSDK.enableDebugMode(true)
+        println(2)
+        WeiboSDK.registerApp("3675401007")
+        println(3)
+        
+        
+        let authLoginViewController:UIViewController = authStoryBoard.instantiateViewControllerWithIdentifier("AuthLogin") as! UIViewController
+        
+        self.window?.rootViewController = authLoginViewController
+        
         return true
     }
 
@@ -40,7 +55,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+        // return WXApi.handleOpenURL(url, delegate: self)
+        return WeiboSDK.handleOpenURL(url, delegate: self)
+    }
 
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        // return WXApi.handleOpenURL(url, delegate: self)
+        return WeiboSDK.handleOpenURL(url, delegate: self)
+    }
+    
+    /*
+    
+    func onReq(req: BaseReq!) {
+        
+    }
+    
+    func onResp(resp: BaseResp!) {
+        
+    }
+
+    */
+    
+    func didReceiveWeiboRequest(request: WBBaseRequest!) {
+        
+    }
+    
+    func didReceiveWeiboResponse(response: WBBaseResponse!) {
+        if response.isKindOfClass(WBSendMessageToWeiboResponse) {
+            println(1)
+            var sendMessageToWeiboResponse:WBSendMessageToWeiboResponse = response as! WBSendMessageToWeiboResponse
+            var accessToken = sendMessageToWeiboResponse.authResponse.accessToken
+            println("accessToken:\(accessToken)")
+            var userID = sendMessageToWeiboResponse.authResponse.userID
+            println("userID:\(userID)")
+        } else if response.isKindOfClass(WBAuthorizeResponse) {
+            println(2)
+            var authResponse = response as! WBAuthorizeResponse
+            var accessToken = authResponse.accessToken
+            println("accessToken:\(accessToken)")
+            var userID = authResponse.userID
+            println("userID:\(userID)")
+            println(authResponse.userInfo)
+
+        }
+        
+    }
 
 }
 

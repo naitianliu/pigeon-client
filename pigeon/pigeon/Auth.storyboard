@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--Auth Login View Controller-->
+        <scene sceneID="pno-fT-CBW">
+            <objects>
+                <viewController storyboardIdentifier="AuthLogin" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LrV-D8-d21" customClass="AuthLoginViewController" customModule="pigeon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="URF-La-Ztx"/>
+                        <viewControllerLayoutGuide type="bottom" id="3At-Ta-uec"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="doG-lY-GyD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctW-HI-jVk">
+                                <rect key="frame" x="258" y="397" width="84" height="30"/>
+                                <state key="normal" title="Wexin Login">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="weixinLoginOnClick:" destination="LrV-D8-d21" eventType="touchUpInside" id="XyU-Ye-g4p"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXu-jU-WfB">
+                                <rect key="frame" x="258" y="319" width="85" height="30"/>
+                                <state key="normal" title="Weibo Login">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="weiboLoginOnClick:" destination="LrV-D8-d21" eventType="touchUpInside" id="hPO-Ue-prL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="ctW-HI-jVk" secondAttribute="centerX" id="1My-GA-hjC"/>
+                            <constraint firstAttribute="centerX" secondItem="yXu-jU-WfB" secondAttribute="centerX" id="OSB-Vv-C8B"/>
+                            <constraint firstItem="ctW-HI-jVk" firstAttribute="top" secondItem="yXu-jU-WfB" secondAttribute="bottom" constant="60" id="kZf-yo-Fgm"/>
+                            <constraint firstItem="3At-Ta-uec" firstAttribute="top" secondItem="ctW-HI-jVk" secondAttribute="bottom" constant="200" id="ykI-5C-0qd"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c8e-HO-yyP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="157" y="299"/>
+        </scene>
+    </scenes>
+</document>

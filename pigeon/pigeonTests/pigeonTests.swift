@@ -33,4 +33,8 @@ class pigeonTests: XCTestCase {
         }
     }
     
+    func testVendorLoginAPI() {
+
+    }
+    
 }

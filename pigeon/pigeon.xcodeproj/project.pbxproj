@@ -13,6 +13,8 @@
 		460909601B903CBC006FF85D /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4609095F1B903CBC006FF85D /* CoreTelephony.framework */; };
 		460909621B903CCC006FF85D /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 460909611B903CCC006FF85D /* CoreText.framework */; };
 		460909641B904E13006FF85D /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 460909631B904E13006FF85D /* WeiboSDK.bundle */; };
+		460909681B92438A006FF85D /* BaseAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460909671B92438A006FF85D /* BaseAPIHelper.swift */; };
+		4609096B1B92584B006FF85D /* VendorLoginAPICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4609096A1B92584B006FF85D /* VendorLoginAPICall.swift */; };
 		4631638B1B902B9C00C6A30F /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 4631638A1B902B9C00C6A30F /* Podfile */; };
 		4651AAAE1B883F02005C2B67 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AAAD1B883F02005C2B67 /* UIKit.framework */; };
 		4651AAB01B883F12005C2B67 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AAAF1B883F12005C2B67 /* Foundation.framework */; };
@@ -22,8 +24,6 @@
 		4651AABA1B88408F005C2B67 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AAB91B88408F005C2B67 /* libz.dylib */; };
 		4651AABC1B884099005C2B67 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AABB1B884099005C2B67 /* libsqlite3.0.dylib */; };
 		46A79CB41B8823AB00B60B43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A79CB31B8823AB00B60B43 /* AppDelegate.swift */; };
-		46A79CB61B8823AB00B60B43 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A79CB51B8823AB00B60B43 /* FirstViewController.swift */; };
-		46A79CB81B8823AB00B60B43 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A79CB71B8823AB00B60B43 /* SecondViewController.swift */; };
 		46A79CBB1B8823AB00B60B43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46A79CB91B8823AB00B60B43 /* Main.storyboard */; };
 		46A79CBD1B8823AB00B60B43 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46A79CBC1B8823AB00B60B43 /* Images.xcassets */; };
 		46A79CC01B8823AB00B60B43 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46A79CBE1B8823AB00B60B43 /* LaunchScreen.xib */; };
@@ -31,6 +31,17 @@
 		46A79CE21B88283000B60B43 /* AuthLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A79CE01B88283000B60B43 /* AuthLoginViewController.swift */; };
 		46A79CE71B88297A00B60B43 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46A79CE61B88297A00B60B43 /* Auth.storyboard */; };
 		46A79CF21B88399700B60B43 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A79CF11B88399700B60B43 /* libc++.dylib */; };
+		46BB01741B9276030026CB6E /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BB01731B9276030026CB6E /* MainTabBarViewController.swift */; };
+		46BB017C1B928DC80026CB6E /* BROptionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 46BB01791B928DC80026CB6E /* BROptionItem.m */; };
+		46BB017D1B928DC80026CB6E /* BROptionsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 46BB017B1B928DC80026CB6E /* BROptionsButton.m */; };
+		46BB01811B9292540026CB6E /* Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46BB01801B9292540026CB6E /* Event.storyboard */; };
+		46BB01831B92929A0026CB6E /* EventNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BB01821B92929A0026CB6E /* EventNavigationController.swift */; };
+		46BB01881B929B9A0026CB6E /* Contact.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46BB01871B929B9A0026CB6E /* Contact.storyboard */; };
+		46BB018A1B929D2E0026CB6E /* ContactNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BB01891B929D2E0026CB6E /* ContactNavigationController.swift */; };
+		46BB018F1B92A04D0026CB6E /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46BB018E1B92A04D0026CB6E /* History.storyboard */; };
+		46BB01911B92A09E0026CB6E /* HistoryNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BB01901B92A09E0026CB6E /* HistoryNavigationController.swift */; };
+		46BB01961B92A2500026CB6E /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46BB01951B92A2500026CB6E /* Me.storyboard */; };
+		46BB01981B92A2930026CB6E /* MeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BB01971B92A2930026CB6E /* MeNavigationController.swift */; };
 		EC03105B27AE9B30D09FAEFF /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6B7EB05FDC0CC77A857B349 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -51,6 +62,9 @@
 		4609095F1B903CBC006FF85D /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		460909611B903CCC006FF85D /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		460909631B904E13006FF85D /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = WeiboSDK.bundle; path = Pods/WeiboSDK/libWeiboSDK/WeiboSDK.bundle; sourceTree = "<group>"; };
+		460909651B9242A6006FF85D /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Config.xcconfig; path = ../Config.xcconfig; sourceTree = "<group>"; };
+		460909671B92438A006FF85D /* BaseAPIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPIHelper.swift; sourceTree = "<group>"; };
+		4609096A1B92584B006FF85D /* VendorLoginAPICall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorLoginAPICall.swift; sourceTree = "<group>"; };
 		4631638A1B902B9C00C6A30F /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		4651AAAD1B883F02005C2B67 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4651AAAF1B883F12005C2B67 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -63,9 +77,7 @@
 		4651AABB1B884099005C2B67 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		46A79CAE1B8823AB00B60B43 /* pigeon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pigeon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46A79CB21B8823AB00B60B43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		46A79CB31B8823AB00B60B43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = pigeon/AppDelegate.swift; sourceTree = "<group>"; };
-		46A79CB51B8823AB00B60B43 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		46A79CB71B8823AB00B60B43 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		46A79CB31B8823AB00B60B43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46A79CBA1B8823AB00B60B43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		46A79CBC1B8823AB00B60B43 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		46A79CBF1B8823AB00B60B43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -76,6 +88,19 @@
 		46A79CE61B88297A00B60B43 /* Auth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		46A79CE81B88308000B60B43 /* pigeon-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "pigeon-Bridging-Header.h"; sourceTree = "<group>"; };
 		46A79CF11B88399700B60B43 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		46BB01731B9276030026CB6E /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		46BB01781B928DC80026CB6E /* BROptionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BROptionItem.h; sourceTree = "<group>"; };
+		46BB01791B928DC80026CB6E /* BROptionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BROptionItem.m; sourceTree = "<group>"; };
+		46BB017A1B928DC80026CB6E /* BROptionsButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BROptionsButton.h; sourceTree = "<group>"; };
+		46BB017B1B928DC80026CB6E /* BROptionsButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BROptionsButton.m; sourceTree = "<group>"; };
+		46BB01801B9292540026CB6E /* Event.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Event.storyboard; sourceTree = "<group>"; };
+		46BB01821B92929A0026CB6E /* EventNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventNavigationController.swift; sourceTree = "<group>"; };
+		46BB01871B929B9A0026CB6E /* Contact.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Contact.storyboard; sourceTree = "<group>"; };
+		46BB01891B929D2E0026CB6E /* ContactNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactNavigationController.swift; sourceTree = "<group>"; };
+		46BB018E1B92A04D0026CB6E /* History.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
+		46BB01901B92A09E0026CB6E /* HistoryNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryNavigationController.swift; sourceTree = "<group>"; };
+		46BB01951B92A2500026CB6E /* Me.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
+		46BB01971B92A2930026CB6E /* MeNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeNavigationController.swift; sourceTree = "<group>"; };
 		B6B7EB05FDC0CC77A857B349 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C43AF1B09D0587414C965081 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F30ACB44CA899943E7CCAAC9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -122,12 +147,18 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		460909661B924339006FF85D /* API */ = {
+			isa = PBXGroup;
+			children = (
+				460909671B92438A006FF85D /* BaseAPIHelper.swift */,
+				4609096A1B92584B006FF85D /* VendorLoginAPICall.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
 		46A79CA51B8823AB00B60B43 = {
 			isa = PBXGroup;
 			children = (
-				460909631B904E13006FF85D /* WeiboSDK.bundle */,
-				46A79CB31B8823AB00B60B43 /* AppDelegate.swift */,
-				46A79CB91B8823AB00B60B43 /* Main.storyboard */,
 				46A79CB01B8823AB00B60B43 /* pigeon */,
 				46A79CC81B8823AB00B60B43 /* pigeonTests */,
 				46A79CAF1B8823AB00B60B43 /* Products */,
@@ -149,10 +180,15 @@
 		46A79CB01B8823AB00B60B43 /* pigeon */ = {
 			isa = PBXGroup;
 			children = (
+				46A79CB31B8823AB00B60B43 /* AppDelegate.swift */,
+				46A79CB91B8823AB00B60B43 /* Main.storyboard */,
+				46BB01731B9276030026CB6E /* MainTabBarViewController.swift */,
+				46BB01921B92A2180026CB6E /* Me */,
+				46BB018B1B929FC00026CB6E /* History */,
+				46BB01841B929B320026CB6E /* Contact */,
+				46BB016E1B9275030026CB6E /* Event */,
 				46A79CE41B8828AD00B60B43 /* Vendor */,
 				46A79CD51B88248100B60B43 /* Auth */,
-				46A79CB51B8823AB00B60B43 /* FirstViewController.swift */,
-				46A79CB71B8823AB00B60B43 /* SecondViewController.swift */,
 				46A79CBC1B8823AB00B60B43 /* Images.xcassets */,
 				46A79CBE1B8823AB00B60B43 /* LaunchScreen.xib */,
 				46A79CB11B8823AB00B60B43 /* Supporting Files */,
@@ -163,6 +199,7 @@
 		46A79CB11B8823AB00B60B43 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				460909651B9242A6006FF85D /* Config.xcconfig */,
 				46A79CB21B8823AB00B60B43 /* Info.plist */,
 				46A79CE81B88308000B60B43 /* pigeon-Bridging-Header.h */,
 			);
@@ -189,6 +226,7 @@
 		46A79CD51B88248100B60B43 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				460909661B924339006FF85D /* API */,
 				46A79CD91B8826A100B60B43 /* Other */,
 				46A79CD81B88268D00B60B43 /* Controller */,
 				46A79CD71B88266800B60B43 /* Model */,
@@ -230,6 +268,7 @@
 		46A79CE41B8828AD00B60B43 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				46BB01771B928DB60026CB6E /* BROptionsButton */,
 				46A79CE51B8828C500B60B43 /* WX */,
 			);
 			name = Vendor;
@@ -245,9 +284,137 @@
 			name = WX;
 			sourceTree = "<group>";
 		};
+		46BB016E1B9275030026CB6E /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				46BB01721B9275460026CB6E /* Other */,
+				46BB01711B92753F0026CB6E /* API */,
+				46BB01701B9275270026CB6E /* Controller */,
+				46BB016F1B92751C0026CB6E /* View */,
+			);
+			name = Event;
+			sourceTree = "<group>";
+		};
+		46BB016F1B92751C0026CB6E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				46BB01801B9292540026CB6E /* Event.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		46BB01701B9275270026CB6E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				46BB01821B92929A0026CB6E /* EventNavigationController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		46BB01711B92753F0026CB6E /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		46BB01721B9275460026CB6E /* Other */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
+		46BB01771B928DB60026CB6E /* BROptionsButton */ = {
+			isa = PBXGroup;
+			children = (
+				46BB01781B928DC80026CB6E /* BROptionItem.h */,
+				46BB01791B928DC80026CB6E /* BROptionItem.m */,
+				46BB017A1B928DC80026CB6E /* BROptionsButton.h */,
+				46BB017B1B928DC80026CB6E /* BROptionsButton.m */,
+			);
+			name = BROptionsButton;
+			sourceTree = "<group>";
+		};
+		46BB01841B929B320026CB6E /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				46BB01851B929B440026CB6E /* Controller */,
+				46BB01861B929B510026CB6E /* View */,
+			);
+			name = Contact;
+			sourceTree = "<group>";
+		};
+		46BB01851B929B440026CB6E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				46BB01891B929D2E0026CB6E /* ContactNavigationController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		46BB01861B929B510026CB6E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				46BB01871B929B9A0026CB6E /* Contact.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		46BB018B1B929FC00026CB6E /* History */ = {
+			isa = PBXGroup;
+			children = (
+				46BB018C1B929FD90026CB6E /* Controller */,
+				46BB018D1B929FEA0026CB6E /* View */,
+			);
+			name = History;
+			sourceTree = "<group>";
+		};
+		46BB018C1B929FD90026CB6E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				46BB01901B92A09E0026CB6E /* HistoryNavigationController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		46BB018D1B929FEA0026CB6E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				46BB018E1B92A04D0026CB6E /* History.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		46BB01921B92A2180026CB6E /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				46BB01931B92A2240026CB6E /* Controller */,
+				46BB01941B92A2300026CB6E /* View */,
+			);
+			name = Me;
+			sourceTree = "<group>";
+		};
+		46BB01931B92A2240026CB6E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				46BB01971B92A2930026CB6E /* MeNavigationController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		46BB01941B92A2300026CB6E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				46BB01951B92A2500026CB6E /* Me.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		9EBB59CC81AD2F52571769D8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				460909631B904E13006FF85D /* WeiboSDK.bundle */,
 				4651AABB1B884099005C2B67 /* libsqlite3.0.dylib */,
 				4651AAB91B88408F005C2B67 /* libz.dylib */,
 				4651AAB71B88407F005C2B67 /* SystemConfiguration.framework */,
@@ -350,10 +517,14 @@
 			files = (
 				4631638B1B902B9C00C6A30F /* Podfile in Resources */,
 				46A79CE71B88297A00B60B43 /* Auth.storyboard in Resources */,
+				46BB01961B92A2500026CB6E /* Me.storyboard in Resources */,
 				46A79CBB1B8823AB00B60B43 /* Main.storyboard in Resources */,
 				46A79CC01B8823AB00B60B43 /* LaunchScreen.xib in Resources */,
 				460909641B904E13006FF85D /* WeiboSDK.bundle in Resources */,
+				46BB01881B929B9A0026CB6E /* Contact.storyboard in Resources */,
+				46BB01811B9292540026CB6E /* Event.storyboard in Resources */,
 				46A79CBD1B8823AB00B60B43 /* Images.xcassets in Resources */,
+				46BB018F1B92A04D0026CB6E /* History.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,10 +590,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46A79CB81B8823AB00B60B43 /* SecondViewController.swift in Sources */,
+				460909681B92438A006FF85D /* BaseAPIHelper.swift in Sources */,
+				46BB01911B92A09E0026CB6E /* HistoryNavigationController.swift in Sources */,
+				46BB018A1B929D2E0026CB6E /* ContactNavigationController.swift in Sources */,
+				46BB01981B92A2930026CB6E /* MeNavigationController.swift in Sources */,
 				46A79CB41B8823AB00B60B43 /* AppDelegate.swift in Sources */,
+				46BB01741B9276030026CB6E /* MainTabBarViewController.swift in Sources */,
 				46A79CE21B88283000B60B43 /* AuthLoginViewController.swift in Sources */,
-				46A79CB61B8823AB00B60B43 /* FirstViewController.swift in Sources */,
+				46BB017C1B928DC80026CB6E /* BROptionItem.m in Sources */,
+				46BB01831B92929A0026CB6E /* EventNavigationController.swift in Sources */,
+				4609096B1B92584B006FF85D /* VendorLoginAPICall.swift in Sources */,
+				46BB017D1B928DC80026CB6E /* BROptionsButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,7 +629,6 @@
 				46A79CBA1B8823AB00B60B43 /* Base */,
 			);
 			name = Main.storyboard;
-			path = pigeon;
 			sourceTree = "<group>";
 		};
 		46A79CBE1B8823AB00B60B43 /* LaunchScreen.xib */ = {

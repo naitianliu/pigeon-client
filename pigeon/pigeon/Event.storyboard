@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--Event Navigation Controller-->
+        <scene sceneID="hZ6-Df-c0O">
+            <objects>
+                <navigationController storyboardIdentifier="EventNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GJX-7i-PJw" customClass="EventNavigationController" customModule="pigeon" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4HL-ui-fK5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="LP8-Ur-5pn" kind="relationship" relationship="rootViewController" id="ReS-u9-bw1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="68m-zA-leD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="328" y="415"/>
+        </scene>
+        <!--我的事件-->
+        <scene sceneID="GDh-BG-E1v">
+            <objects>
+                <viewController id="LP8-Ur-5pn" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pod-9j-lyh"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gpl-b1-2BV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tp4-qr-90i">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="我的事件" id="J4M-gc-WTk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8vK-8U-dGE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1121" y="415"/>
+        </scene>
+    </scenes>
+</document>

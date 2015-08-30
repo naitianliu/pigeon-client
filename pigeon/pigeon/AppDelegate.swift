@@ -14,22 +14,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
     var window: UIWindow?
     
     let authStoryBoard:UIStoryboard = UIStoryboard(name: "Auth", bundle: nil)
-
+    let mainStoryBoard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+    let eventStoryboard:UIStoryboard = UIStoryboard(name: "Event", bundle: nil)
+    let contactStoryboard:UIStoryboard = UIStoryboard(name: "Contact", bundle: nil)
+    let historyStoryboard:UIStoryboard = UIStoryboard(name: "History", bundle: nil)
+    let meStoryboard:UIStoryboard = UIStoryboard(name: "Me", bundle: nil)
+    
+    var authLoginViewController:UIViewController!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
         // WXApi.registerApp("wx6002977c97c410d4")
-        println(1)
         WeiboSDK.enableDebugMode(true)
-        println(2)
         WeiboSDK.registerApp("3675401007")
-        println(3)
+        
+        var token:String? = nil
+        
+        if NSUserDefaults.standardUserDefaults().objectForKey("token") != nil {
+            token = NSKeyedUnarchiver.unarchiveObjectWithData(NSUserDefaults.standardUserDefaults().objectForKey("token") as! NSData) as? String
+            println(token)
+        }
+        
+        if token == nil {
+            println(444)
+            authLoginViewController = authStoryBoard.instantiateViewControllerWithIdentifier("AuthLogin") as! UIViewController
+            self.window?.rootViewController = authLoginViewController
+        } else {
+            var mainTabBarViewController:UITabBarController = mainStoryBoard.instantiateViewControllerWithIdentifier("MainTabBarController") as! UITabBarController
+            var eventNavigationController:UINavigationController = eventStoryboard.instantiateViewControllerWithIdentifier("EventNavigationController") as! UINavigationController
+            eventNavigationController.tabBarItem.title = "我的事件"
+            // eventNavigationController.tabBarItem.image = UIImage(named: "Apple")
+            var contactNavigationController:UINavigationController = contactStoryboard.instantiateViewControllerWithIdentifier("ContactNavigationController") as! UINavigationController
+            contactNavigationController.tabBarItem.title = "联系人"
+            // contactNavigationController.tabBarItem.image = UIImage(named: "Apple")
+            var historyNavigationController:UINavigationController = historyStoryboard.instantiateViewControllerWithIdentifier("HistoryNavigationController") as! UINavigationController
+            historyNavigationController.tabBarItem.title = "历史"
+            // historyNavigationController.tabBarItem.image = UIImage(named: "Apple")
+            var meNavigationController:UINavigationController = meStoryboard.instantiateViewControllerWithIdentifier("MeNavigationController") as! UINavigationController
+            meNavigationController.tabBarItem.title = "我"
+            // meNavigationController.tabBarItem.image = UIImage(named: "Apple")
+            
+            var middleViewController:UIViewController = UIViewController()
+            
+            mainTabBarViewController.setViewControllers([eventNavigationController, contactNavigationController, middleViewController, historyNavigationController, meNavigationController], animated: false)
+            self.window?.rootViewController = mainTabBarViewController
+            
+        }
         
         
-        let authLoginViewController:UIViewController = authStoryBoard.instantiateViewControllerWithIdentifier("AuthLogin") as! UIViewController
-        
-        self.window?.rootViewController = authLoginViewController
         
         return true
     }
@@ -91,14 +124,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
             var userID = sendMessageToWeiboResponse.authResponse.userID
             println("userID:\(userID)")
         } else if response.isKindOfClass(WBAuthorizeResponse) {
-            println(2)
             var authResponse = response as! WBAuthorizeResponse
             var accessToken = authResponse.accessToken
-            println("accessToken:\(accessToken)")
             var userID = authResponse.userID
-            println("userID:\(userID)")
-            println(authResponse.userInfo)
-
+            println(1)
+            VendorLoginAPICall(view: authLoginViewController.view, vendorType: "wb", vendorId: userID, accessToken: accessToken).run()
+            println(2)
         }
         
     }

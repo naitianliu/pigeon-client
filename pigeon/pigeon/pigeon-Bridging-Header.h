@@ -12,5 +12,6 @@
 #import <UIKit/UIKit.h>
 #import "WXApi.h"
 #import "WeiboSDK.h"
+#import "BROptionsButton.h"
 
 #endif

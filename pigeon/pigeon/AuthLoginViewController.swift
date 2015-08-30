@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class AuthLoginViewController: UIViewController {
+class AuthLoginViewController: UIViewController, WeiboSDKDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +34,27 @@ class AuthLoginViewController: UIViewController {
         request.redirectURI = "https://api.weibo.com/oauth2/default.html"
         request.scope = "all"
         WeiboSDK.sendRequest(request)
+    }
+    
+    func didReceiveWeiboRequest(request: WBBaseRequest!) {
+        
+    }
+    
+    func didReceiveWeiboResponse(response: WBBaseResponse!) {
+        if response.isKindOfClass(WBSendMessageToWeiboResponse) {
+            println(1)
+            var sendMessageToWeiboResponse:WBSendMessageToWeiboResponse = response as! WBSendMessageToWeiboResponse
+            var accessToken = sendMessageToWeiboResponse.authResponse.accessToken
+            println("accessToken:\(accessToken)")
+            var userID = sendMessageToWeiboResponse.authResponse.userID
+            println("userID:\(userID)")
+        } else if response.isKindOfClass(WBAuthorizeResponse) {
+            var authResponse = response as! WBAuthorizeResponse
+            var accessToken = authResponse.accessToken
+            var userID = authResponse.userID
+            VendorLoginAPICall(view: self.view, vendorType: "wb", vendorId: userID, accessToken: accessToken).run()
+        }
+        
     }
 
     /*

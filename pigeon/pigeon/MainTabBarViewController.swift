@@ -31,7 +31,18 @@ class MainTabBarViewController: UITabBarController, BROptionButtonDelegate {
     }
     
     func brOptionsButton(brOptionsButton: BROptionsButton!, didSelectItem item: BROptionItem!) {
-        
+        let eventStoryboard:UIStoryboard = UIStoryboard(name: "Event", bundle: nil)
+        var index = item.index
+        switch (index) {
+        case 0:
+            var createTaskViewController:UIViewController = eventStoryboard.instantiateViewControllerWithIdentifier("CreateTaskViewController") as! UIViewController
+            createTaskViewController.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
+            self.presentViewController(createTaskViewController, animated: true, completion: { () -> Void in
+                
+            })
+        default:
+            break;
+        }
     }
     
     func brOptionsButton(brOptionsButton: BROptionsButton!, titleForItemAtIndex index: Int) -> String! {

@@ -42,6 +42,8 @@
 		46BB01911B92A09E0026CB6E /* HistoryNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BB01901B92A09E0026CB6E /* HistoryNavigationController.swift */; };
 		46BB01961B92A2500026CB6E /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46BB01951B92A2500026CB6E /* Me.storyboard */; };
 		46BB01981B92A2930026CB6E /* MeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BB01971B92A2930026CB6E /* MeNavigationController.swift */; };
+		46BB019C1B92BD340026CB6E /* CreateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BB019B1B92BD340026CB6E /* CreateTaskViewController.swift */; };
+		46BB01A11B92D1D00026CB6E /* LocationTimeEditViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BB01A01B92D1D00026CB6E /* LocationTimeEditViewHelper.swift */; };
 		EC03105B27AE9B30D09FAEFF /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6B7EB05FDC0CC77A857B349 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -101,6 +103,8 @@
 		46BB01901B92A09E0026CB6E /* HistoryNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryNavigationController.swift; sourceTree = "<group>"; };
 		46BB01951B92A2500026CB6E /* Me.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
 		46BB01971B92A2930026CB6E /* MeNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeNavigationController.swift; sourceTree = "<group>"; };
+		46BB019B1B92BD340026CB6E /* CreateTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTaskViewController.swift; sourceTree = "<group>"; };
+		46BB01A01B92D1D00026CB6E /* LocationTimeEditViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTimeEditViewHelper.swift; sourceTree = "<group>"; };
 		B6B7EB05FDC0CC77A857B349 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C43AF1B09D0587414C965081 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F30ACB44CA899943E7CCAAC9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -299,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				46BB01801B9292540026CB6E /* Event.storyboard */,
+				46BB01A01B92D1D00026CB6E /* LocationTimeEditViewHelper.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -307,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				46BB01821B92929A0026CB6E /* EventNavigationController.swift */,
+				46BB019B1B92BD340026CB6E /* CreateTaskViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -595,12 +601,14 @@
 				46BB018A1B929D2E0026CB6E /* ContactNavigationController.swift in Sources */,
 				46BB01981B92A2930026CB6E /* MeNavigationController.swift in Sources */,
 				46A79CB41B8823AB00B60B43 /* AppDelegate.swift in Sources */,
+				46BB01A11B92D1D00026CB6E /* LocationTimeEditViewHelper.swift in Sources */,
 				46BB01741B9276030026CB6E /* MainTabBarViewController.swift in Sources */,
 				46A79CE21B88283000B60B43 /* AuthLoginViewController.swift in Sources */,
 				46BB017C1B928DC80026CB6E /* BROptionItem.m in Sources */,
 				46BB01831B92929A0026CB6E /* EventNavigationController.swift in Sources */,
 				4609096B1B92584B006FF85D /* VendorLoginAPICall.swift in Sources */,
 				46BB017D1B928DC80026CB6E /* BROptionsButton.m in Sources */,
+				46BB019C1B92BD340026CB6E /* CreateTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

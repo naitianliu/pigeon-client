@@ -4,5 +4,7 @@ pod 'Alamofire', '~> 1.2.3'
 pod 'WeiboSDK', '~> 3.0.1'
 pod 'MBProgressHUD', '~> 0.9.1'
 pod 'SZTextView', '~> 1.2.1'
+pod 'RMDateSelectionViewController', '~> 2.0.1'
+pod 'SDWebImage', '~>3.7'
 
 link_with 'pigeon'

@@ -44,6 +44,10 @@
 		46BB01981B92A2930026CB6E /* MeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BB01971B92A2930026CB6E /* MeNavigationController.swift */; };
 		46BB019C1B92BD340026CB6E /* CreateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BB019B1B92BD340026CB6E /* CreateTaskViewController.swift */; };
 		46BB01A11B92D1D00026CB6E /* LocationTimeEditViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BB01A01B92D1D00026CB6E /* LocationTimeEditViewHelper.swift */; };
+		46BB01A61B9397D30026CB6E /* EditLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BB01A51B9397D30026CB6E /* EditLocationViewController.swift */; };
+		46BB01A81B939C080026CB6E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46BB01A71B939C080026CB6E /* MapKit.framework */; };
+		46BB01AA1B939C170026CB6E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46BB01A91B939C170026CB6E /* CoreLocation.framework */; };
+		46BB01AC1B93FE500026CB6E /* AddMembersViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BB01AB1B93FE500026CB6E /* AddMembersViewHelper.swift */; };
 		EC03105B27AE9B30D09FAEFF /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6B7EB05FDC0CC77A857B349 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -63,7 +67,7 @@
 		4609095D1B903CB2006FF85D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		4609095F1B903CBC006FF85D /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		460909611B903CCC006FF85D /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		460909631B904E13006FF85D /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = WeiboSDK.bundle; path = Pods/WeiboSDK/libWeiboSDK/WeiboSDK.bundle; sourceTree = "<group>"; };
+		460909631B904E13006FF85D /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = WeiboSDK.bundle; path = ../Pods/WeiboSDK/libWeiboSDK/WeiboSDK.bundle; sourceTree = "<group>"; };
 		460909651B9242A6006FF85D /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Config.xcconfig; path = ../Config.xcconfig; sourceTree = "<group>"; };
 		460909671B92438A006FF85D /* BaseAPIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPIHelper.swift; sourceTree = "<group>"; };
 		4609096A1B92584B006FF85D /* VendorLoginAPICall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorLoginAPICall.swift; sourceTree = "<group>"; };
@@ -105,6 +109,10 @@
 		46BB01971B92A2930026CB6E /* MeNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeNavigationController.swift; sourceTree = "<group>"; };
 		46BB019B1B92BD340026CB6E /* CreateTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTaskViewController.swift; sourceTree = "<group>"; };
 		46BB01A01B92D1D00026CB6E /* LocationTimeEditViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTimeEditViewHelper.swift; sourceTree = "<group>"; };
+		46BB01A51B9397D30026CB6E /* EditLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditLocationViewController.swift; sourceTree = "<group>"; };
+		46BB01A71B939C080026CB6E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		46BB01A91B939C170026CB6E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		46BB01AB1B93FE500026CB6E /* AddMembersViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMembersViewHelper.swift; sourceTree = "<group>"; };
 		B6B7EB05FDC0CC77A857B349 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C43AF1B09D0587414C965081 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F30ACB44CA899943E7CCAAC9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -115,6 +123,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46BB01AA1B939C170026CB6E /* CoreLocation.framework in Frameworks */,
+				46BB01A81B939C080026CB6E /* MapKit.framework in Frameworks */,
 				4651AABA1B88408F005C2B67 /* libz.dylib in Frameworks */,
 				4651AAAE1B883F02005C2B67 /* UIKit.framework in Frameworks */,
 				460909621B903CCC006FF85D /* CoreText.framework in Frameworks */,
@@ -272,6 +282,7 @@
 		46A79CE41B8828AD00B60B43 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				460909631B904E13006FF85D /* WeiboSDK.bundle */,
 				46BB01771B928DB60026CB6E /* BROptionsButton */,
 				46A79CE51B8828C500B60B43 /* WX */,
 			);
@@ -303,7 +314,6 @@
 			isa = PBXGroup;
 			children = (
 				46BB01801B9292540026CB6E /* Event.storyboard */,
-				46BB01A01B92D1D00026CB6E /* LocationTimeEditViewHelper.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -311,8 +321,11 @@
 		46BB01701B9275270026CB6E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				46BB01A01B92D1D00026CB6E /* LocationTimeEditViewHelper.swift */,
 				46BB01821B92929A0026CB6E /* EventNavigationController.swift */,
 				46BB019B1B92BD340026CB6E /* CreateTaskViewController.swift */,
+				46BB01A51B9397D30026CB6E /* EditLocationViewController.swift */,
+				46BB01AB1B93FE500026CB6E /* AddMembersViewHelper.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -420,7 +433,8 @@
 		9EBB59CC81AD2F52571769D8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				460909631B904E13006FF85D /* WeiboSDK.bundle */,
+				46BB01A91B939C170026CB6E /* CoreLocation.framework */,
+				46BB01A71B939C080026CB6E /* MapKit.framework */,
 				4651AABB1B884099005C2B67 /* libsqlite3.0.dylib */,
 				4651AAB91B88408F005C2B67 /* libz.dylib */,
 				4651AAB71B88407F005C2B67 /* SystemConfiguration.framework */,
@@ -600,12 +614,14 @@
 				46BB01911B92A09E0026CB6E /* HistoryNavigationController.swift in Sources */,
 				46BB018A1B929D2E0026CB6E /* ContactNavigationController.swift in Sources */,
 				46BB01981B92A2930026CB6E /* MeNavigationController.swift in Sources */,
+				46BB01A61B9397D30026CB6E /* EditLocationViewController.swift in Sources */,
 				46A79CB41B8823AB00B60B43 /* AppDelegate.swift in Sources */,
 				46BB01A11B92D1D00026CB6E /* LocationTimeEditViewHelper.swift in Sources */,
 				46BB01741B9276030026CB6E /* MainTabBarViewController.swift in Sources */,
 				46A79CE21B88283000B60B43 /* AuthLoginViewController.swift in Sources */,
 				46BB017C1B928DC80026CB6E /* BROptionItem.m in Sources */,
 				46BB01831B92929A0026CB6E /* EventNavigationController.swift in Sources */,
+				46BB01AC1B93FE500026CB6E /* AddMembersViewHelper.swift in Sources */,
 				4609096B1B92584B006FF85D /* VendorLoginAPICall.swift in Sources */,
 				46BB017D1B928DC80026CB6E /* BROptionsButton.m in Sources */,
 				46BB019C1B92BD340026CB6E /* CreateTaskViewController.swift in Sources */,

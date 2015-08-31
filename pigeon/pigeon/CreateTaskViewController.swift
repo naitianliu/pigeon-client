@@ -8,27 +8,38 @@
 
 import UIKit
 import SZTextView
+import MapKit
 
 
-class CreateTaskViewController: UIViewController {
+class CreateTaskViewController: UIViewController, LocationTimeEditViewDelegate {
     
     let kOFFSET_FOR_KEYBOARD:CGFloat = 20
     
     var keyboardFrame:CGRect = CGRect(x: 0, y: 0, width: 0, height: 0)
 
     @IBOutlet var descriptionTextView: SZTextView!
+    @IBOutlet weak var addMembersView: UIView!
     
     var locationTimeEditViewHelper:LocationTimeEditViewHelper!
+    var addMembersViewHelper:AddMembersViewHelper!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
         self.descriptionTextView.becomeFirstResponder()
         
-        self.locationTimeEditViewHelper = LocationTimeEditViewHelper(rootViewController: self)
+        self.locationTimeEditViewHelper = LocationTimeEditViewHelper(rootViewController:self, delegate:self)
+        
+        self.addMembersViewHelper = AddMembersViewHelper(rootViewController: self, addMembersView: self.addMembersView)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShown:", name: UIKeyboardDidShowNotification, object: nil)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        self.descriptionTextView.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,8 +53,14 @@ class CreateTaskViewController: UIViewController {
         })
     }
     
+    func locationTimeReceiveLocation(mapItem: MKMapItem) {
+        println(mapItem)
+        self.locationTimeEditViewHelper.rootViewController = self
+    }
+    
     
     @IBAction func sendButtonOnClick(sender: AnyObject) {
+        
     }
     
     
@@ -55,6 +72,7 @@ class CreateTaskViewController: UIViewController {
         self.keyboardFrame = self.view.convertRect(rawFrame, fromView: nil)
         self.locationTimeEditViewHelper.adjustViewHeight(self.keyboardFrame.height)
     }
+    
 
     /*
     // MARK: - Navigation

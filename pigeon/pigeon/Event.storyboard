@@ -33,8 +33,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IaL-BE-2Zh">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="74"/>
+                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IaL-BE-2Zh">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="DpZ-rb-Nfm"/>
+                                </constraints>
                                 <items>
                                     <navigationItem title="创建任务" prompt="" id="o5o-Q7-Uly">
                                         <barButtonItem key="leftBarButtonItem" title="取消" id="0aS-pm-b0n">
@@ -50,8 +53,14 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DeL-yx-g8E">
+                                <rect key="frame" x="16" y="70" width="568" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="MjG-g4-qBC"/>
+                                </constraints>
+                            </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="UDC-3y-8q9" customClass="SZTextView">
-                                <rect key="frame" x="16" y="81" width="568" height="101"/>
+                                <rect key="frame" x="16" y="133" width="568" height="101"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="516-yH-zWi"/>
@@ -67,23 +76,29 @@
                         <constraints>
                             <constraint firstItem="UDC-3y-8q9" firstAttribute="top" secondItem="IaL-BE-2Zh" secondAttribute="bottom" constant="16" id="1lF-U2-rvO"/>
                             <constraint firstItem="UDC-3y-8q9" firstAttribute="leading" secondItem="EKS-Jh-0Kz" secondAttribute="leadingMargin" id="4rp-Ke-o1Z"/>
+                            <constraint firstItem="UDC-3y-8q9" firstAttribute="top" secondItem="DeL-yx-g8E" secondAttribute="bottom" constant="8" id="4zM-ud-2BA"/>
+                            <constraint firstItem="DeL-yx-g8E" firstAttribute="leading" secondItem="EKS-Jh-0Kz" secondAttribute="leadingMargin" id="EHQ-3H-Dkn"/>
                             <constraint firstItem="UDC-3y-8q9" firstAttribute="leading" secondItem="EKS-Jh-0Kz" secondAttribute="leadingMargin" id="EaN-Sk-Mk0"/>
                             <constraint firstItem="UDC-3y-8q9" firstAttribute="trailing" secondItem="EKS-Jh-0Kz" secondAttribute="trailingMargin" id="FuZ-Ga-PPj"/>
+                            <constraint firstItem="DeL-yx-g8E" firstAttribute="trailing" secondItem="EKS-Jh-0Kz" secondAttribute="trailingMargin" id="Gwg-lS-UEE"/>
                             <constraint firstItem="UDC-3y-8q9" firstAttribute="trailing" secondItem="EKS-Jh-0Kz" secondAttribute="trailingMargin" id="aTW-pB-gfu"/>
                             <constraint firstItem="IaL-BE-2Zh" firstAttribute="leading" secondItem="EKS-Jh-0Kz" secondAttribute="leadingMargin" constant="-16" id="bWa-Nz-mKz"/>
                             <constraint firstItem="UDC-3y-8q9" firstAttribute="top" secondItem="IaL-BE-2Zh" secondAttribute="bottom" constant="7" id="vol-8r-14p"/>
                             <constraint firstAttribute="trailingMargin" secondItem="IaL-BE-2Zh" secondAttribute="trailing" constant="-16" id="xGy-2J-ce7"/>
                             <constraint firstItem="IaL-BE-2Zh" firstAttribute="top" secondItem="EKS-Jh-0Kz" secondAttribute="topMargin" id="yzh-k0-yUC"/>
+                            <constraint firstItem="DeL-yx-g8E" firstAttribute="top" secondItem="IaL-BE-2Zh" secondAttribute="bottom" constant="8" id="zRA-WA-rXb"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="1lF-U2-rvO"/>
                                 <exclude reference="4rp-Ke-o1Z"/>
                                 <exclude reference="FuZ-Ga-PPj"/>
+                                <exclude reference="vol-8r-14p"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="addMembersView" destination="DeL-yx-g8E" id="A5y-eg-ODM"/>
                         <outlet property="descriptionTextView" destination="UDC-3y-8q9" id="Txf-ao-7JF"/>
                     </connections>
                 </viewController>
@@ -91,10 +106,10 @@
             </objects>
             <point key="canvasLocation" x="322" y="1196"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit Location View Controller-->
         <scene sceneID="owd-PY-BuY">
             <objects>
-                <viewController id="gih-IQ-RYY" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditLocationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gih-IQ-RYY" customClass="EditLocationViewController" customModule="pigeon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="D1R-dS-87N"/>
                         <viewControllerLayoutGuide type="bottom" id="v4r-QN-pqR"/>
@@ -104,29 +119,72 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sqY-sb-8z6">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="74"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="74" id="s1g-GM-VwU"/>
+                                    <constraint firstAttribute="height" constant="64" id="s1g-GM-VwU"/>
                                 </constraints>
                                 <textAttributes key="titleTextAttributes">
                                     <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="设置地点" id="xZQ-3z-TiD">
-                                        <barButtonItem key="leftBarButtonItem" title="取消" id="MMJ-jj-cuh"/>
+                                        <barButtonItem key="leftBarButtonItem" title="取消" id="MMJ-jj-cuh">
+                                            <connections>
+                                                <action selector="cancelButtonOnClick:" destination="gih-IQ-RYY" id="6JG-Xa-Y30"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="确认" id="WvW-QL-aqL">
+                                            <connections>
+                                                <action selector="confirmButtonOnClick:" destination="gih-IQ-RYY" id="WvA-rZ-UMT"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="wPW-ha-NPG">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="gih-IQ-RYY" id="bXh-Nj-1EE"/>
+                                </connections>
+                            </searchBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="KHc-CU-vsY">
+                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <connections>
+                                    <outlet property="delegate" destination="gih-IQ-RYY" id="1qN-nv-Ef5"/>
+                                </connections>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="v4r-QN-pqR" firstAttribute="top" secondItem="KHc-CU-vsY" secondAttribute="bottom" id="2rx-fl-F7q"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sqY-sb-8z6" secondAttribute="trailing" constant="-16" id="5h0-TW-nc0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KHc-CU-vsY" secondAttribute="trailing" constant="-16" id="FBr-gd-UiA"/>
+                            <constraint firstItem="KHc-CU-vsY" firstAttribute="top" secondItem="wPW-ha-NPG" secondAttribute="bottom" id="Ojn-hD-JZq"/>
+                            <constraint firstItem="KHc-CU-vsY" firstAttribute="leading" secondItem="Oor-TJ-yIp" secondAttribute="leadingMargin" constant="-16" id="S3f-ZB-o4n"/>
                             <constraint firstItem="sqY-sb-8z6" firstAttribute="top" secondItem="D1R-dS-87N" secondAttribute="bottom" constant="-20" id="Txo-DV-n3V"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wPW-ha-NPG" secondAttribute="trailing" constant="-16" id="VLr-Pm-r0M"/>
                             <constraint firstItem="sqY-sb-8z6" firstAttribute="leading" secondItem="Oor-TJ-yIp" secondAttribute="leadingMargin" constant="-16" id="XrL-ga-ME0"/>
+                            <constraint firstItem="wPW-ha-NPG" firstAttribute="leading" secondItem="Oor-TJ-yIp" secondAttribute="leadingMargin" constant="-16" id="cNQ-9u-4tm"/>
+                            <constraint firstItem="wPW-ha-NPG" firstAttribute="top" secondItem="sqY-sb-8z6" secondAttribute="bottom" id="kjx-io-Oc8"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="addressSearchBar" destination="wPW-ha-NPG" id="fYf-vB-z0U"/>
+                        <outlet property="mapView" destination="KHc-CU-vsY" id="ECY-9V-QUi"/>
+                        <outlet property="searchDisplayController" destination="4tt-De-K32" id="cqb-GS-06s"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r7b-cZ-fbh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="4tt-De-K32">
+                    <connections>
+                        <outlet property="delegate" destination="gih-IQ-RYY" id="jEe-et-FqN"/>
+                        <outlet property="searchBar" destination="wPW-ha-NPG" id="ZyK-1n-Wa8"/>
+                        <outlet property="searchContentsController" destination="gih-IQ-RYY" id="NKy-ZX-CsV"/>
+                        <outlet property="searchResultsDataSource" destination="gih-IQ-RYY" id="dmP-BT-hP9"/>
+                        <outlet property="searchResultsDelegate" destination="gih-IQ-RYY" id="wp0-Jf-Ikw"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="328" y="1935"/>
         </scene>

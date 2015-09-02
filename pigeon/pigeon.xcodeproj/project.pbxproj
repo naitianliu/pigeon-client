@@ -23,6 +23,11 @@
 		4651AAB81B88407F005C2B67 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AAB71B88407F005C2B67 /* SystemConfiguration.framework */; };
 		4651AABA1B88408F005C2B67 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AAB91B88408F005C2B67 /* libz.dylib */; };
 		4651AABC1B884099005C2B67 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AABB1B884099005C2B67 /* libsqlite3.0.dylib */; };
+		46A568991B96969500FC63F7 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A568981B96969500FC63F7 /* ContactViewController.swift */; };
+		46A5689B1B969DEC00FC63F7 /* GroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46A5689A1B969DEC00FC63F7 /* GroupView.xib */; };
+		46A5689D1B96A10F00FC63F7 /* GroupViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A5689C1B96A10F00FC63F7 /* GroupViewHelper.swift */; };
+		46A5689F1B96BADB00FC63F7 /* TableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A5689E1B96BADB00FC63F7 /* TableViewHelper.swift */; };
+		46A568A61B96DD8900FC63F7 /* AddContactTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A568A51B96DD8900FC63F7 /* AddContactTableViewController.swift */; };
 		46A79CB41B8823AB00B60B43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A79CB31B8823AB00B60B43 /* AppDelegate.swift */; };
 		46A79CBB1B8823AB00B60B43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46A79CB91B8823AB00B60B43 /* Main.storyboard */; };
 		46A79CBD1B8823AB00B60B43 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46A79CBC1B8823AB00B60B43 /* Images.xcassets */; };
@@ -81,6 +86,11 @@
 		4651AAB71B88407F005C2B67 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4651AAB91B88408F005C2B67 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		4651AABB1B884099005C2B67 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		46A568981B96969500FC63F7 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
+		46A5689A1B969DEC00FC63F7 /* GroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupView.xib; sourceTree = "<group>"; };
+		46A5689C1B96A10F00FC63F7 /* GroupViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewHelper.swift; sourceTree = "<group>"; };
+		46A5689E1B96BADB00FC63F7 /* TableViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHelper.swift; sourceTree = "<group>"; };
+		46A568A51B96DD8900FC63F7 /* AddContactTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddContactTableViewController.swift; sourceTree = "<group>"; };
 		46A79CAE1B8823AB00B60B43 /* pigeon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pigeon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46A79CB21B8823AB00B60B43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46A79CB31B8823AB00B60B43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -368,6 +378,10 @@
 			isa = PBXGroup;
 			children = (
 				46BB01891B929D2E0026CB6E /* ContactNavigationController.swift */,
+				46A568981B96969500FC63F7 /* ContactViewController.swift */,
+				46A5689C1B96A10F00FC63F7 /* GroupViewHelper.swift */,
+				46A5689E1B96BADB00FC63F7 /* TableViewHelper.swift */,
+				46A568A51B96DD8900FC63F7 /* AddContactTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -376,6 +390,7 @@
 			isa = PBXGroup;
 			children = (
 				46BB01871B929B9A0026CB6E /* Contact.storyboard */,
+				46A5689A1B969DEC00FC63F7 /* GroupView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -537,6 +552,7 @@
 			files = (
 				4631638B1B902B9C00C6A30F /* Podfile in Resources */,
 				46A79CE71B88297A00B60B43 /* Auth.storyboard in Resources */,
+				46A5689B1B969DEC00FC63F7 /* GroupView.xib in Resources */,
 				46BB01961B92A2500026CB6E /* Me.storyboard in Resources */,
 				46A79CBB1B8823AB00B60B43 /* Main.storyboard in Resources */,
 				46A79CC01B8823AB00B60B43 /* LaunchScreen.xib in Resources */,
@@ -611,16 +627,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				460909681B92438A006FF85D /* BaseAPIHelper.swift in Sources */,
+				46A5689D1B96A10F00FC63F7 /* GroupViewHelper.swift in Sources */,
+				46A568991B96969500FC63F7 /* ContactViewController.swift in Sources */,
 				46BB01911B92A09E0026CB6E /* HistoryNavigationController.swift in Sources */,
 				46BB018A1B929D2E0026CB6E /* ContactNavigationController.swift in Sources */,
 				46BB01981B92A2930026CB6E /* MeNavigationController.swift in Sources */,
 				46BB01A61B9397D30026CB6E /* EditLocationViewController.swift in Sources */,
 				46A79CB41B8823AB00B60B43 /* AppDelegate.swift in Sources */,
+				46A568A61B96DD8900FC63F7 /* AddContactTableViewController.swift in Sources */,
 				46BB01A11B92D1D00026CB6E /* LocationTimeEditViewHelper.swift in Sources */,
 				46BB01741B9276030026CB6E /* MainTabBarViewController.swift in Sources */,
 				46A79CE21B88283000B60B43 /* AuthLoginViewController.swift in Sources */,
 				46BB017C1B928DC80026CB6E /* BROptionItem.m in Sources */,
 				46BB01831B92929A0026CB6E /* EventNavigationController.swift in Sources */,
+				46A5689F1B96BADB00FC63F7 /* TableViewHelper.swift in Sources */,
 				46BB01AC1B93FE500026CB6E /* AddMembersViewHelper.swift in Sources */,
 				4609096B1B92584B006FF85D /* VendorLoginAPICall.swift in Sources */,
 				46BB017D1B928DC80026CB6E /* BROptionsButton.m in Sources */,

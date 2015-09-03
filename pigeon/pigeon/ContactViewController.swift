@@ -8,14 +8,15 @@
 
 import UIKit
 
-class ContactViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
+class ContactViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
 
     var groupView:UIView!
     var collectionView:UICollectionView!
+    
+    var searchController:UISearchController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,13 @@ class ContactViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.view.addSubview(self.groupView)
         self.view.bringSubviewToFront(self.tableView)
         
+        
+        var searchResultsController:UINavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("SearchContactNavigationController") as! UINavigationController
+        self.searchController = UISearchController(searchResultsController: searchResultsController)
+        self.searchController.searchResultsUpdater = self
+        self.searchController.searchBar.delegate = self
+        self.searchController.searchBar.frame = CGRect(x: self.searchController.searchBar.frame.origin.x, y: self.searchController.searchBar.frame.origin.y, width: self.searchController.searchBar.frame.size.width, height: 44.0)
+        self.tableView.tableHeaderView = self.searchController.searchBar
     }
     @IBAction func segmentedControlValueChanged(sender: AnyObject) {
         var selectedIndex = self.segmentedControl.selectedSegmentIndex
@@ -43,6 +51,10 @@ class ContactViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func searchButtonOnClick(sender: AnyObject) {
+        self.searchController.searchBar.becomeFirstResponder()
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -113,6 +125,10 @@ class ContactViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return CGSize(width: self.groupView.frame.width/2 - 5, height: self.groupView.frame.width/2 - 5)
+    }
+    
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        
     }
     
 }

@@ -23,6 +23,8 @@
 		4651AAB81B88407F005C2B67 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AAB71B88407F005C2B67 /* SystemConfiguration.framework */; };
 		4651AABA1B88408F005C2B67 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AAB91B88408F005C2B67 /* libz.dylib */; };
 		4651AABC1B884099005C2B67 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AABB1B884099005C2B67 /* libsqlite3.0.dylib */; };
+		469540051B980A6C00E0F4D0 /* VendorContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469540041B980A6C00E0F4D0 /* VendorContactViewController.swift */; };
+		469540071B982DC200E0F4D0 /* ContactSearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469540061B982DC200E0F4D0 /* ContactSearchResultsTableViewController.swift */; };
 		46A568991B96969500FC63F7 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A568981B96969500FC63F7 /* ContactViewController.swift */; };
 		46A5689B1B969DEC00FC63F7 /* GroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46A5689A1B969DEC00FC63F7 /* GroupView.xib */; };
 		46A5689D1B96A10F00FC63F7 /* GroupViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A5689C1B96A10F00FC63F7 /* GroupViewHelper.swift */; };
@@ -86,6 +88,8 @@
 		4651AAB71B88407F005C2B67 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4651AAB91B88408F005C2B67 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		4651AABB1B884099005C2B67 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		469540041B980A6C00E0F4D0 /* VendorContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorContactViewController.swift; sourceTree = "<group>"; };
+		469540061B982DC200E0F4D0 /* ContactSearchResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactSearchResultsTableViewController.swift; sourceTree = "<group>"; };
 		46A568981B96969500FC63F7 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		46A5689A1B969DEC00FC63F7 /* GroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupView.xib; sourceTree = "<group>"; };
 		46A5689C1B96A10F00FC63F7 /* GroupViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewHelper.swift; sourceTree = "<group>"; };
@@ -382,6 +386,8 @@
 				46A5689C1B96A10F00FC63F7 /* GroupViewHelper.swift */,
 				46A5689E1B96BADB00FC63F7 /* TableViewHelper.swift */,
 				46A568A51B96DD8900FC63F7 /* AddContactTableViewController.swift */,
+				469540041B980A6C00E0F4D0 /* VendorContactViewController.swift */,
+				469540061B982DC200E0F4D0 /* ContactSearchResultsTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -633,6 +639,8 @@
 				46BB018A1B929D2E0026CB6E /* ContactNavigationController.swift in Sources */,
 				46BB01981B92A2930026CB6E /* MeNavigationController.swift in Sources */,
 				46BB01A61B9397D30026CB6E /* EditLocationViewController.swift in Sources */,
+				469540071B982DC200E0F4D0 /* ContactSearchResultsTableViewController.swift in Sources */,
+				469540051B980A6C00E0F4D0 /* VendorContactViewController.swift in Sources */,
 				46A79CB41B8823AB00B60B43 /* AppDelegate.swift in Sources */,
 				46A568A61B96DD8900FC63F7 /* AddContactTableViewController.swift in Sources */,
 				46BB01A11B92D1D00026CB6E /* LocationTimeEditViewHelper.swift in Sources */,

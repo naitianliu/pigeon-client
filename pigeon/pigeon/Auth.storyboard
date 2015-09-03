@@ -25,7 +25,7 @@
                                     <action selector="weixinLoginOnClick:" destination="LrV-D8-d21" eventType="touchUpInside" id="XyU-Ye-g4p"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXu-jU-WfB">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXu-jU-WfB" customClass="WBSDKBasicButton">
                                 <rect key="frame" x="258" y="319" width="85" height="30"/>
                                 <state key="normal" title="Weibo Login">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>

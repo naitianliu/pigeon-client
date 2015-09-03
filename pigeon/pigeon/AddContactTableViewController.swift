@@ -8,16 +8,19 @@
 
 import UIKit
 
-class AddContactTableViewController: UITableViewController {
+class AddContactTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
 
+    var searchController:UISearchController!
+    var searchResults = ["test1", "test2", "test3", "test4"]
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        var searchResultsController:UINavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("SearchContactNavigationController") as! UINavigationController
+        self.searchController = UISearchController(searchResultsController: searchResultsController)
+        self.searchController.searchResultsUpdater = self
+        self.searchController.searchBar.delegate = self
+        self.searchController.searchBar.frame = CGRect(x: self.searchController.searchBar.frame.origin.x, y: self.searchController.searchBar.frame.origin.y, width: self.searchController.searchBar.frame.size.width, height: 44.0)
+        self.tableView.tableHeaderView = self.searchController.searchBar
     }
 
     override func didReceiveMemoryWarning() {
@@ -113,8 +116,15 @@ class AddContactTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var contactStoryboard:UIStoryboard = UIStoryboard(name: "Contact", bundle: nil)
+        var vendorContactVC:VendorContactViewController = contactStoryboard.instantiateViewControllerWithIdentifier("VendorContactViewController") as! VendorContactViewController
         if indexPath.section == 1 && indexPath.row == 0 {
-            
+            vendorContactVC.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
+            self.presentViewController(vendorContactVC, animated: true, completion: { () -> Void in
+                
+            })
+        } else if indexPath.section == 0 {
+
         }
     }
 
@@ -125,42 +135,13 @@ class AddContactTableViewController: UITableViewController {
         return true
     }
     
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        if (self.searchController.searchResultsController != nil) {
+            var navController:UINavigationController = self.searchController.searchResultsController as! UINavigationController
+            var vc:ContactSearchResultsTableViewController = navController.topViewController as! ContactSearchResultsTableViewController
+            vc.searchResults = self.searchResults
+            vc.tableView.reloadData()
+        }
+    }
     
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -52,7 +52,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="ppj-Gk-bwa">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="aBJ-nQ-VjY"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="aBJ-nQ-VjY">
+                            <connections>
+                                <action selector="searchButtonOnClick:" destination="zZQ-ED-Dlk" id="FMs-RP-vwx"/>
+                            </connections>
+                        </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="y2e-bH-qI2">
                             <rect key="frame" x="180" y="7" width="240" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -114,6 +118,112 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Io1-WG-F1j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1763" y="409"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="xvV-gf-FGa">
+            <objects>
+                <tableViewController automaticallyAdjustsScrollViewInsets="NO" id="qLx-YP-WIH" customClass="ContactSearchResultsTableViewController" customModule="pigeon" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="fLP-By-yT7">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactSearchResultsCell" id="2wT-dn-DKH">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2wT-dn-DKH" id="HWQ-SF-1SA">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="qLx-YP-WIH" id="Ik2-tZ-3YD"/>
+                            <outlet property="delegate" destination="qLx-YP-WIH" id="tcv-dT-5Lr"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="BQp-rb-FYN"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bbe-DN-eA0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3375" y="416"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="FKw-ua-5aH">
+            <objects>
+                <navigationController storyboardIdentifier="SearchContactNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UE0-Kc-ZaU" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rtl-I1-imK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="qLx-YP-WIH" kind="relationship" relationship="rootViewController" id="FuB-Ao-0Oa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hln-vg-Qcm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2589" y="416"/>
+        </scene>
+        <!--Vendor Contact View Controller-->
+        <scene sceneID="Bet-Hv-SpD">
+            <objects>
+                <viewController storyboardIdentifier="VendorContactViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BQN-fI-MfG" customClass="VendorContactViewController" customModule="pigeon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="j30-Ny-J81"/>
+                        <viewControllerLayoutGuide type="bottom" id="fuR-Wr-ip7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bXn-VL-Jlm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o2Q-XY-830">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="VNV-GQ-8V9"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="微博好友" id="CNg-ft-7nw">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="8p2-j4-xMN">
+                                            <connections>
+                                                <action selector="backButtonOnClick:" destination="BQN-fI-MfG" id="ixm-Fp-6QA"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="uE2-lu-eYH">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="VendorContactTableCell" id="Pjm-Te-aB4">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pjm-Te-aB4" id="tJa-kx-E6K">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BQN-fI-MfG" id="i3B-8w-8vP"/>
+                                    <outlet property="delegate" destination="BQN-fI-MfG" id="cjZ-p0-wIu"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uE2-lu-eYH" firstAttribute="leading" secondItem="bXn-VL-Jlm" secondAttribute="leadingMargin" constant="-16" id="8Hk-MP-pZ6"/>
+                            <constraint firstItem="o2Q-XY-830" firstAttribute="top" secondItem="j30-Ny-J81" secondAttribute="bottom" constant="-20" id="BjI-wN-XSM"/>
+                            <constraint firstItem="uE2-lu-eYH" firstAttribute="top" secondItem="o2Q-XY-830" secondAttribute="bottom" id="JKh-85-ZE6"/>
+                            <constraint firstItem="fuR-Wr-ip7" firstAttribute="top" secondItem="uE2-lu-eYH" secondAttribute="bottom" id="QVT-Ot-bHv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="o2Q-XY-830" secondAttribute="trailing" constant="-16" id="jVo-uS-oWI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uE2-lu-eYH" secondAttribute="trailing" constant="-16" id="nLp-sy-VSh"/>
+                            <constraint firstItem="o2Q-XY-830" firstAttribute="leading" secondItem="bXn-VL-Jlm" secondAttribute="leadingMargin" constant="-16" id="rEc-GU-y4Y"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contactTableView" destination="uE2-lu-eYH" id="iT6-g8-awv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LSG-Kx-YVQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1763" y="1102"/>
         </scene>
     </scenes>
 </document>

@@ -7,5 +7,6 @@ pod 'SZTextView', '~> 1.2.1'
 pod 'RMDateSelectionViewController', '~> 2.0.1'
 pod 'SDWebImage', '~>3.7'
 pod 'RealmSwift', '~> 0.95.0'
+pod 'VENSeparatorView', '~> 1.0.0'
 
 link_with 'pigeon'

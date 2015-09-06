@@ -15,6 +15,10 @@
 		460909641B904E13006FF85D /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 460909631B904E13006FF85D /* WeiboSDK.bundle */; };
 		460909681B92438A006FF85D /* BaseAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460909671B92438A006FF85D /* BaseAPIHelper.swift */; };
 		4609096B1B92584B006FF85D /* VendorLoginAPICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4609096A1B92584B006FF85D /* VendorLoginAPICall.swift */; };
+		462680781B9C1D1F00656F81 /* HZIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 462680711B9C1D1F00656F81 /* HZIndicatorView.m */; };
+		462680791B9C1D1F00656F81 /* HZPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 462680731B9C1D1F00656F81 /* HZPhotoBrowser.m */; };
+		4626807A1B9C1D1F00656F81 /* HZPhotoBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 462680761B9C1D1F00656F81 /* HZPhotoBrowserView.m */; };
+		4626807B1B9C1D1F00656F81 /* whiteplaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 462680771B9C1D1F00656F81 /* whiteplaceholder.png */; };
 		4631638B1B902B9C00C6A30F /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 4631638A1B902B9C00C6A30F /* Podfile */; };
 		4651AAAE1B883F02005C2B67 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AAAD1B883F02005C2B67 /* UIKit.framework */; };
 		4651AAB01B883F12005C2B67 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AAAF1B883F12005C2B67 /* Foundation.framework */; };
@@ -81,6 +85,14 @@
 		460909651B9242A6006FF85D /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Config.xcconfig; path = ../Config.xcconfig; sourceTree = "<group>"; };
 		460909671B92438A006FF85D /* BaseAPIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPIHelper.swift; sourceTree = "<group>"; };
 		4609096A1B92584B006FF85D /* VendorLoginAPICall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorLoginAPICall.swift; sourceTree = "<group>"; };
+		462680701B9C1D1F00656F81 /* HZIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZIndicatorView.h; sourceTree = "<group>"; };
+		462680711B9C1D1F00656F81 /* HZIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZIndicatorView.m; sourceTree = "<group>"; };
+		462680721B9C1D1F00656F81 /* HZPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZPhotoBrowser.h; sourceTree = "<group>"; };
+		462680731B9C1D1F00656F81 /* HZPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZPhotoBrowser.m; sourceTree = "<group>"; };
+		462680741B9C1D1F00656F81 /* HZPhotoBrowserConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZPhotoBrowserConfig.h; sourceTree = "<group>"; };
+		462680751B9C1D1F00656F81 /* HZPhotoBrowserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZPhotoBrowserView.h; sourceTree = "<group>"; };
+		462680761B9C1D1F00656F81 /* HZPhotoBrowserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZPhotoBrowserView.m; sourceTree = "<group>"; };
+		462680771B9C1D1F00656F81 /* whiteplaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteplaceholder.png; sourceTree = "<group>"; };
 		4631638A1B902B9C00C6A30F /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		4651AAAD1B883F02005C2B67 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4651AAAF1B883F12005C2B67 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -188,6 +200,21 @@
 				4609096A1B92584B006FF85D /* VendorLoginAPICall.swift */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		462680601B9C1B2A00656F81 /* HZImagesGroupView */ = {
+			isa = PBXGroup;
+			children = (
+				462680701B9C1D1F00656F81 /* HZIndicatorView.h */,
+				462680711B9C1D1F00656F81 /* HZIndicatorView.m */,
+				462680721B9C1D1F00656F81 /* HZPhotoBrowser.h */,
+				462680731B9C1D1F00656F81 /* HZPhotoBrowser.m */,
+				462680741B9C1D1F00656F81 /* HZPhotoBrowserConfig.h */,
+				462680751B9C1D1F00656F81 /* HZPhotoBrowserView.h */,
+				462680761B9C1D1F00656F81 /* HZPhotoBrowserView.m */,
+				462680771B9C1D1F00656F81 /* whiteplaceholder.png */,
+			);
+			name = HZImagesGroupView;
 			sourceTree = "<group>";
 		};
 		469540081B99399600E0F4D0 /* Model */ = {
@@ -316,6 +343,7 @@
 		46A79CE41B8828AD00B60B43 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				462680601B9C1B2A00656F81 /* HZImagesGroupView */,
 				460909631B904E13006FF85D /* WeiboSDK.bundle */,
 				46BB01771B928DB60026CB6E /* BROptionsButton */,
 				46A79CE51B8828C500B60B43 /* WX */,
@@ -588,6 +616,7 @@
 				46A79CBB1B8823AB00B60B43 /* Main.storyboard in Resources */,
 				46A79CC01B8823AB00B60B43 /* LaunchScreen.xib in Resources */,
 				460909641B904E13006FF85D /* WeiboSDK.bundle in Resources */,
+				4626807B1B9C1D1F00656F81 /* whiteplaceholder.png in Resources */,
 				46BB01881B929B9A0026CB6E /* Contact.storyboard in Resources */,
 				46BB01811B9292540026CB6E /* Event.storyboard in Resources */,
 				46A79CBD1B8823AB00B60B43 /* Images.xcassets in Resources */,
@@ -671,15 +700,18 @@
 				46A79CB41B8823AB00B60B43 /* AppDelegate.swift in Sources */,
 				46A568A61B96DD8900FC63F7 /* AddContactTableViewController.swift in Sources */,
 				46BB01A11B92D1D00026CB6E /* LocationTimeEditViewHelper.swift in Sources */,
+				462680791B9C1D1F00656F81 /* HZPhotoBrowser.m in Sources */,
 				46BB01741B9276030026CB6E /* MainTabBarViewController.swift in Sources */,
 				46A79CE21B88283000B60B43 /* AuthLoginViewController.swift in Sources */,
 				46BB017C1B928DC80026CB6E /* BROptionItem.m in Sources */,
 				46BB01831B92929A0026CB6E /* EventNavigationController.swift in Sources */,
+				462680781B9C1D1F00656F81 /* HZIndicatorView.m in Sources */,
 				46A5689F1B96BADB00FC63F7 /* TableViewHelper.swift in Sources */,
 				46BB01AC1B93FE500026CB6E /* AddMembersViewHelper.swift in Sources */,
 				4609096B1B92584B006FF85D /* VendorLoginAPICall.swift in Sources */,
 				46BB017D1B928DC80026CB6E /* BROptionsButton.m in Sources */,
 				4695400B1B993D0600E0F4D0 /* SampleDataEvent.swift in Sources */,
+				4626807A1B9C1D1F00656F81 /* HZPhotoBrowserView.m in Sources */,
 				46BB019C1B92BD340026CB6E /* CreateTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

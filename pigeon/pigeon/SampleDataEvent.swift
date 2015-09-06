@@ -29,8 +29,9 @@ class SampleDataEvent: NSObject {
             "message": "《人工智能和机器学习领域有哪些有趣的开源项目？》本文简要介绍了10款Quora上网友推荐的人工智能和机器学习领域方面的开源项目",
             "time": "昨天上午 9:30",
             "pictureUrls": [
-                "http://ww3.sinaimg.cn/square/9e14cb4agw1en7cg758prg206y04nhbs.gif",
-                "http://ww4.sinaimg.cn/square/9e14cb4agw1en7cg4hragg206y04nb29.gif"
+                "http://ww3.sinaimg.cn/bmiddle/976b8e2cjw1evsmj1bl82j20dc08wjrw.jpg",
+                "http://ww4.sinaimg.cn/bmiddle/6a8c1e07gw1evrw31vpprj20rs0kuaf2.jpg",
+                "http://n.sinaimg.cn/transform/20150906/k8aV-fxhqhui4859382.jpg"
             ],
             "description": "机器学习相关资料分享",
             "eventType": "话题",

@@ -13,5 +13,6 @@
 #import "WXApi.h"
 #import "WeiboSDK.h"
 #import "BROptionsButton.h"
+#import "HZPhotoBrowser.h"
 
 #endif

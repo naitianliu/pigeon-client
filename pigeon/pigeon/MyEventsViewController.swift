@@ -8,10 +8,12 @@
 
 import UIKit
 
-class MyEventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MyEventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, HZPhotoBrowserDelegate {
     
     let myProfileURL:String = "http://tp3.sinaimg.cn/2525851962/180/40000907046/1"
     let newPosts = SampleDataEvent().newPosts
+    
+    var currentIndex = ["row": 0, "col": 0]
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -48,6 +50,23 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
         eventButton.tag = indexPath.row
         eventButton.addTarget(self, action: "eventButtonPressDown:", forControlEvents: UIControlEvents.TouchDown)
         eventButton.addTarget(self, action: "eventButtonOnClick:", forControlEvents: UIControlEvents.TouchUpInside)
+        var pictureButtonArray:[UIButton] = renderCellHelper.pictureButtonArray
+        if pictureButtonArray.count == 1 {
+            pictureButtonArray[0].addTarget(self, action: "pictureButton0OnClick:", forControlEvents: UIControlEvents.TouchUpInside)
+            pictureButtonArray[0].tag = indexPath.row
+        } else if pictureButtonArray.count == 2 {
+            pictureButtonArray[0].addTarget(self, action: "pictureButton0OnClick:", forControlEvents: UIControlEvents.TouchUpInside)
+            pictureButtonArray[0].tag = indexPath.row
+            pictureButtonArray[1].addTarget(self, action: "pictureButton1OnClick:", forControlEvents: UIControlEvents.TouchUpInside)
+            pictureButtonArray[1].tag = indexPath.row
+        } else if pictureButtonArray.count == 3 {
+            pictureButtonArray[0].addTarget(self, action: "pictureButton0OnClick:", forControlEvents: UIControlEvents.TouchUpInside)
+            pictureButtonArray[0].tag = indexPath.row
+            pictureButtonArray[1].addTarget(self, action: "pictureButton1OnClick:", forControlEvents: UIControlEvents.TouchUpInside)
+            pictureButtonArray[1].tag = indexPath.row
+            pictureButtonArray[2].addTarget(self, action: "pictureButton2OnClick:", forControlEvents: UIControlEvents.TouchUpInside)
+            pictureButtonArray[2].tag = indexPath.row
+        }
         return cell
     }
     
@@ -60,6 +79,46 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
         var index = sender.tag
         println("test \(index)")
         sender.backgroundColor = UIColor.clearColor()
+    }
+    
+    func pictureButton0OnClick(sender:UIButton!) {
+        println(111)
+        self.currentIndex["row"] = sender.tag
+        self.currentIndex["col"] = 0
+        var postInfo = newPosts[self.currentIndex["row"]!] as! [String:AnyObject]
+        var pictureUrls = postInfo["pictureUrls"] as! [String]
+        var browserVC:HZPhotoBrowser = HZPhotoBrowser()
+        browserVC.sourceImagesContainerView = self.view
+        browserVC.imageCount = pictureUrls.count
+        browserVC.currentImageIndex = 0
+        browserVC.delegate = self
+        browserVC.show()
+    }
+    
+    func pictureButton1OnClick(sender:UIButton!) {
+        self.currentIndex["row"] = sender.tag
+        self.currentIndex["col"] = 1
+        var postInfo = newPosts[self.currentIndex["row"]!] as! [String:AnyObject]
+        var pictureUrls = postInfo["pictureUrls"] as! [String]
+        var browserVC:HZPhotoBrowser = HZPhotoBrowser()
+        browserVC.sourceImagesContainerView = self.view
+        browserVC.imageCount = pictureUrls.count
+        browserVC.currentImageIndex = 1
+        browserVC.delegate = self
+        browserVC.show()
+    }
+    
+    func pictureButton2OnClick(sender:UIButton!) {
+        self.currentIndex["row"] = sender.tag
+        self.currentIndex["col"] = 2
+        var postInfo = newPosts[self.currentIndex["row"]!] as! [String:AnyObject]
+        var pictureUrls = postInfo["pictureUrls"] as! [String]
+        var browserVC:HZPhotoBrowser = HZPhotoBrowser()
+        browserVC.sourceImagesContainerView = self.view
+        browserVC.imageCount = pictureUrls.count
+        browserVC.currentImageIndex = 2
+        browserVC.delegate = self
+        browserVC.show()
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -79,6 +138,16 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func photoBrowser(browser: HZPhotoBrowser!, placeholderImageForIndex index: Int) -> UIImage! {
+        return UIImage(named: "Apple")
+    }
+    
+    func photoBrowser(browser: HZPhotoBrowser!, highQualityImageURLForIndex index: Int) -> NSURL! {
+        var postInfo = newPosts[self.currentIndex["row"]!] as! [String:AnyObject]
+        var pictureUrls = postInfo["pictureUrls"] as! [String]
+        return NSURL(string: pictureUrls[index])
     }
 
 }

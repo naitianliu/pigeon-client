@@ -41,6 +41,8 @@ class RenderEventCellHelper:NSObject {
     var eventDescription:String!
     
     var eventButton:UIButton!
+    var pictureView:UIView!
+    var pictureButtonArray:[UIButton]!
     
     init(view:UIView, postInfo:[String:AnyObject]) {
         super.init()
@@ -79,10 +81,9 @@ class RenderEventCellHelper:NSObject {
     }
     
     func getCellHeight() -> CGFloat {
-        
         self.pictureViewHeight = 0
         if self.pictureUrls.count != 0 {
-            self.pictureViewHeight = 80
+            self.pictureViewHeight = (self.view.frame.width - 40 - 4) / 3
         }
         var messageLabel = self.initMessageLabel()
         var descriptionView = self.initEventDescriptionView()
@@ -151,35 +152,49 @@ class RenderEventCellHelper:NSObject {
     }
     
     private func initPicturesView() -> UIView {
-        let pictureViewHeight:CGFloat = 80
+        let pictureViewHeight:CGFloat = (self.innerView.frame.width - 20 - 4) / 3
         self.pictureViewHeight = pictureViewHeight
-        var view:UIView = UIView(frame: CGRect(x: 10, y: self.profileViewHeight + self.messageViewHeight + 10, width: self.innerView.frame.width - 20, height: pictureViewHeight))
+        var view:UIView = UIView(frame: CGRect(x: 10, y: self.profileViewHeight + self.messageViewHeight + 10, width: self.innerView.frame.width - 20, height: self.pictureViewHeight))
         if self.pictureUrls.count == 0 {
             view.hidden = true
             self.pictureViewHeight = 0
         } else if self.pictureUrls.count == 1 {
-            var imgView1:UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: pictureViewHeight, height: pictureViewHeight))
-            imgView1.sd_setImageWithURL(NSURL(string: self.pictureUrls[0]), placeholderImage: UIImage(named: "Apple"))
-            view.addSubview(imgView1)
+            var btnView1:UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: pictureViewHeight, height: pictureViewHeight))
+            btnView1.sd_setImageWithURL(NSURL(string: self.pictureUrls[0]), forState: UIControlState.Normal, placeholderImage: UIImage(named: "Apple"))
+            btnView1.imageView!.contentMode = UIViewContentMode.ScaleAspectFill
+            btnView1.imageView!.layer.masksToBounds = true
+            view.addSubview(btnView1)
+            self.pictureButtonArray = [btnView1]
         } else if self.pictureUrls.count == 2 {
-            var imgView1:UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: pictureViewHeight, height: pictureViewHeight))
-            var imgView2:UIImageView = UIImageView(frame: CGRect(x: pictureViewHeight + 2, y: 0, width: pictureViewHeight, height: pictureViewHeight))
-            imgView1.sd_setImageWithURL(NSURL(string: self.pictureUrls[0]), placeholderImage: UIImage(named: "Apple"))
-            imgView2.sd_setImageWithURL(NSURL(string: self.pictureUrls[1]), placeholderImage: UIImage(named: "Apple"))
-            view.addSubview(imgView1)
-            view.addSubview(imgView2)
+            var btnView1:UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: pictureViewHeight, height: pictureViewHeight))
+            var btnView2:UIButton = UIButton(frame: CGRect(x: pictureViewHeight + 2, y: 0, width: pictureViewHeight, height: pictureViewHeight))
+            btnView1.sd_setImageWithURL(NSURL(string: self.pictureUrls[0]), forState: UIControlState.Normal, placeholderImage: UIImage(named: "Apple"))
+            btnView2.sd_setImageWithURL(NSURL(string: self.pictureUrls[1]), forState: UIControlState.Normal, placeholderImage: UIImage(named: "Apple"))
+            btnView1.imageView!.contentMode = UIViewContentMode.ScaleAspectFill
+            btnView2.imageView!.contentMode = UIViewContentMode.ScaleAspectFill
+            btnView1.imageView!.layer.masksToBounds = true
+            btnView2.imageView!.layer.masksToBounds = true
+            view.addSubview(btnView1)
+            view.addSubview(btnView2)
+            self.pictureButtonArray = [btnView1, btnView2]
         } else {
-            var imgView1:UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: pictureViewHeight, height: pictureViewHeight))
-            var imgView2:UIImageView = UIImageView(frame: CGRect(x: pictureViewHeight + 2, y: 0, width: pictureViewHeight, height: pictureViewHeight))
-            var imgView3:UIImageView = UIImageView(frame: CGRect(x: pictureViewHeight * 2 + 4, y: 0, width: pictureViewHeight, height: pictureViewHeight))
-            imgView1.sd_setImageWithURL(NSURL(string: self.pictureUrls[0]), placeholderImage: UIImage(named: "Apple"))
-            imgView2.sd_setImageWithURL(NSURL(string: self.pictureUrls[1]), placeholderImage: UIImage(named: "Apple"))
-            imgView3.sd_setImageWithURL(NSURL(string: self.pictureUrls[2]), placeholderImage: UIImage(named: "Apple"))
-            view.addSubview(imgView1)
-            view.addSubview(imgView2)
-            view.addSubview(imgView3)
+            var btnView1:UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: pictureViewHeight, height: pictureViewHeight))
+            var btnView2:UIButton = UIButton(frame: CGRect(x: pictureViewHeight + 2, y: 0, width: pictureViewHeight, height: pictureViewHeight))
+            var btnView3:UIButton = UIButton(frame: CGRect(x: pictureViewHeight * 2 + 4, y: 0, width: pictureViewHeight, height: pictureViewHeight))
+            btnView1.sd_setImageWithURL(NSURL(string: self.pictureUrls[0]), forState: UIControlState.Normal, placeholderImage: UIImage(named: "Apple"))
+            btnView2.sd_setImageWithURL(NSURL(string: self.pictureUrls[1]), forState: UIControlState.Normal, placeholderImage: UIImage(named: "Apple"))
+            btnView3.sd_setImageWithURL(NSURL(string: self.pictureUrls[2]), forState: UIControlState.Normal, placeholderImage: UIImage(named: "Apple"))
+            btnView1.imageView!.contentMode = UIViewContentMode.ScaleAspectFill
+            btnView2.imageView!.contentMode = UIViewContentMode.ScaleAspectFill
+            btnView3.imageView!.contentMode = UIViewContentMode.ScaleAspectFill
+            btnView1.imageView!.layer.masksToBounds = true
+            btnView2.imageView!.layer.masksToBounds = true
+            btnView3.imageView!.layer.masksToBounds = true
+            view.addSubview(btnView1)
+            view.addSubview(btnView2)
+            view.addSubview(btnView3)
+            self.pictureButtonArray = [btnView1, btnView2, btnView3]
         }
-        
         return view
     }
     

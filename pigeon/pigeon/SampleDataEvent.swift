@@ -9,6 +9,8 @@
 import Foundation
 
 class SampleDataEvent: NSObject {
+    let myProfileURL1:String = "http://tp3.sinaimg.cn/2525851962/180/40000907046/1"
+    
     let eventList = [
         [
             "creator_name": "Naitian Liu",
@@ -18,5 +20,32 @@ class SampleDataEvent: NSObject {
             "date": "",
             "members": []
         ]
+    ]
+    
+    let newPosts = [
+        [
+            "editorName": "刘乃天",
+            "editorImgUrl": "http://tp3.sinaimg.cn/2525851962/180/40000907046/1",
+            "message": "《人工智能和机器学习领域有哪些有趣的开源项目？》本文简要介绍了10款Quora上网友推荐的人工智能和机器学习领域方面的开源项目",
+            "time": "昨天上午 9:30",
+            "pictureUrls": [
+                "http://ww3.sinaimg.cn/square/9e14cb4agw1en7cg758prg206y04nhbs.gif",
+                "http://ww4.sinaimg.cn/square/9e14cb4agw1en7cg4hragg206y04nb29.gif"
+            ],
+            "description": "机器学习相关资料分享",
+            "eventType": "话题",
+        ],
+        [
+            "editorName": "周鸿祎",
+            "editorImgUrl": "http://tp2.sinaimg.cn/1708942053/180/5704028689/1",
+            "message": "欢迎大家写下使用感受，褒奖或批评都能让我们继续优化体验//@360奇酷手机:#360奇酷手机# 绝对是性价比超高的一款千元机！",
+            "time": "昨天上午 10:54",
+            "pictureUrls": [
+                "http://tp4.sinaimg.cn/1998321847/180/5734749366/0"
+            ],
+            "description": "360奇酷手机, 观阅兵式心情很是澎湃。没有老一辈的浴血奋战，就没有和平安定的今天。吾辈定当珍惜、奋斗。再一次向老兵们致以最高的敬意。",
+            "eventType": "话题",
+        ],
+
     ]
 }

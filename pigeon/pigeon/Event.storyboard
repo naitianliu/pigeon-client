@@ -229,11 +229,65 @@
                     <navigationItem key="navigationItem" title="我的事件" id="J4M-gc-WTk"/>
                     <connections>
                         <outlet property="tableView" destination="rbs-Ac-3Ds" id="H3I-pH-x1V"/>
+                        <segue destination="oQr-vL-YRv" kind="show" identifier="EventDetailSegue" id="fnR-MQ-n1d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8vK-8U-dGE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1121" y="415"/>
+            <point key="canvasLocation" x="1079" y="415"/>
+        </scene>
+        <!--Event Detail View Controller-->
+        <scene sceneID="g41-kf-yIK">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="oQr-vL-YRv" customClass="EventDetailViewController" customModule="pigeon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4bm-YU-au5"/>
+                        <viewControllerLayoutGuide type="bottom" id="fQT-k5-jia"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0dT-yG-zIq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="AXR-My-u6V">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="oQr-vL-YRv" id="cCq-Fk-Z8D"/>
+                                    <outlet property="delegate" destination="oQr-vL-YRv" id="sEk-hn-2H5"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AXR-My-u6V" firstAttribute="top" secondItem="4bm-YU-au5" secondAttribute="bottom" constant="-64" id="3kt-rD-jxf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="AXR-My-u6V" secondAttribute="trailing" constant="-16" id="Atx-xe-7o9"/>
+                            <constraint firstItem="fQT-k5-jia" firstAttribute="top" secondItem="AXR-My-u6V" secondAttribute="bottom" id="mhd-oC-7U4"/>
+                            <constraint firstItem="AXR-My-u6V" firstAttribute="leading" secondItem="0dT-yG-zIq" secondAttribute="leadingMargin" constant="-16" id="p3Z-CB-Wwo"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="mJj-AV-F4n">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="2rh-yj-Ic2">
+                            <rect key="frame" x="180" y="7" width="240" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Posts"/>
+                                <segment title="Comments"/>
+                            </segments>
+                            <connections>
+                                <action selector="segmentedControlOnChanged:" destination="oQr-vL-YRv" eventType="valueChanged" id="JaJ-PO-3ty"/>
+                            </connections>
+                        </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="AgA-iZ-m0i"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="segmentedControl" destination="2rh-yj-Ic2" id="6KT-B4-OeB"/>
+                        <outlet property="tableView" destination="AXR-My-u6V" id="w2a-r1-q0K"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r3W-NY-Soz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1802" y="415"/>
         </scene>
     </scenes>
 </document>

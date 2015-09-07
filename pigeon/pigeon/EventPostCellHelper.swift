@@ -1,22 +1,19 @@
 //
-//  RenderEventCellHelper.swift
+//  EventPostsCellHelper.swift
 //  pigeon
 //
-//  Created by Liu, Naitian on 9/3/15.
+//  Created by Liu, Naitian on 9/6/15.
 //  Copyright (c) 2015 naitianliu. All rights reserved.
 //
 
 import Foundation
-import SDWebImage
-import VENSeparatorView
-import STTweetLabel
 
-class RenderEventCellHelper:NSObject {
+class EventPostCellHelper: NSObject {
     
     var view:UIView!
     var cell:UITableViewCell!
     var viewRect:CGRect!
-    var innerView:VENSeparatorView!
+    var innerView:UIView!
     
     let paddingLeft:CGFloat = 10
     let paddingTop:CGFloat = 5
@@ -24,43 +21,36 @@ class RenderEventCellHelper:NSObject {
     let profileViewHeight:CGFloat = 50
     
     var messageViewHeight:CGFloat!
-    var eventViewHeight:CGFloat!
     var pictureViewHeight:CGFloat!
     
     let bgColor:UIColor = UIColor(red: 0.937255, green: 0.937255, blue: 0.956863, alpha: 1.0)
-    let eventBgColor:UIColor = UIColor(red: 245/256, green: 245, blue: 256, alpha: 245/256)
     
-    var postInfo:[String:AnyObject]!
+    var eventPost:[String:AnyObject]!
     
     var editorName:String!
     var editorImgUrl:String!
     var message:String!
     var time:String!
     var pictureUrls:[String]!
-    var eventType:String!
-    var eventDescription:String!
     
-    var eventButton:UIButton!
     var pictureView:UIView!
     var pictureButtonArray:[UIButton]!
     
-    init(view:UIView, postInfo:[String:AnyObject]) {
+    init(view:UIView, eventPost:[String:AnyObject]) {
         super.init()
         
         self.view = view
-        self.postInfo = postInfo
-        self.editorName = self.postInfo["editorName"] as! String
-        self.editorImgUrl = self.postInfo["editorImgUrl"] as! String
-        self.message = self.postInfo["message"] as! String
-        self.time = self.postInfo["time"] as! String
-        self.pictureUrls = self.postInfo["pictureUrls"] as! [String]
-        self.eventType = self.postInfo["eventType"] as! String
-        self.eventDescription = self.postInfo["description"] as! String
+        self.eventPost = eventPost
+        self.editorName = self.eventPost["editorName"] as! String
+        self.editorImgUrl = self.eventPost["editorImgUrl"] as! String
+        self.message = self.eventPost["message"] as! String
+        self.time = self.eventPost["time"] as! String
+        self.pictureUrls = self.eventPost["pictureUrls"] as! [String]
     }
     
-    func setCell(cell:UITableViewCell, view:UIView) {
+    func setupCell(cell:UITableViewCell) {
         self.cell = cell
-        self.cell.contentView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: self.getCellHeight())
+        self.cell.contentView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.getCellHeight())
         self.viewRect = self.cell.contentView.frame
         self.cell.contentView.backgroundColor = bgColor
         self.cell.selectionStyle = UITableViewCellSelectionStyle.Gray
@@ -70,14 +60,11 @@ class RenderEventCellHelper:NSObject {
         self.cell.backgroundColor = UIColor.clearColor()
         self.cell.backgroundView?.backgroundColor = UIColor.clearColor()
         var innerViewFrame:CGRect = CGRect(x: self.viewRect.origin.x + paddingLeft, y: self.viewRect.origin.y + paddingTop, width: self.viewRect.width - 2 * paddingLeft, height: self.viewRect.height - 2 * paddingTop)
-        self.innerView = VENSeparatorView(frame: innerViewFrame, topLineSeparatorType: VENSeparatorType.None, bottomLineSeparatorType: VENSeparatorType.Jagged)
-        self.innerView.fillColor = bgColor
-        self.innerView.bottomStrokeColor = UIColor.lightGrayColor()
+        self.innerView = UIView(frame: innerViewFrame)
         self.innerView.backgroundColor = UIColor.whiteColor()
         self.cell.contentView.addSubview(self.innerView)
         
         self.setLatestMessage()
-        self.setEventInfo()
     }
     
     func getCellHeight() -> CGFloat {
@@ -86,24 +73,8 @@ class RenderEventCellHelper:NSObject {
             self.pictureViewHeight = (self.view.frame.width - 40 - 4) / 3
         }
         var messageLabel = self.initMessageLabel()
-        var descriptionView = self.initEventDescriptionView()
-        var height:CGFloat! = profileViewHeight + messageLabel.frame.height + self.pictureViewHeight + descriptionView.frame.height + 50
+        var height:CGFloat! = profileViewHeight + messageLabel.frame.height + self.pictureViewHeight + 50
         return height
-    }
-    
-    private func addDashedBorder() -> CAShapeLayer {
-        var shapeLayer:CAShapeLayer = CAShapeLayer()
-        var shapeRect:CGRect = CGRect(x: 0, y: profileViewHeight, width: self.innerView.frame.width, height: 0.5)
-        shapeLayer.bounds = shapeRect
-        shapeLayer.position = CGPoint(x: self.innerView.frame.width/2, y: profileViewHeight)
-        shapeLayer.fillColor = UIColor.clearColor().CGColor
-        shapeLayer.strokeColor = UIColor.grayColor().CGColor
-        shapeLayer.lineWidth = 1
-        shapeLayer.lineJoin = kCALineJoinRound
-        shapeLayer.lineDashPattern = [10, 5]
-        var path:UIBezierPath = UIBezierPath(roundedRect: shapeRect, cornerRadius: 0)
-        shapeLayer.path = path.CGPath
-        return shapeLayer
     }
     
     func setLatestMessage() {
@@ -197,37 +168,6 @@ class RenderEventCellHelper:NSObject {
         }
         return view
     }
-    
-    func setEventInfo() {
-        var eventView:UIView = self.initEventDescriptionView()
-        eventButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
-        eventButton.frame = eventView.frame
-        self.innerView.addSubview(eventView)
-        self.innerView.addSubview(eventButton)
-    }
-    
-    private func initEventDescriptionView() -> UIView {
-        let fontSize:CGFloat = 13
-        let viewWidth:CGFloat = self.view.frame.width - 60
-        var content:NSString = "\(self.eventType): \(self.eventDescription)"
-        var contentSize:CGSize = content.boundingRectWithSize(CGSize(width: viewWidth, height: CGFloat.infinity), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFontOfSize(fontSize)], context: nil).size
-        var lineNum:Int = Int(contentSize.height / fontSize)
-        self.eventViewHeight = contentSize.height + CGFloat(3 * lineNum) + 10
-        var eventView:UIView = UIView(frame: CGRect(x: 20, y: 10 + self.profileViewHeight + self.messageViewHeight + self.pictureViewHeight + 10, width: viewWidth, height: self.eventViewHeight))
-        eventView.backgroundColor = bgColor
-        var style:NSMutableParagraphStyle = NSMutableParagraphStyle()
-        style.lineSpacing = 3
-        var attributedText:NSAttributedString = NSAttributedString(string: content as String, attributes: [NSParagraphStyleAttributeName: style])
-        var descriptionLabel:UILabel = UILabel(frame: CGRect(x: 5, y: 5, width: eventView.frame.width - 10, height: self.eventViewHeight - 10))
-        descriptionLabel.attributedText = attributedText
-        descriptionLabel.textColor = UIColor.grayColor()
-        descriptionLabel.numberOfLines = lineNum
-        descriptionLabel.font = UIFont(name: "Heiti SC", size: fontSize)
-        eventView.addSubview(descriptionLabel)
-        return eventView
-    }
-    
-    
+
+
 }
-
-

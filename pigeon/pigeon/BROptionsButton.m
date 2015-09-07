@@ -282,7 +282,7 @@
     NSAssert(numberOfItems > 0 , @"number of items should be more than 0");
     
     CGFloat angle = 0.0;
-    CGFloat radius = 20 * numberOfItems;
+    CGFloat radius = 30 * numberOfItems;
     angle = (180.0 / numberOfItems);
     // convert to radians
 

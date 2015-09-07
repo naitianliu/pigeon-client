@@ -19,6 +19,11 @@
 		462680791B9C1D1F00656F81 /* HZPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 462680731B9C1D1F00656F81 /* HZPhotoBrowser.m */; };
 		4626807A1B9C1D1F00656F81 /* HZPhotoBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 462680761B9C1D1F00656F81 /* HZPhotoBrowserView.m */; };
 		4626807B1B9C1D1F00656F81 /* whiteplaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 462680771B9C1D1F00656F81 /* whiteplaceholder.png */; };
+		462680881B9CDFE400656F81 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462680871B9CDFE400656F81 /* EventDetailViewController.swift */; };
+		4626808A1B9CEAD200656F81 /* EventInfoViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462680891B9CEAD200656F81 /* EventInfoViewHelper.swift */; };
+		4626808C1B9D03B200656F81 /* EventDetailViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4626808B1B9D03B200656F81 /* EventDetailViewHelper.swift */; };
+		4626808E1B9D294A00656F81 /* EventPostCellHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4626808D1B9D294A00656F81 /* EventPostCellHelper.swift */; };
+		462680901B9D5CE800656F81 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4626808F1B9D5CE800656F81 /* Constant.swift */; };
 		4631638B1B902B9C00C6A30F /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 4631638A1B902B9C00C6A30F /* Podfile */; };
 		4651AAAE1B883F02005C2B67 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AAAD1B883F02005C2B67 /* UIKit.framework */; };
 		4651AAB01B883F12005C2B67 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AAAF1B883F12005C2B67 /* Foundation.framework */; };
@@ -93,6 +98,11 @@
 		462680751B9C1D1F00656F81 /* HZPhotoBrowserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZPhotoBrowserView.h; sourceTree = "<group>"; };
 		462680761B9C1D1F00656F81 /* HZPhotoBrowserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZPhotoBrowserView.m; sourceTree = "<group>"; };
 		462680771B9C1D1F00656F81 /* whiteplaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteplaceholder.png; sourceTree = "<group>"; };
+		462680871B9CDFE400656F81 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
+		462680891B9CEAD200656F81 /* EventInfoViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventInfoViewHelper.swift; sourceTree = "<group>"; };
+		4626808B1B9D03B200656F81 /* EventDetailViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewHelper.swift; sourceTree = "<group>"; };
+		4626808D1B9D294A00656F81 /* EventPostCellHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPostCellHelper.swift; sourceTree = "<group>"; };
+		4626808F1B9D5CE800656F81 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		4631638A1B902B9C00C6A30F /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		4651AAAD1B883F02005C2B67 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4651AAAF1B883F12005C2B67 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -255,6 +265,7 @@
 		46A79CB01B8823AB00B60B43 /* pigeon */ = {
 			isa = PBXGroup;
 			children = (
+				4626808F1B9D5CE800656F81 /* Constant.swift */,
 				46A79CB31B8823AB00B60B43 /* AppDelegate.swift */,
 				46A79CB91B8823AB00B60B43 /* Main.storyboard */,
 				46BB01731B9276030026CB6E /* MainTabBarViewController.swift */,
@@ -378,6 +389,9 @@
 			children = (
 				46BB01801B9292540026CB6E /* Event.storyboard */,
 				4695400E1B994A0100E0F4D0 /* RenderEventCellHelper.swift */,
+				462680891B9CEAD200656F81 /* EventInfoViewHelper.swift */,
+				4626808B1B9D03B200656F81 /* EventDetailViewHelper.swift */,
+				4626808D1B9D294A00656F81 /* EventPostCellHelper.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -391,6 +405,7 @@
 				46BB01A51B9397D30026CB6E /* EditLocationViewController.swift */,
 				46BB01AB1B93FE500026CB6E /* AddMembersViewHelper.swift */,
 				4695400C1B993FDC00E0F4D0 /* MyEventsViewController.swift */,
+				462680871B9CDFE400656F81 /* EventDetailViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -696,13 +711,16 @@
 				469540071B982DC200E0F4D0 /* ContactSearchResultsTableViewController.swift in Sources */,
 				4695400F1B994A0100E0F4D0 /* RenderEventCellHelper.swift in Sources */,
 				469540051B980A6C00E0F4D0 /* VendorContactViewController.swift in Sources */,
+				4626808C1B9D03B200656F81 /* EventDetailViewHelper.swift in Sources */,
 				4695400D1B993FDC00E0F4D0 /* MyEventsViewController.swift in Sources */,
 				46A79CB41B8823AB00B60B43 /* AppDelegate.swift in Sources */,
 				46A568A61B96DD8900FC63F7 /* AddContactTableViewController.swift in Sources */,
 				46BB01A11B92D1D00026CB6E /* LocationTimeEditViewHelper.swift in Sources */,
+				4626808E1B9D294A00656F81 /* EventPostCellHelper.swift in Sources */,
 				462680791B9C1D1F00656F81 /* HZPhotoBrowser.m in Sources */,
 				46BB01741B9276030026CB6E /* MainTabBarViewController.swift in Sources */,
 				46A79CE21B88283000B60B43 /* AuthLoginViewController.swift in Sources */,
+				462680901B9D5CE800656F81 /* Constant.swift in Sources */,
 				46BB017C1B928DC80026CB6E /* BROptionItem.m in Sources */,
 				46BB01831B92929A0026CB6E /* EventNavigationController.swift in Sources */,
 				462680781B9C1D1F00656F81 /* HZIndicatorView.m in Sources */,
@@ -710,8 +728,10 @@
 				46BB01AC1B93FE500026CB6E /* AddMembersViewHelper.swift in Sources */,
 				4609096B1B92584B006FF85D /* VendorLoginAPICall.swift in Sources */,
 				46BB017D1B928DC80026CB6E /* BROptionsButton.m in Sources */,
+				4626808A1B9CEAD200656F81 /* EventInfoViewHelper.swift in Sources */,
 				4695400B1B993D0600E0F4D0 /* SampleDataEvent.swift in Sources */,
 				4626807A1B9C1D1F00656F81 /* HZPhotoBrowserView.m in Sources */,
+				462680881B9CDFE400656F81 /* EventDetailViewController.swift in Sources */,
 				46BB019C1B92BD340026CB6E /* CreateTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

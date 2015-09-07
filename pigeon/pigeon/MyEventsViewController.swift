@@ -12,6 +12,7 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
     
     let myProfileURL:String = "http://tp3.sinaimg.cn/2525851962/180/40000907046/1"
     let newPosts = SampleDataEvent().newPosts
+    let EventTypeArray = Constant().EventTypeArray
     
     var currentIndex = ["row": 0, "col": 0]
 
@@ -22,6 +23,7 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
 
         // Do any additional setup after loading the view.
         println(self.tableView.backgroundColor)
+        self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1), atScrollPosition: UITableViewScrollPosition.Top, animated: false)
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,8 +31,17 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return newPosts.count
+        if section == 0 {
+            return 4
+        } else {
+            return newPosts.count
+        }
+        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -42,31 +53,42 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "MyEventCell")
         }*/
         
-        var cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "MyEventCell")
-        var postInfo = newPosts[indexPath.row] as! [String:AnyObject]
-        var renderCellHelper = RenderEventCellHelper(view:self.view, postInfo:postInfo)
-        renderCellHelper.setCell(cell, view: self.view)
-        var eventButton:UIButton = renderCellHelper.eventButton
-        eventButton.tag = indexPath.row
-        eventButton.addTarget(self, action: "eventButtonPressDown:", forControlEvents: UIControlEvents.TouchDown)
-        eventButton.addTarget(self, action: "eventButtonOnClick:", forControlEvents: UIControlEvents.TouchUpInside)
-        var pictureButtonArray:[UIButton] = renderCellHelper.pictureButtonArray
-        if pictureButtonArray.count == 1 {
-            pictureButtonArray[0].addTarget(self, action: "pictureButton0OnClick:", forControlEvents: UIControlEvents.TouchUpInside)
-            pictureButtonArray[0].tag = indexPath.row
-        } else if pictureButtonArray.count == 2 {
-            pictureButtonArray[0].addTarget(self, action: "pictureButton0OnClick:", forControlEvents: UIControlEvents.TouchUpInside)
-            pictureButtonArray[0].tag = indexPath.row
-            pictureButtonArray[1].addTarget(self, action: "pictureButton1OnClick:", forControlEvents: UIControlEvents.TouchUpInside)
-            pictureButtonArray[1].tag = indexPath.row
-        } else if pictureButtonArray.count == 3 {
-            pictureButtonArray[0].addTarget(self, action: "pictureButton0OnClick:", forControlEvents: UIControlEvents.TouchUpInside)
-            pictureButtonArray[0].tag = indexPath.row
-            pictureButtonArray[1].addTarget(self, action: "pictureButton1OnClick:", forControlEvents: UIControlEvents.TouchUpInside)
-            pictureButtonArray[1].tag = indexPath.row
-            pictureButtonArray[2].addTarget(self, action: "pictureButton2OnClick:", forControlEvents: UIControlEvents.TouchUpInside)
-            pictureButtonArray[2].tag = indexPath.row
+        var cell:UITableViewCell!
+        
+        if indexPath.section == 0 {
+            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "EventUpdateCell")
+            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            cell.textLabel?.text = EventTypeArray[indexPath.row]["name"]
+            var imgName:String = EventTypeArray[indexPath.row]["img"]!
+            cell.imageView?.image = UIImage(named: imgName)
+        } else {
+            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "MyEventCell")
+            var postInfo = newPosts[indexPath.row] as! [String:AnyObject]
+            var renderCellHelper = RenderEventCellHelper(view:self.view, postInfo:postInfo)
+            renderCellHelper.setCell(cell, view: self.view)
+            var eventButton:UIButton = renderCellHelper.eventButton
+            eventButton.tag = indexPath.row
+            eventButton.addTarget(self, action: "eventButtonPressDown:", forControlEvents: UIControlEvents.TouchDown)
+            eventButton.addTarget(self, action: "eventButtonOnClick:", forControlEvents: UIControlEvents.TouchUpInside)
+            var pictureButtonArray:[UIButton] = renderCellHelper.pictureButtonArray
+            if pictureButtonArray.count == 1 {
+                pictureButtonArray[0].addTarget(self, action: "pictureButton0OnClick:", forControlEvents: UIControlEvents.TouchUpInside)
+                pictureButtonArray[0].tag = indexPath.row
+            } else if pictureButtonArray.count == 2 {
+                pictureButtonArray[0].addTarget(self, action: "pictureButton0OnClick:", forControlEvents: UIControlEvents.TouchUpInside)
+                pictureButtonArray[0].tag = indexPath.row
+                pictureButtonArray[1].addTarget(self, action: "pictureButton1OnClick:", forControlEvents: UIControlEvents.TouchUpInside)
+                pictureButtonArray[1].tag = indexPath.row
+            } else if pictureButtonArray.count == 3 {
+                pictureButtonArray[0].addTarget(self, action: "pictureButton0OnClick:", forControlEvents: UIControlEvents.TouchUpInside)
+                pictureButtonArray[0].tag = indexPath.row
+                pictureButtonArray[1].addTarget(self, action: "pictureButton1OnClick:", forControlEvents: UIControlEvents.TouchUpInside)
+                pictureButtonArray[1].tag = indexPath.row
+                pictureButtonArray[2].addTarget(self, action: "pictureButton2OnClick:", forControlEvents: UIControlEvents.TouchUpInside)
+                pictureButtonArray[2].tag = indexPath.row
+            }
         }
+        
         return cell
     }
     
@@ -79,6 +101,14 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
         var index = sender.tag
         println("test \(index)")
         sender.backgroundColor = UIColor.clearColor()
+        
+        self.performSegueWithIdentifier("EventDetailSegue", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "EventDetailSegue" {
+            
+        }
     }
     
     func pictureButton0OnClick(sender:UIButton!) {
@@ -122,14 +152,22 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        var postInfo = newPosts[indexPath.row] as! [String:AnyObject]
-        var renderCellHelper = RenderEventCellHelper(view:self.view, postInfo:postInfo)
-        var cellHeight:CGFloat = renderCellHelper.getCellHeight()
-        return cellHeight
+        if indexPath.section == 0 {
+            return 46
+        } else {
+            var postInfo = newPosts[indexPath.row] as! [String:AnyObject]
+            var renderCellHelper = RenderEventCellHelper(view:self.view, postInfo:postInfo)
+            var cellHeight:CGFloat = renderCellHelper.getCellHeight()
+            return cellHeight
+        }
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 1
+        if section == 0 {
+            return 10
+        } else {
+            return 1
+        }
     }
     
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

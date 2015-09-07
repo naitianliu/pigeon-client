@@ -62,13 +62,13 @@ class MainTabBarViewController: UITabBarController, BROptionButtonDelegate {
         return title
     }
     
-    
-    /*
     func brOptionsButton(brOptionsButton: BROptionsButton!, imageForItemAtIndex index: Int) -> UIImage! {
-        return UIImage(named: "Apple")
+        return UIImage(named: "icon-weixin")
     }
-    */
     
+    func brOptionsButton(optionsButton: BROptionsButton!, willDisplayButtonItem button: BROptionItem!) {
+
+    }
 
     /*
     // MARK: - Navigation

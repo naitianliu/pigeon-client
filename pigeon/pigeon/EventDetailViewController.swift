@@ -96,10 +96,6 @@ class EventDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         var yOffset:CGFloat = scrollView.contentOffset.y
-        if yOffset > 300 {
-            
-        } else {
-            self.eventDetailViewHelper.changeViewByScroll(yOffset)
-        }
+        self.eventDetailViewHelper.changeViewByScroll(yOffset)
     }
 }

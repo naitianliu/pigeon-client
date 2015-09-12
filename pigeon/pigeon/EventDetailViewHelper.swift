@@ -35,20 +35,17 @@ class EventDetailViewHelper: NSObject {
     
     func setupUI() {
         // self.rootViewController.navigationController?.navigationBar.alpha = 0
-        self.rootViewController.automaticallyAdjustsScrollViewInsets = false
-        self.rootViewController.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-        self.rootViewController.navigationController?.navigationBar.shadowImage = UIImage()
+        self.rootViewController.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     func changeViewByScroll(yOffset:CGFloat) {
         var alpha:CGFloat = (yOffset) / 300
+        println(alpha)
         if alpha > 1 {
-            alpha = 1
+            self.rootViewController.navigationController?.setNavigationBarHidden(false, animated: true)
+        } else if alpha < 0 {
+            self.rootViewController.navigationController?.setNavigationBarHidden(true, animated: true)
         }
-        println("\(yOffset)   \(alpha)")
-        // alpha=fabs(1 - alpha)
-        self.rootViewController.navigationController?.navigationBar.setBackgroundImage(self.imageWithColor(self.navBgColor.colorWithAlphaComponent(alpha)), forBarMetrics: UIBarMetrics.Default)
-        
     }
     
     private func imageWithColor(color:UIColor) -> UIImage {

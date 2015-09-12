@@ -79,6 +79,28 @@ class SampleDataEvent: NSObject {
             ]
         ],
     ]
+    
+    let commentList = [
+        [
+            "editorName": "Naitian Liu",
+            "time": "1:23PM, today",
+            "message": "Any updates on this? This is blocking our release",
+            "imgUrls": []
+        ],
+        [
+            "editorName": "Bill Gates",
+            "time": "2:18PM, today",
+            "message": "Forced a reboot/reset on host. Was able to RDP after reset completed. Checked host to insure updates were completed.",
+            "imgUrls": []
+        ],
+        [
+            "editorName": "Devin Wenig",
+            "time": "4:43PM, today",
+            "message": "Job completed. RDP working. Examining host for details. Symantec was in a bad state. Fixed. System reported incomplete updates (Microsoft) but after a time these completed. Suspect it was an issue with installing updates from Microsoft and the reboot/reset fixed it. Resolving ticket.",
+            "imgUrls": []
+        ]
+    ]
+
 }
 
 

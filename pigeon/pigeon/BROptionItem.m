@@ -45,6 +45,9 @@ const CGFloat kBROptionsItemDefaultItemHeight = 60;
     self.layer.shadowOffset = CGSizeMake(0.0, 1);
     self.layer.shadowRadius = 5;
     self.layer.shadowOpacity = 0.5;
+    self.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.layer.borderWidth = 2;
+    
 }
 
 

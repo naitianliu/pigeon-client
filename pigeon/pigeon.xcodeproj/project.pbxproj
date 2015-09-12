@@ -24,6 +24,12 @@
 		4626808C1B9D03B200656F81 /* EventDetailViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4626808B1B9D03B200656F81 /* EventDetailViewHelper.swift */; };
 		4626808E1B9D294A00656F81 /* EventPostCellHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4626808D1B9D294A00656F81 /* EventPostCellHelper.swift */; };
 		462680901B9D5CE800656F81 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4626808F1B9D5CE800656F81 /* Constant.swift */; };
+		462680C11BA4F02F00656F81 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462680C01BA4F02F00656F81 /* PostDetailViewController.swift */; };
+		462680C31BA4F03C00656F81 /* PostDetailCellHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462680C21BA4F03C00656F81 /* PostDetailCellHelper.swift */; };
+		462680C51BA4F09A00656F81 /* Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 462680C41BA4F09A00656F81 /* Event.storyboard */; };
+		462680C71BA4F0C000656F81 /* SampleDataEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462680C61BA4F0C000656F81 /* SampleDataEvent.swift */; };
+		462680CC1BA4F1BC00656F81 /* BROptionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 462680C91BA4F1BC00656F81 /* BROptionItem.m */; };
+		462680CD1BA4F1BC00656F81 /* BROptionsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 462680CB1BA4F1BC00656F81 /* BROptionsButton.m */; };
 		4631638B1B902B9C00C6A30F /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 4631638A1B902B9C00C6A30F /* Podfile */; };
 		4651AAAE1B883F02005C2B67 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AAAD1B883F02005C2B67 /* UIKit.framework */; };
 		4651AAB01B883F12005C2B67 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AAAF1B883F12005C2B67 /* Foundation.framework */; };
@@ -34,7 +40,6 @@
 		4651AABC1B884099005C2B67 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AABB1B884099005C2B67 /* libsqlite3.0.dylib */; };
 		469540051B980A6C00E0F4D0 /* VendorContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469540041B980A6C00E0F4D0 /* VendorContactViewController.swift */; };
 		469540071B982DC200E0F4D0 /* ContactSearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469540061B982DC200E0F4D0 /* ContactSearchResultsTableViewController.swift */; };
-		4695400B1B993D0600E0F4D0 /* SampleDataEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4695400A1B993D0600E0F4D0 /* SampleDataEvent.swift */; };
 		4695400D1B993FDC00E0F4D0 /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4695400C1B993FDC00E0F4D0 /* MyEventsViewController.swift */; };
 		4695400F1B994A0100E0F4D0 /* RenderEventCellHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4695400E1B994A0100E0F4D0 /* RenderEventCellHelper.swift */; };
 		46A568991B96969500FC63F7 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A568981B96969500FC63F7 /* ContactViewController.swift */; };
@@ -51,9 +56,6 @@
 		46A79CE71B88297A00B60B43 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46A79CE61B88297A00B60B43 /* Auth.storyboard */; };
 		46A79CF21B88399700B60B43 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A79CF11B88399700B60B43 /* libc++.dylib */; };
 		46BB01741B9276030026CB6E /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BB01731B9276030026CB6E /* MainTabBarViewController.swift */; };
-		46BB017C1B928DC80026CB6E /* BROptionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 46BB01791B928DC80026CB6E /* BROptionItem.m */; };
-		46BB017D1B928DC80026CB6E /* BROptionsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 46BB017B1B928DC80026CB6E /* BROptionsButton.m */; };
-		46BB01811B9292540026CB6E /* Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46BB01801B9292540026CB6E /* Event.storyboard */; };
 		46BB01831B92929A0026CB6E /* EventNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BB01821B92929A0026CB6E /* EventNavigationController.swift */; };
 		46BB01881B929B9A0026CB6E /* Contact.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46BB01871B929B9A0026CB6E /* Contact.storyboard */; };
 		46BB018A1B929D2E0026CB6E /* ContactNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BB01891B929D2E0026CB6E /* ContactNavigationController.swift */; };
@@ -103,6 +105,14 @@
 		4626808B1B9D03B200656F81 /* EventDetailViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewHelper.swift; sourceTree = "<group>"; };
 		4626808D1B9D294A00656F81 /* EventPostCellHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPostCellHelper.swift; sourceTree = "<group>"; };
 		4626808F1B9D5CE800656F81 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		462680C01BA4F02F00656F81 /* PostDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		462680C21BA4F03C00656F81 /* PostDetailCellHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDetailCellHelper.swift; sourceTree = "<group>"; };
+		462680C41BA4F09A00656F81 /* Event.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Event.storyboard; sourceTree = "<group>"; };
+		462680C61BA4F0C000656F81 /* SampleDataEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleDataEvent.swift; sourceTree = "<group>"; };
+		462680C81BA4F1BC00656F81 /* BROptionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BROptionItem.h; sourceTree = "<group>"; };
+		462680C91BA4F1BC00656F81 /* BROptionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BROptionItem.m; sourceTree = "<group>"; };
+		462680CA1BA4F1BC00656F81 /* BROptionsButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BROptionsButton.h; sourceTree = "<group>"; };
+		462680CB1BA4F1BC00656F81 /* BROptionsButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BROptionsButton.m; sourceTree = "<group>"; };
 		4631638A1B902B9C00C6A30F /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		4651AAAD1B883F02005C2B67 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4651AAAF1B883F12005C2B67 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -115,7 +125,6 @@
 		4651AABB1B884099005C2B67 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		469540041B980A6C00E0F4D0 /* VendorContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorContactViewController.swift; sourceTree = "<group>"; };
 		469540061B982DC200E0F4D0 /* ContactSearchResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactSearchResultsTableViewController.swift; sourceTree = "<group>"; };
-		4695400A1B993D0600E0F4D0 /* SampleDataEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleDataEvent.swift; sourceTree = "<group>"; };
 		4695400C1B993FDC00E0F4D0 /* MyEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
 		4695400E1B994A0100E0F4D0 /* RenderEventCellHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderEventCellHelper.swift; sourceTree = "<group>"; };
 		46A568981B96969500FC63F7 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
@@ -137,11 +146,6 @@
 		46A79CE81B88308000B60B43 /* pigeon-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "pigeon-Bridging-Header.h"; sourceTree = "<group>"; };
 		46A79CF11B88399700B60B43 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		46BB01731B9276030026CB6E /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
-		46BB01781B928DC80026CB6E /* BROptionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BROptionItem.h; sourceTree = "<group>"; };
-		46BB01791B928DC80026CB6E /* BROptionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BROptionItem.m; sourceTree = "<group>"; };
-		46BB017A1B928DC80026CB6E /* BROptionsButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BROptionsButton.h; sourceTree = "<group>"; };
-		46BB017B1B928DC80026CB6E /* BROptionsButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BROptionsButton.m; sourceTree = "<group>"; };
-		46BB01801B9292540026CB6E /* Event.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Event.storyboard; sourceTree = "<group>"; };
 		46BB01821B92929A0026CB6E /* EventNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventNavigationController.swift; sourceTree = "<group>"; };
 		46BB01871B929B9A0026CB6E /* Contact.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Contact.storyboard; sourceTree = "<group>"; };
 		46BB01891B929D2E0026CB6E /* ContactNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactNavigationController.swift; sourceTree = "<group>"; };
@@ -387,11 +391,12 @@
 		46BB016F1B92751C0026CB6E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				46BB01801B9292540026CB6E /* Event.storyboard */,
+				462680C41BA4F09A00656F81 /* Event.storyboard */,
 				4695400E1B994A0100E0F4D0 /* RenderEventCellHelper.swift */,
 				462680891B9CEAD200656F81 /* EventInfoViewHelper.swift */,
 				4626808B1B9D03B200656F81 /* EventDetailViewHelper.swift */,
 				4626808D1B9D294A00656F81 /* EventPostCellHelper.swift */,
+				462680C21BA4F03C00656F81 /* PostDetailCellHelper.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -406,6 +411,7 @@
 				46BB01AB1B93FE500026CB6E /* AddMembersViewHelper.swift */,
 				4695400C1B993FDC00E0F4D0 /* MyEventsViewController.swift */,
 				462680871B9CDFE400656F81 /* EventDetailViewController.swift */,
+				462680C01BA4F02F00656F81 /* PostDetailViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -420,7 +426,7 @@
 		46BB01721B9275460026CB6E /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				4695400A1B993D0600E0F4D0 /* SampleDataEvent.swift */,
+				462680C61BA4F0C000656F81 /* SampleDataEvent.swift */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -428,10 +434,10 @@
 		46BB01771B928DB60026CB6E /* BROptionsButton */ = {
 			isa = PBXGroup;
 			children = (
-				46BB01781B928DC80026CB6E /* BROptionItem.h */,
-				46BB01791B928DC80026CB6E /* BROptionItem.m */,
-				46BB017A1B928DC80026CB6E /* BROptionsButton.h */,
-				46BB017B1B928DC80026CB6E /* BROptionsButton.m */,
+				462680C81BA4F1BC00656F81 /* BROptionItem.h */,
+				462680C91BA4F1BC00656F81 /* BROptionItem.m */,
+				462680CA1BA4F1BC00656F81 /* BROptionsButton.h */,
+				462680CB1BA4F1BC00656F81 /* BROptionsButton.m */,
 			);
 			name = BROptionsButton;
 			sourceTree = "<group>";
@@ -633,9 +639,9 @@
 				460909641B904E13006FF85D /* WeiboSDK.bundle in Resources */,
 				4626807B1B9C1D1F00656F81 /* whiteplaceholder.png in Resources */,
 				46BB01881B929B9A0026CB6E /* Contact.storyboard in Resources */,
-				46BB01811B9292540026CB6E /* Event.storyboard in Resources */,
 				46A79CBD1B8823AB00B60B43 /* Images.xcassets in Resources */,
 				46BB018F1B92A04D0026CB6E /* History.storyboard in Resources */,
+				462680C51BA4F09A00656F81 /* Event.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -717,19 +723,21 @@
 				46A568A61B96DD8900FC63F7 /* AddContactTableViewController.swift in Sources */,
 				46BB01A11B92D1D00026CB6E /* LocationTimeEditViewHelper.swift in Sources */,
 				4626808E1B9D294A00656F81 /* EventPostCellHelper.swift in Sources */,
+				462680CD1BA4F1BC00656F81 /* BROptionsButton.m in Sources */,
 				462680791B9C1D1F00656F81 /* HZPhotoBrowser.m in Sources */,
 				46BB01741B9276030026CB6E /* MainTabBarViewController.swift in Sources */,
+				462680CC1BA4F1BC00656F81 /* BROptionItem.m in Sources */,
 				46A79CE21B88283000B60B43 /* AuthLoginViewController.swift in Sources */,
 				462680901B9D5CE800656F81 /* Constant.swift in Sources */,
-				46BB017C1B928DC80026CB6E /* BROptionItem.m in Sources */,
 				46BB01831B92929A0026CB6E /* EventNavigationController.swift in Sources */,
 				462680781B9C1D1F00656F81 /* HZIndicatorView.m in Sources */,
 				46A5689F1B96BADB00FC63F7 /* TableViewHelper.swift in Sources */,
+				462680C31BA4F03C00656F81 /* PostDetailCellHelper.swift in Sources */,
 				46BB01AC1B93FE500026CB6E /* AddMembersViewHelper.swift in Sources */,
+				462680C71BA4F0C000656F81 /* SampleDataEvent.swift in Sources */,
+				462680C11BA4F02F00656F81 /* PostDetailViewController.swift in Sources */,
 				4609096B1B92584B006FF85D /* VendorLoginAPICall.swift in Sources */,
-				46BB017D1B928DC80026CB6E /* BROptionsButton.m in Sources */,
 				4626808A1B9CEAD200656F81 /* EventInfoViewHelper.swift in Sources */,
-				4695400B1B993D0600E0F4D0 /* SampleDataEvent.swift in Sources */,
 				4626807A1B9C1D1F00656F81 /* HZPhotoBrowserView.m in Sources */,
 				462680881B9CDFE400656F81 /* EventDetailViewController.swift in Sources */,
 				46BB019C1B92BD340026CB6E /* CreateTaskViewController.swift in Sources */,

@@ -108,6 +108,8 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "EventDetailSegue" {
             
+        } else if segue.identifier == "PostDetailSegue" {
+            
         }
     }
     
@@ -176,6 +178,8 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.performSegueWithIdentifier("PostDetailSegue", sender: nil)
+
     }
     
     func photoBrowser(browser: HZPhotoBrowser!, placeholderImageForIndex index: Int) -> UIImage! {

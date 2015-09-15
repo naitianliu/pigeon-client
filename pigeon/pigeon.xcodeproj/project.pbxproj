@@ -30,6 +30,10 @@
 		462680C71BA4F0C000656F81 /* SampleDataEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462680C61BA4F0C000656F81 /* SampleDataEvent.swift */; };
 		462680CC1BA4F1BC00656F81 /* BROptionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 462680C91BA4F1BC00656F81 /* BROptionItem.m */; };
 		462680CD1BA4F1BC00656F81 /* BROptionsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 462680CB1BA4F1BC00656F81 /* BROptionsButton.m */; };
+		462680D11BA4F4F300656F81 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 462680D01BA4F4F300656F81 /* libiconv.dylib */; };
+		462680D31BA4F50600656F81 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 462680D21BA4F50600656F81 /* libstdc++.dylib */; };
+		462680DB1BA7C60000656F81 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462680DA1BA7C60000656F81 /* CreatePostViewController.swift */; };
+		462680DD1BA7C85500656F81 /* CreatePostViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462680DC1BA7C85500656F81 /* CreatePostViewHelper.swift */; };
 		4631638B1B902B9C00C6A30F /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 4631638A1B902B9C00C6A30F /* Podfile */; };
 		4651AAAE1B883F02005C2B67 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AAAD1B883F02005C2B67 /* UIKit.framework */; };
 		4651AAB01B883F12005C2B67 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AAAF1B883F12005C2B67 /* Foundation.framework */; };
@@ -113,6 +117,10 @@
 		462680C91BA4F1BC00656F81 /* BROptionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BROptionItem.m; sourceTree = "<group>"; };
 		462680CA1BA4F1BC00656F81 /* BROptionsButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BROptionsButton.h; sourceTree = "<group>"; };
 		462680CB1BA4F1BC00656F81 /* BROptionsButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BROptionsButton.m; sourceTree = "<group>"; };
+		462680D01BA4F4F300656F81 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		462680D21BA4F50600656F81 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		462680DA1BA7C60000656F81 /* CreatePostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
+		462680DC1BA7C85500656F81 /* CreatePostViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostViewHelper.swift; sourceTree = "<group>"; };
 		4631638A1B902B9C00C6A30F /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		4651AAAD1B883F02005C2B67 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4651AAAF1B883F12005C2B67 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -169,9 +177,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4651AABA1B88408F005C2B67 /* libz.dylib in Frameworks */,
+				462680D31BA4F50600656F81 /* libstdc++.dylib in Frameworks */,
+				462680D11BA4F4F300656F81 /* libiconv.dylib in Frameworks */,
 				46BB01AA1B939C170026CB6E /* CoreLocation.framework in Frameworks */,
 				46BB01A81B939C080026CB6E /* MapKit.framework in Frameworks */,
-				4651AABA1B88408F005C2B67 /* libz.dylib in Frameworks */,
 				4651AAAE1B883F02005C2B67 /* UIKit.framework in Frameworks */,
 				460909621B903CCC006FF85D /* CoreText.framework in Frameworks */,
 				460909601B903CBC006FF85D /* CoreTelephony.framework in Frameworks */,
@@ -392,11 +402,13 @@
 			isa = PBXGroup;
 			children = (
 				462680C41BA4F09A00656F81 /* Event.storyboard */,
+				46BB01AB1B93FE500026CB6E /* AddMembersViewHelper.swift */,
 				4695400E1B994A0100E0F4D0 /* RenderEventCellHelper.swift */,
 				462680891B9CEAD200656F81 /* EventInfoViewHelper.swift */,
 				4626808B1B9D03B200656F81 /* EventDetailViewHelper.swift */,
 				4626808D1B9D294A00656F81 /* EventPostCellHelper.swift */,
 				462680C21BA4F03C00656F81 /* PostDetailCellHelper.swift */,
+				462680DC1BA7C85500656F81 /* CreatePostViewHelper.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -408,10 +420,10 @@
 				46BB01821B92929A0026CB6E /* EventNavigationController.swift */,
 				46BB019B1B92BD340026CB6E /* CreateTaskViewController.swift */,
 				46BB01A51B9397D30026CB6E /* EditLocationViewController.swift */,
-				46BB01AB1B93FE500026CB6E /* AddMembersViewHelper.swift */,
 				4695400C1B993FDC00E0F4D0 /* MyEventsViewController.swift */,
 				462680871B9CDFE400656F81 /* EventDetailViewController.swift */,
 				462680C01BA4F02F00656F81 /* PostDetailViewController.swift */,
+				462680DA1BA7C60000656F81 /* CreatePostViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -528,6 +540,8 @@
 		9EBB59CC81AD2F52571769D8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				462680D21BA4F50600656F81 /* libstdc++.dylib */,
+				462680D01BA4F4F300656F81 /* libiconv.dylib */,
 				46BB01A91B939C170026CB6E /* CoreLocation.framework */,
 				46BB01A71B939C080026CB6E /* MapKit.framework */,
 				4651AABB1B884099005C2B67 /* libsqlite3.0.dylib */,
@@ -722,6 +736,7 @@
 				46A79CB41B8823AB00B60B43 /* AppDelegate.swift in Sources */,
 				46A568A61B96DD8900FC63F7 /* AddContactTableViewController.swift in Sources */,
 				46BB01A11B92D1D00026CB6E /* LocationTimeEditViewHelper.swift in Sources */,
+				462680DB1BA7C60000656F81 /* CreatePostViewController.swift in Sources */,
 				4626808E1B9D294A00656F81 /* EventPostCellHelper.swift in Sources */,
 				462680CD1BA4F1BC00656F81 /* BROptionsButton.m in Sources */,
 				462680791B9C1D1F00656F81 /* HZPhotoBrowser.m in Sources */,
@@ -740,6 +755,7 @@
 				4626808A1B9CEAD200656F81 /* EventInfoViewHelper.swift in Sources */,
 				4626807A1B9C1D1F00656F81 /* HZPhotoBrowserView.m in Sources */,
 				462680881B9CDFE400656F81 /* EventDetailViewController.swift in Sources */,
+				462680DD1BA7C85500656F81 /* CreatePostViewHelper.swift in Sources */,
 				46BB019C1B92BD340026CB6E /* CreateTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

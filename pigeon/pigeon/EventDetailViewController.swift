@@ -24,13 +24,20 @@ class EventDetailViewController: UIViewController, UITableViewDelegate, UITableV
         
         self.eventDetailViewHelper = EventDetailViewHelper(viewController:self)
         self.eventDetailViewHelper.setupUI()
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
         
+    }
+    
+    func createPostButtonOnClick(sender:UIButton!) {
+        var createPostViewController:UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("CreatePostViewController") as! UIViewController
+        createPostViewController.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
+        self.presentViewController(createPostViewController, animated: true) { () -> Void in
+            
+        }
     }
     
     @IBAction func segmentedControlOnChanged(sender: AnyObject) {
@@ -92,6 +99,25 @@ class EventDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
+    }
+    
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if section == 0 {
+            var view = self.eventDetailViewHelper.setupFooterView()
+            var createPostButton:UIButton = self.eventDetailViewHelper.createPostButton
+            createPostButton.addTarget(self, action: Selector("createPostButtonOnClick:"), forControlEvents: UIControlEvents.TouchUpInside)
+            return view
+        } else {
+            return nil
+        }
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 30
+        } else {
+            return 0
+        }
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {

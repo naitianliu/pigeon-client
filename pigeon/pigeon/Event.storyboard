@@ -237,6 +237,65 @@
             </objects>
             <point key="canvasLocation" x="1079" y="415"/>
         </scene>
+        <!--Create Post View Controller-->
+        <scene sceneID="MUs-43-Rsd">
+            <objects>
+                <viewController storyboardIdentifier="CreatePostViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ugF-Lg-wiq" customClass="CreatePostViewController" customModule="pigeon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ddd-TT-Lxl"/>
+                        <viewControllerLayoutGuide type="bottom" id="egY-gR-748"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XGS-EB-pTK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRh-M3-VKD">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="rQh-c7-PVG"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="创建新鲜事" id="j2b-fr-dvW">
+                                        <barButtonItem key="leftBarButtonItem" title="取消" id="xIQ-MG-dFY">
+                                            <connections>
+                                                <action selector="cancelButtonOnClick:" destination="ugF-Lg-wiq" id="EOg-9z-tih"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="发送" id="ekN-Px-72m"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Li2-cJ-YGg" customClass="SZTextView">
+                                <rect key="frame" x="16" y="84" width="568" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="U4r-bc-rxV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="编辑新鲜事"/>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CRh-M3-VKD" firstAttribute="leading" secondItem="XGS-EB-pTK" secondAttribute="leadingMargin" constant="-16" id="HqU-Oh-ZcF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CRh-M3-VKD" secondAttribute="trailing" constant="-16" id="Ysr-Cy-2Wl"/>
+                            <constraint firstItem="Li2-cJ-YGg" firstAttribute="top" secondItem="CRh-M3-VKD" secondAttribute="bottom" constant="20" id="dAP-Uy-ddJ"/>
+                            <constraint firstItem="Li2-cJ-YGg" firstAttribute="leading" secondItem="XGS-EB-pTK" secondAttribute="leadingMargin" id="gkw-Lx-VKD"/>
+                            <constraint firstItem="CRh-M3-VKD" firstAttribute="top" secondItem="ddd-TT-Lxl" secondAttribute="bottom" constant="-20" id="ovT-jG-pkn"/>
+                            <constraint firstItem="Li2-cJ-YGg" firstAttribute="trailing" secondItem="XGS-EB-pTK" secondAttribute="trailingMargin" id="zbm-AV-VRN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="Li2-cJ-YGg" id="38B-ZS-yS3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sBx-dR-cGw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1075" y="1196"/>
+        </scene>
         <!--新鲜事-->
         <scene sceneID="vDR-Xj-ud9">
             <objects>

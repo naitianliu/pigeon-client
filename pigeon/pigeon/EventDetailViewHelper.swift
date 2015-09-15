@@ -19,6 +19,8 @@ class EventDetailViewHelper: NSObject {
     
     var memberImgUrls:[String]!
     
+    var createPostButton:UIButton!
+    
     init(viewController:UIViewController) {
         self.rootViewController = viewController
         self.rootView = self.rootViewController.view
@@ -31,6 +33,15 @@ class EventDetailViewHelper: NSObject {
         var groupProfileView:UIView = self.initGroupProfileView(self.memberImgUrls)
         eventInfoView.addSubview(groupProfileView)
         return eventInfoView
+    }
+    
+    func setupFooterView() -> UIView {
+        var view:UIView = UIView(frame: CGRect(x: 0, y: 0, width: self.rootView.frame.width, height: 30))
+        self.createPostButton = UIButton(frame: CGRect(x: 20, y: 0, width: 200, height: 30))
+        self.createPostButton.setTitle("Create New Post", forState: UIControlState.Normal)
+        self.createPostButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        view.addSubview(self.createPostButton)
+        return view
     }
     
     func setupUI() {

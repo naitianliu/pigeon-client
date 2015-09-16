@@ -15,7 +15,7 @@ class MainTabBarViewController: UITabBarController, BROptionButtonDelegate {
 
         // Do any additional setup after loading the view.
         
-        var brOptions:BROptionsButton = BROptionsButton(tabBar: self.tabBar, forItemIndex: 2, delegate: self)
+        let brOptions:BROptionsButton = BROptionsButton(tabBar: self.tabBar, forItemIndex: 2, delegate: self)
         brOptions.setImage(UIImage(named: "Apple"), forBROptionsButtonState: BROptionsButtonStateNormal)
         brOptions.setImage(UIImage(named: "close"), forBROptionsButtonState: BROptionsButtonStateOpened)
         
@@ -32,10 +32,10 @@ class MainTabBarViewController: UITabBarController, BROptionButtonDelegate {
     
     func brOptionsButton(brOptionsButton: BROptionsButton!, didSelectItem item: BROptionItem!) {
         let eventStoryboard:UIStoryboard = UIStoryboard(name: "Event", bundle: nil)
-        var index = item.index
+        let index = item.index
         switch (index) {
         case 0:
-            var createTaskViewController:UIViewController = eventStoryboard.instantiateViewControllerWithIdentifier("CreateTaskViewController") as! UIViewController
+            let createTaskViewController:UIViewController = eventStoryboard.instantiateViewControllerWithIdentifier("CreateTaskViewController") as! UIViewController
             createTaskViewController.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
             self.presentViewController(createTaskViewController, animated: true, completion: { () -> Void in
                 

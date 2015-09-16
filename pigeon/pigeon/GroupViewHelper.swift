@@ -47,7 +47,7 @@ class GroupViewHelper: NSObject, UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell:UICollectionViewCell = self.collectionView.dequeueReusableCellWithReuseIdentifier("GroupCollectionCell", forIndexPath: indexPath) as! UICollectionViewCell
+        let cell:UICollectionViewCell = self.collectionView.dequeueReusableCellWithReuseIdentifier("GroupCollectionCell", forIndexPath: indexPath)
         return cell
     }
     

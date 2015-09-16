@@ -22,19 +22,19 @@ class EventInfoViewHelper: NSObject {
     
     func setEventInfoView(view:UIView) -> UIView {
         self.rootView = view
-        var eventInfoView:UIView = UIView(frame: CGRect(x: 0, y: 0, width: self.rootView.frame.width, height: 300))
+        let eventInfoView:UIView = UIView(frame: CGRect(x: 0, y: 0, width: self.rootView.frame.width, height: 300))
         eventInfoView.backgroundColor = UIColor.yellowColor()
-        var groupProfileView:UIView = self.initGroupProfileView(self.memberImgUrls)
+        let groupProfileView:UIView = self.initGroupProfileView(self.memberImgUrls)
         eventInfoView.addSubview(groupProfileView)
-        var segView:UIView = self.initSegmentedControlView()
+        let segView:UIView = self.initSegmentedControlView()
         segView.frame.origin.y = 250
         eventInfoView.addSubview(segView)
         return eventInfoView
     }
     
     func initSegmentedControlView() -> UIView {
-        var view:UIView = UIView(frame: CGRect(x: 0, y: 0, width: self.rootView.frame.width, height: 50))
-        var segmentedControl:UISegmentedControl = UISegmentedControl(items: ["Posts", "Comments"])
+        let view:UIView = UIView(frame: CGRect(x: 0, y: 0, width: self.rootView.frame.width, height: 50))
+        let segmentedControl:UISegmentedControl = UISegmentedControl(items: ["Posts", "Comments"])
         segmentedControl.frame = CGRect(x: 50, y: 10, width: self.rootView.frame.width - 100, height: 30)
         view.addSubview(segmentedControl)
         return view
@@ -43,22 +43,22 @@ class EventInfoViewHelper: NSObject {
     private func initGroupProfileView(memberImgUrls:[String]) -> UIView {
         let width:CGFloat = 80
         let sepatorWidth:CGFloat = 1
-        var view:UIView = UIView(frame: CGRect(x: 5, y: 70, width: width, height: width))
+        let view:UIView = UIView(frame: CGRect(x: 5, y: 70, width: width, height: width))
         if memberImgUrls.count == 1 {
-            var imgView:UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: width))
+            let imgView:UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: width))
             imgView.sd_setImageWithURL(NSURL(string: memberImgUrls[0]), placeholderImage: UIImage(named: "Apple"))
             view.addSubview(imgView)
         } else if memberImgUrls.count == 2 {
-            var imgView1:UIImageView = UIImageView(frame: CGRect(x: -width/2 - sepatorWidth, y: 0, width: width, height: width))
-            var imgView2:UIImageView = UIImageView(frame: CGRect(x: width/2 + sepatorWidth, y: 0, width: width, height: width))
+            let imgView1:UIImageView = UIImageView(frame: CGRect(x: -width/2 - sepatorWidth, y: 0, width: width, height: width))
+            let imgView2:UIImageView = UIImageView(frame: CGRect(x: width/2 + sepatorWidth, y: 0, width: width, height: width))
             imgView1.sd_setImageWithURL(NSURL(string: memberImgUrls[0]), placeholderImage: UIImage(named: "Apple"))
             imgView2.sd_setImageWithURL(NSURL(string: memberImgUrls[1]), placeholderImage: UIImage(named: "Apple"))
             view.addSubview(imgView1)
             view.addSubview(imgView2)
         } else if memberImgUrls.count == 3 {
-            var imgView1:UIImageView = UIImageView(frame: CGRect(x: -width/2 - sepatorWidth, y: 0, width: width, height: width))
-            var imgView2:UIImageView = UIImageView(frame: CGRect(x: width/2 + sepatorWidth, y: -sepatorWidth, width: width/2, height: width/2))
-            var imgView3:UIImageView = UIImageView(frame: CGRect(x: width/2 + sepatorWidth, y: width/2 + sepatorWidth, width: width/2, height: width/2))
+            let imgView1:UIImageView = UIImageView(frame: CGRect(x: -width/2 - sepatorWidth, y: 0, width: width, height: width))
+            let imgView2:UIImageView = UIImageView(frame: CGRect(x: width/2 + sepatorWidth, y: -sepatorWidth, width: width/2, height: width/2))
+            let imgView3:UIImageView = UIImageView(frame: CGRect(x: width/2 + sepatorWidth, y: width/2 + sepatorWidth, width: width/2, height: width/2))
             imgView1.sd_setImageWithURL(NSURL(string: memberImgUrls[0]), placeholderImage: UIImage(named: "Apple"))
             imgView2.sd_setImageWithURL(NSURL(string: memberImgUrls[1]), placeholderImage: UIImage(named: "Apple"))
             imgView3.sd_setImageWithURL(NSURL(string: memberImgUrls[2]), placeholderImage: UIImage(named: "Apple"))
@@ -66,10 +66,10 @@ class EventInfoViewHelper: NSObject {
             view.addSubview(imgView2)
             view.addSubview(imgView3)
         } else {
-            var imgView1:UIImageView = UIImageView(frame: CGRect(x: -sepatorWidth, y: -sepatorWidth, width: width/2, height: width/2))
-            var imgView2:UIImageView = UIImageView(frame: CGRect(x: -sepatorWidth, y: width/2 + sepatorWidth, width: width/2, height: width/2))
-            var imgView3:UIImageView = UIImageView(frame: CGRect(x: width/2 + sepatorWidth, y: -sepatorWidth, width: width/2, height: width/2))
-            var imgView4:UIImageView = UIImageView(frame: CGRect(x: width/2 + sepatorWidth, y: width/2 + sepatorWidth, width: width/2, height: width/2))
+            let imgView1:UIImageView = UIImageView(frame: CGRect(x: -sepatorWidth, y: -sepatorWidth, width: width/2, height: width/2))
+            let imgView2:UIImageView = UIImageView(frame: CGRect(x: -sepatorWidth, y: width/2 + sepatorWidth, width: width/2, height: width/2))
+            let imgView3:UIImageView = UIImageView(frame: CGRect(x: width/2 + sepatorWidth, y: -sepatorWidth, width: width/2, height: width/2))
+            let imgView4:UIImageView = UIImageView(frame: CGRect(x: width/2 + sepatorWidth, y: width/2 + sepatorWidth, width: width/2, height: width/2))
             imgView1.sd_setImageWithURL(NSURL(string: memberImgUrls[0]), placeholderImage: UIImage(named: "Apple"))
             imgView2.sd_setImageWithURL(NSURL(string: memberImgUrls[1]), placeholderImage: UIImage(named: "Apple"))
             imgView3.sd_setImageWithURL(NSURL(string: memberImgUrls[2]), placeholderImage: UIImage(named: "Apple"))

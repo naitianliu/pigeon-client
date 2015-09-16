@@ -23,14 +23,14 @@ class AuthLoginViewController: UIViewController, WeiboSDKDelegate {
     }
     
     @IBAction func weixinLoginOnClick(sender: AnyObject) {
-        var req:SendAuthReq = SendAuthReq()
+        let req:SendAuthReq = SendAuthReq()
         req.scope = "snsapi_userinfo"
         req.state = "123"
         WXApi.sendReq(req)
     }
     
     @IBAction func weiboLoginOnClick(sender: AnyObject) {
-        var request:WBAuthorizeRequest = WBAuthorizeRequest()
+        let request:WBAuthorizeRequest = WBAuthorizeRequest()
         request.redirectURI = "https://api.weibo.com/oauth2/default.html"
         request.scope = "all"
         WeiboSDK.sendRequest(request)
@@ -42,16 +42,16 @@ class AuthLoginViewController: UIViewController, WeiboSDKDelegate {
     
     func didReceiveWeiboResponse(response: WBBaseResponse!) {
         if response.isKindOfClass(WBSendMessageToWeiboResponse) {
-            println(1)
-            var sendMessageToWeiboResponse:WBSendMessageToWeiboResponse = response as! WBSendMessageToWeiboResponse
-            var accessToken = sendMessageToWeiboResponse.authResponse.accessToken
-            println("accessToken:\(accessToken)")
-            var userID = sendMessageToWeiboResponse.authResponse.userID
-            println("userID:\(userID)")
+            print(1)
+            let sendMessageToWeiboResponse:WBSendMessageToWeiboResponse = response as! WBSendMessageToWeiboResponse
+            let accessToken = sendMessageToWeiboResponse.authResponse.accessToken
+            print("accessToken:\(accessToken)")
+            let userID = sendMessageToWeiboResponse.authResponse.userID
+            print("userID:\(userID)")
         } else if response.isKindOfClass(WBAuthorizeResponse) {
-            var authResponse = response as! WBAuthorizeResponse
-            var accessToken = authResponse.accessToken
-            var userID = authResponse.userID
+            let authResponse = response as! WBAuthorizeResponse
+            let accessToken = authResponse.accessToken
+            let userID = authResponse.userID
             VendorLoginAPICall(view: self.view, vendorType: "wb", vendorId: userID, accessToken: accessToken).run()
         }
         

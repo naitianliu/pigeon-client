@@ -15,7 +15,7 @@ class AddContactTableViewController: UITableViewController, UISearchResultsUpdat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var searchResultsController:UINavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("SearchContactNavigationController") as! UINavigationController
+        let searchResultsController:UINavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("SearchContactNavigationController") as! UINavigationController
         self.searchController = UISearchController(searchResultsController: searchResultsController)
         self.searchController.searchResultsUpdater = self
         self.searchController.searchBar.delegate = self
@@ -83,8 +83,8 @@ class AddContactTableViewController: UITableViewController, UISearchResultsUpdat
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("addContactCell", forIndexPath: indexPath) as? UITableViewCell
-
+        var cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("addContactCell", forIndexPath: indexPath)
+        
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "addContactCell")
         }
@@ -116,8 +116,8 @@ class AddContactTableViewController: UITableViewController, UISearchResultsUpdat
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var contactStoryboard:UIStoryboard = UIStoryboard(name: "Contact", bundle: nil)
-        var vendorContactVC:VendorContactViewController = contactStoryboard.instantiateViewControllerWithIdentifier("VendorContactViewController") as! VendorContactViewController
+        let contactStoryboard:UIStoryboard = UIStoryboard(name: "Contact", bundle: nil)
+        let vendorContactVC:VendorContactViewController = contactStoryboard.instantiateViewControllerWithIdentifier("VendorContactViewController") as! VendorContactViewController
         if indexPath.section == 1 && indexPath.row == 0 {
             vendorContactVC.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
             self.presentViewController(vendorContactVC, animated: true, completion: { () -> Void in
@@ -137,8 +137,8 @@ class AddContactTableViewController: UITableViewController, UISearchResultsUpdat
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         if (self.searchController.searchResultsController != nil) {
-            var navController:UINavigationController = self.searchController.searchResultsController as! UINavigationController
-            var vc:ContactSearchResultsTableViewController = navController.topViewController as! ContactSearchResultsTableViewController
+            let navController:UINavigationController = self.searchController.searchResultsController as! UINavigationController
+            let vc:ContactSearchResultsTableViewController = navController.topViewController as! ContactSearchResultsTableViewController
             vc.searchResults = self.searchResults
             vc.tableView.reloadData()
         }

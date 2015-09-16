@@ -38,7 +38,7 @@ class AddMembersViewHelper:NSObject {
     }
     
     private func initAddButton() {
-        self.addButton = UIButton.buttonWithType(UIButtonType.ContactAdd) as! UIButton
+        self.addButton = UIButton(type: UIButtonType.ContactAdd)
         self.addButton.frame = CGRect(x: 5, y: 5, width: 40, height: 40)
         self.addButton.layer.cornerRadius = 20.0
         self.addButton.layer.borderWidth = 1.0
@@ -49,7 +49,7 @@ class AddMembersViewHelper:NSObject {
     }
     
     private func initProfileImageView(index:Int, imgUrl:String) -> UIImageView {
-        var profileImageView:UIImageView = UIImageView(frame: CGRect(x: 5 + 50 * index, y: 5, width: 40, height: 40))
+        let profileImageView:UIImageView = UIImageView(frame: CGRect(x: 5 + 50 * index, y: 5, width: 40, height: 40))
         profileImageView.sd_setImageWithURL(NSURL(string: imgUrl), placeholderImage: UIImage(named: "Apple"))
         profileImageView.layer.cornerRadius = 20.0
         profileImageView.layer.borderColor = UIColor.whiteColor().CGColor
@@ -58,6 +58,6 @@ class AddMembersViewHelper:NSObject {
     }
     
     func addButtonOnClick(sender:UIButton!) {
-        println("add")
+        print("add")
     }
 }

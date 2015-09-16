@@ -69,7 +69,7 @@ class RenderEventCellHelper:NSObject {
         self.cell.preservesSuperviewLayoutMargins = false
         self.cell.backgroundColor = UIColor.clearColor()
         self.cell.backgroundView?.backgroundColor = UIColor.clearColor()
-        var innerViewFrame:CGRect = CGRect(x: self.viewRect.origin.x + paddingLeft, y: self.viewRect.origin.y + paddingTop, width: self.viewRect.width - 2 * paddingLeft, height: self.viewRect.height - 2 * paddingTop)
+        let innerViewFrame:CGRect = CGRect(x: self.viewRect.origin.x + paddingLeft, y: self.viewRect.origin.y + paddingTop, width: self.viewRect.width - 2 * paddingLeft, height: self.viewRect.height - 2 * paddingTop)
         self.innerView = VENSeparatorView(frame: innerViewFrame, topLineSeparatorType: VENSeparatorType.None, bottomLineSeparatorType: VENSeparatorType.Jagged)
         self.innerView.fillColor = bgColor
         self.innerView.bottomStrokeColor = UIColor.lightGrayColor()
@@ -85,15 +85,15 @@ class RenderEventCellHelper:NSObject {
         if self.pictureUrls.count != 0 {
             self.pictureViewHeight = (self.view.frame.width - 40 - 4) / 3
         }
-        var messageLabel = self.initMessageLabel()
-        var descriptionView = self.initEventDescriptionView()
-        var height:CGFloat! = profileViewHeight + messageLabel.frame.height + self.pictureViewHeight + descriptionView.frame.height + 50
+        let messageLabel = self.initMessageLabel()
+        let descriptionView = self.initEventDescriptionView()
+        let height:CGFloat! = profileViewHeight + messageLabel.frame.height + self.pictureViewHeight + descriptionView.frame.height + 50
         return height
     }
     
     private func addDashedBorder() -> CAShapeLayer {
-        var shapeLayer:CAShapeLayer = CAShapeLayer()
-        var shapeRect:CGRect = CGRect(x: 0, y: profileViewHeight, width: self.innerView.frame.width, height: 0.5)
+        let shapeLayer:CAShapeLayer = CAShapeLayer()
+        let shapeRect:CGRect = CGRect(x: 0, y: profileViewHeight, width: self.innerView.frame.width, height: 0.5)
         shapeLayer.bounds = shapeRect
         shapeLayer.position = CGPoint(x: self.innerView.frame.width/2, y: profileViewHeight)
         shapeLayer.fillColor = UIColor.clearColor().CGColor
@@ -101,13 +101,13 @@ class RenderEventCellHelper:NSObject {
         shapeLayer.lineWidth = 1
         shapeLayer.lineJoin = kCALineJoinRound
         shapeLayer.lineDashPattern = [10, 5]
-        var path:UIBezierPath = UIBezierPath(roundedRect: shapeRect, cornerRadius: 0)
+        let path:UIBezierPath = UIBezierPath(roundedRect: shapeRect, cornerRadius: 0)
         shapeLayer.path = path.CGPath
         return shapeLayer
     }
     
     func setLatestMessage() {
-        var imageView:UIImageView = UIImageView(frame: CGRect(x: 10, y: 5, width: 40, height: 40))
+        let imageView:UIImageView = UIImageView(frame: CGRect(x: 10, y: 5, width: 40, height: 40))
         imageView.sd_setImageWithURL(NSURL(string: self.editorImgUrl), placeholderImage: UIImage(named: "Apple"))
         imageView.layer.borderColor = UIColor.whiteColor().CGColor
         imageView.layer.borderWidth = 1
@@ -115,34 +115,34 @@ class RenderEventCellHelper:NSObject {
         imageView.layer.masksToBounds = true
         self.innerView.addSubview(imageView)
         
-        var nameLabel:UILabel = UILabel(frame: CGRect(x: 60, y: 8, width: self.viewRect.width - 160, height: 17))
+        let nameLabel:UILabel = UILabel(frame: CGRect(x: 60, y: 8, width: self.viewRect.width - 160, height: 17))
         nameLabel.font = UIFont(name: "Heiti SC", size: 15)
         nameLabel.text = self.editorName
         self.innerView.addSubview(nameLabel)
         
-        var timeLabel:UILabel = UILabel(frame: CGRect(x: 60, y: 25, width: 100, height: 20))
+        let timeLabel:UILabel = UILabel(frame: CGRect(x: 60, y: 25, width: 100, height: 20))
         timeLabel.textAlignment = NSTextAlignment.Left
         timeLabel.textColor = UIColor.grayColor()
         timeLabel.font = UIFont(name: "Arial", size: 10)
         timeLabel.text = self.time
         self.innerView.addSubview(timeLabel)
         
-        var messageLabel:UILabel = self.initMessageLabel()
+        let messageLabel:UILabel = self.initMessageLabel()
         self.innerView.addSubview(messageLabel)
         
-        var pictureView:UIView = self.initPicturesView()
+        let pictureView:UIView = self.initPicturesView()
         self.innerView.addSubview(pictureView)
     }
     
     private func initMessageLabel() -> UILabel {
-        var content:NSString = self.message
-        var contentSize:CGSize = content.boundingRectWithSize(CGSize(width: self.view.frame.width - 40, height: CGFloat.infinity), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFontOfSize(15)], context: nil).size
-        var lineNum:Int = Int(contentSize.height / 15)
+        let content:NSString = self.message
+        let contentSize:CGSize = content.boundingRectWithSize(CGSize(width: self.view.frame.width - 40, height: CGFloat.infinity), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFontOfSize(15)], context: nil).size
+        let lineNum:Int = Int(contentSize.height / 15)
         self.messageViewHeight = contentSize.height + CGFloat(5 * lineNum)
-        var style:NSMutableParagraphStyle = NSMutableParagraphStyle()
+        let style:NSMutableParagraphStyle = NSMutableParagraphStyle()
         style.lineSpacing = 5
-        var attributedText:NSAttributedString = NSAttributedString(string: self.message, attributes: [NSParagraphStyleAttributeName: style])
-        var messageLabel:UILabel = UILabel(frame: CGRect(x: 10, y: 55, width: contentSize.width, height: self.messageViewHeight))
+        let attributedText:NSAttributedString = NSAttributedString(string: self.message, attributes: [NSParagraphStyleAttributeName: style])
+        let messageLabel:UILabel = UILabel(frame: CGRect(x: 10, y: 55, width: contentSize.width, height: self.messageViewHeight))
         messageLabel.numberOfLines = lineNum
         messageLabel.font = UIFont(name: "Heiti SC", size: 15)
         messageLabel.textColor = UIColor.blackColor()
@@ -154,20 +154,20 @@ class RenderEventCellHelper:NSObject {
     private func initPicturesView() -> UIView {
         let pictureViewHeight:CGFloat = (self.innerView.frame.width - 20 - 4) / 3
         self.pictureViewHeight = pictureViewHeight
-        var view:UIView = UIView(frame: CGRect(x: 10, y: self.profileViewHeight + self.messageViewHeight + 10, width: self.innerView.frame.width - 20, height: self.pictureViewHeight))
+        let view:UIView = UIView(frame: CGRect(x: 10, y: self.profileViewHeight + self.messageViewHeight + 10, width: self.innerView.frame.width - 20, height: self.pictureViewHeight))
         if self.pictureUrls.count == 0 {
             view.hidden = true
             self.pictureViewHeight = 0
         } else if self.pictureUrls.count == 1 {
-            var btnView1:UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: pictureViewHeight, height: pictureViewHeight))
+            let btnView1:UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: pictureViewHeight, height: pictureViewHeight))
             btnView1.sd_setImageWithURL(NSURL(string: self.pictureUrls[0]), forState: UIControlState.Normal, placeholderImage: UIImage(named: "Apple"))
             btnView1.imageView!.contentMode = UIViewContentMode.ScaleAspectFill
             btnView1.imageView!.layer.masksToBounds = true
             view.addSubview(btnView1)
             self.pictureButtonArray = [btnView1]
         } else if self.pictureUrls.count == 2 {
-            var btnView1:UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: pictureViewHeight, height: pictureViewHeight))
-            var btnView2:UIButton = UIButton(frame: CGRect(x: pictureViewHeight + 2, y: 0, width: pictureViewHeight, height: pictureViewHeight))
+            let btnView1:UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: pictureViewHeight, height: pictureViewHeight))
+            let btnView2:UIButton = UIButton(frame: CGRect(x: pictureViewHeight + 2, y: 0, width: pictureViewHeight, height: pictureViewHeight))
             btnView1.sd_setImageWithURL(NSURL(string: self.pictureUrls[0]), forState: UIControlState.Normal, placeholderImage: UIImage(named: "Apple"))
             btnView2.sd_setImageWithURL(NSURL(string: self.pictureUrls[1]), forState: UIControlState.Normal, placeholderImage: UIImage(named: "Apple"))
             btnView1.imageView!.contentMode = UIViewContentMode.ScaleAspectFill
@@ -178,9 +178,9 @@ class RenderEventCellHelper:NSObject {
             view.addSubview(btnView2)
             self.pictureButtonArray = [btnView1, btnView2]
         } else {
-            var btnView1:UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: pictureViewHeight, height: pictureViewHeight))
-            var btnView2:UIButton = UIButton(frame: CGRect(x: pictureViewHeight + 2, y: 0, width: pictureViewHeight, height: pictureViewHeight))
-            var btnView3:UIButton = UIButton(frame: CGRect(x: pictureViewHeight * 2 + 4, y: 0, width: pictureViewHeight, height: pictureViewHeight))
+            let btnView1:UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: pictureViewHeight, height: pictureViewHeight))
+            let btnView2:UIButton = UIButton(frame: CGRect(x: pictureViewHeight + 2, y: 0, width: pictureViewHeight, height: pictureViewHeight))
+            let btnView3:UIButton = UIButton(frame: CGRect(x: pictureViewHeight * 2 + 4, y: 0, width: pictureViewHeight, height: pictureViewHeight))
             btnView1.sd_setImageWithURL(NSURL(string: self.pictureUrls[0]), forState: UIControlState.Normal, placeholderImage: UIImage(named: "Apple"))
             btnView2.sd_setImageWithURL(NSURL(string: self.pictureUrls[1]), forState: UIControlState.Normal, placeholderImage: UIImage(named: "Apple"))
             btnView3.sd_setImageWithURL(NSURL(string: self.pictureUrls[2]), forState: UIControlState.Normal, placeholderImage: UIImage(named: "Apple"))
@@ -199,8 +199,8 @@ class RenderEventCellHelper:NSObject {
     }
     
     func setEventInfo() {
-        var eventView:UIView = self.initEventDescriptionView()
-        eventButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+        let eventView:UIView = self.initEventDescriptionView()
+        eventButton = UIButton(type: UIButtonType.System)
         eventButton.frame = eventView.frame
         self.innerView.addSubview(eventView)
         self.innerView.addSubview(eventButton)
@@ -209,16 +209,16 @@ class RenderEventCellHelper:NSObject {
     private func initEventDescriptionView() -> UIView {
         let fontSize:CGFloat = 13
         let viewWidth:CGFloat = self.view.frame.width - 60
-        var content:NSString = "\(self.eventType): \(self.eventDescription)"
-        var contentSize:CGSize = content.boundingRectWithSize(CGSize(width: viewWidth, height: CGFloat.infinity), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFontOfSize(fontSize)], context: nil).size
-        var lineNum:Int = Int(contentSize.height / fontSize)
+        let content:NSString = "\(self.eventType): \(self.eventDescription)"
+        let contentSize:CGSize = content.boundingRectWithSize(CGSize(width: viewWidth, height: CGFloat.infinity), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFontOfSize(fontSize)], context: nil).size
+        let lineNum:Int = Int(contentSize.height / fontSize)
         self.eventViewHeight = contentSize.height + CGFloat(3 * lineNum) + 10
-        var eventView:UIView = UIView(frame: CGRect(x: 20, y: 10 + self.profileViewHeight + self.messageViewHeight + self.pictureViewHeight + 10, width: viewWidth, height: self.eventViewHeight))
+        let eventView:UIView = UIView(frame: CGRect(x: 20, y: 10 + self.profileViewHeight + self.messageViewHeight + self.pictureViewHeight + 10, width: viewWidth, height: self.eventViewHeight))
         eventView.backgroundColor = bgColor
-        var style:NSMutableParagraphStyle = NSMutableParagraphStyle()
+        let style:NSMutableParagraphStyle = NSMutableParagraphStyle()
         style.lineSpacing = 3
-        var attributedText:NSAttributedString = NSAttributedString(string: content as String, attributes: [NSParagraphStyleAttributeName: style])
-        var descriptionLabel:UILabel = UILabel(frame: CGRect(x: 5, y: 5, width: eventView.frame.width - 10, height: self.eventViewHeight - 10))
+        let attributedText:NSAttributedString = NSAttributedString(string: content as String, attributes: [NSParagraphStyleAttributeName: style])
+        let descriptionLabel:UILabel = UILabel(frame: CGRect(x: 5, y: 5, width: eventView.frame.width - 10, height: self.eventViewHeight - 10))
         descriptionLabel.attributedText = attributedText
         descriptionLabel.textColor = UIColor.grayColor()
         descriptionLabel.numberOfLines = lineNum

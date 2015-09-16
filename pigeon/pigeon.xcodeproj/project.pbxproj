@@ -608,7 +608,8 @@
 		46A79CA61B8823AB00B60B43 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = naitianliu;
 				TargetAttributes = {
 					46A79CAD1B8823AB00B60B43 = {
@@ -819,6 +820,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -884,6 +886,7 @@
 			baseConfigurationReference = F30ACB44CA899943E7CCAAC9 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = pigeon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -900,6 +903,7 @@
 					"-framework",
 					"\"Alamofire\"",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.naitianliu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "pigeon/pigeon-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -913,6 +917,7 @@
 			baseConfigurationReference = C43AF1B09D0587414C965081 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = pigeon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -928,6 +933,7 @@
 					"-framework",
 					"\"Alamofire\"",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.naitianliu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "pigeon/pigeon-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -949,6 +955,7 @@
 				);
 				INFOPLIST_FILE = pigeonTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.naitianliu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pigeon.app/pigeon";
 			};
@@ -964,6 +971,7 @@
 				);
 				INFOPLIST_FILE = pigeonTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.naitianliu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pigeon.app/pigeon";
 			};

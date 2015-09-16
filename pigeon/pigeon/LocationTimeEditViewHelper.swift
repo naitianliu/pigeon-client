@@ -48,15 +48,15 @@ class LocationTimeEditViewHelper: NSObject, EditLocationViewControllerDelegate {
     
     private func initiateLocationTimeEditView() {
         self.locationTimeEditView = UIView(frame: CGRect(x: 0, y: self.rootViewRect.height - viewHeght, width: self.rootViewRect.width, height: viewHeght))
-        var locationButton:UIButton = self.initiateLocationButton()
-        var timeButton:UIButton = self.initiateTimeButton()
+        let locationButton:UIButton = self.initiateLocationButton()
+        let timeButton:UIButton = self.initiateTimeButton()
         self.locationTimeEditView.addSubview(locationButton)
         self.locationTimeEditView.addSubview(timeButton)
         self.rootView.addSubview(self.locationTimeEditView)
     }
     
     private func initiateLocationButton() -> UIButton {
-        var button:UIButton = UIButton(frame: CGRect(x: 10, y: 65, width: 100, height: 30))
+        let button:UIButton = UIButton(frame: CGRect(x: 10, y: 65, width: 100, height: 30))
         button.setTitle("地点", forState: UIControlState.Normal)
         button.setTitleColor(UIColor.grayColor(), forState: UIControlState.Normal)
         button.addTarget(self, action: Selector("locationButtonOnClick:"), forControlEvents: UIControlEvents.TouchUpInside)
@@ -64,8 +64,8 @@ class LocationTimeEditViewHelper: NSObject, EditLocationViewControllerDelegate {
     }
     
     private func initiateTimeButton() -> UIButton {
-        var buttonWidth:CGFloat = 100
-        var button:UIButton = UIButton(frame: CGRect(x: self.rootViewRect.width - 10 - buttonWidth, y: 65, width: buttonWidth, height: 30))
+        let buttonWidth:CGFloat = 100
+        let button:UIButton = UIButton(frame: CGRect(x: self.rootViewRect.width - 10 - buttonWidth, y: 65, width: buttonWidth, height: 30))
         button.setTitle("时间", forState: UIControlState.Normal)
         button.setTitleColor(UIColor.grayColor(), forState: UIControlState.Normal)
         button.addTarget(self, action: Selector("timeButtonOnClick:"), forControlEvents: UIControlEvents.TouchUpInside)
@@ -99,16 +99,16 @@ class LocationTimeEditViewHelper: NSObject, EditLocationViewControllerDelegate {
     }
     
     func timeButtonOnClick(sender:UIButton!) {
-        var selectAction:RMAction = RMAction(title: "确定", style: RMActionStyle.Done) { (controller:RMActionController!) -> Void in
-            var formatter:NSDateFormatter = NSDateFormatter()
+        let selectAction:RMAction = RMAction(title: "确定", style: RMActionStyle.Done) { (controller:RMActionController!) -> Void in
+            let formatter:NSDateFormatter = NSDateFormatter()
             formatter.dateFormat = "yyyy-MM-dd hh:mm a"
-            var datetime:String = formatter.stringFromDate((controller.contentView as! UIDatePicker).date)
+            let datetime:String = formatter.stringFromDate((controller.contentView as! UIDatePicker).date)
             self.timeLabel.text = datetime
         }
-        var cancelAction:RMAction = RMAction(title: "取消", style: RMActionStyle.Cancel) { (controller) -> Void in
-            println("Cancelled")
+        let cancelAction:RMAction = RMAction(title: "取消", style: RMActionStyle.Cancel) { (controller) -> Void in
+            print("Cancelled")
         }
-        var dateSelectionController:RMDateSelectionViewController = RMDateSelectionViewController(style: RMActionControllerStyle.White, selectAction: selectAction, andCancelAction: cancelAction)
+        let dateSelectionController:RMDateSelectionViewController = RMDateSelectionViewController(style: RMActionControllerStyle.White, selectAction: selectAction, andCancelAction: cancelAction)
         dateSelectionController.title = "选择时间"
         dateSelectionController.message = "请设置时间发生时间"
         dateSelectionController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen

@@ -32,7 +32,7 @@ class ContactViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.view.bringSubviewToFront(self.tableView)
         
         
-        var searchResultsController:UINavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("SearchContactNavigationController") as! UINavigationController
+        let searchResultsController:UINavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("SearchContactNavigationController") as! UINavigationController
         self.searchController = UISearchController(searchResultsController: searchResultsController)
         self.searchController.searchResultsUpdater = self
         self.searchController.searchBar.delegate = self
@@ -40,7 +40,7 @@ class ContactViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.tableView.tableHeaderView = self.searchController.searchBar
     }
     @IBAction func segmentedControlValueChanged(sender: AnyObject) {
-        var selectedIndex = self.segmentedControl.selectedSegmentIndex
+        let selectedIndex = self.segmentedControl.selectedSegmentIndex
         if selectedIndex == 0 {
             self.view.bringSubviewToFront(self.tableView)
         } else {
@@ -79,7 +79,7 @@ class ContactViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("ContactCell") as? UITableViewCell
+        var cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("ContactCell")
         
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "ContactCell")
@@ -110,12 +110,12 @@ class ContactViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell:UICollectionViewCell = self.collectionView.dequeueReusableCellWithReuseIdentifier("GroupCollectionCell", forIndexPath: indexPath) as! UICollectionViewCell
-        var imageView:UIImageView = UIImageView(image: UIImage(named: "close"))
+        let cell:UICollectionViewCell = self.collectionView.dequeueReusableCellWithReuseIdentifier("GroupCollectionCell", forIndexPath: indexPath)
+        let imageView:UIImageView = UIImageView(image: UIImage(named: "close"))
         imageView.frame = CGRect(x: 5, y: 5, width: 100, height: 100)
         cell.sizeToFit()
-        var outerRect:CGRect = cell.contentView.frame
-        var innerView:UIView = UIView(frame: CGRect(x: 7, y: 7, width: outerRect.width - 10, height: outerRect.width - 10))
+        let outerRect:CGRect = cell.contentView.frame
+        let innerView:UIView = UIView(frame: CGRect(x: 7, y: 7, width: outerRect.width - 10, height: outerRect.width - 10))
         innerView.layer.borderWidth = 0.5
         innerView.layer.borderColor = UIColor.grayColor().CGColor
         innerView.addSubview(imageView)

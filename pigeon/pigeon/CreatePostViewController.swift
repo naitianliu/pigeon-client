@@ -28,18 +28,15 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
 
         // Do any additional setup after loading the view.
         
-        var error = NSErrorPointer()
-        if !NSFileManager.defaultManager().createDirectoryAtPath(
-            NSTemporaryDirectory().stringByAppendingPathComponent("upload"),
-            withIntermediateDirectories: true,
-            attributes: nil,
-            error: error) {
-                println("Creating 'upload' directory failed. Error: \(error)")
+        do {
+            try NSFileManager.defaultManager().createDirectoryAtURL(NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent("upload"), withIntermediateDirectories: true, attributes: nil)
+        } catch {
+            print("Creating 'upload' directory failed. Error: \(error)")
         }
         
         pickerController = UIImagePickerController()
         pickerController.view.backgroundColor = UIColor.orangeColor()
-        var sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        let sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         pickerController.sourceType = sourceType
         pickerController.delegate = self
         pickerController.allowsEditing = true
@@ -60,16 +57,18 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
             var imgUrls:[String] = []
             for image in self.imgArray {
                 let fileName = NSProcessInfo.processInfo().globallyUniqueString.stringByAppendingString(".png")
-                let filePath = NSTemporaryDirectory().stringByAppendingPathComponent("upload").stringByAppendingPathComponent(fileName)
+                // let filePath = NSTemporaryDirectory().stringByAppendingPathComponent("upload").stringByAppendingPathComponent(fileName)
+                let filePath = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent("upload").URLByAppendingPathComponent(fileName)
+                print(filePath)
                 let imageData = UIImagePNGRepresentation(image)
-                imageData.writeToFile(filePath, atomically: true)
+                imageData!.writeToURL(filePath, atomically: true)
                 
                 let uploadRequest = AWSS3TransferManagerUploadRequest()
                 uploadRequest.ACL = AWSS3ObjectCannedACL.PublicRead
-                uploadRequest.body = NSURL(fileURLWithPath: filePath)
+                uploadRequest.body = filePath
                 uploadRequest.key = fileName
                 uploadRequest.bucket = const_S3BucketName
-                println(fileName)
+                print(fileName)
                 self.uploadRequests.append(uploadRequest)
                 self.uploadFileURLs.append(nil)
                 self.upload(uploadRequest)
@@ -88,30 +87,30 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         for view in self.imgEditView.subviews {
             view.removeFromSuperview()
         }
-        var number = imgArray.count
-        var width:CGFloat = (self.view.frame.width - 32) / 3
-        println(width)
-        var firstX:CGFloat = self.textView.frame.origin.x
-        var firstY:CGFloat = self.textView.frame.origin.y + self.textView.frame.height
-        var factor:Int = number / 3
-        var mod:Int = number % 3
+        let number = imgArray.count
+        let width:CGFloat = (self.view.frame.width - 32) / 3
+        print(width)
+        let firstX:CGFloat = self.textView.frame.origin.x
+        let firstY:CGFloat = self.textView.frame.origin.y + self.textView.frame.height
+        let factor:Int = number / 3
+        let mod:Int = number % 3
         self.imgEditView.frame = CGRect(x: firstX, y: firstY, width: self.view.frame.width - 32, height: CGFloat(factor+1) * width)
         for (var i=0; i<number; i++) {
-            var ifactor:Int = i / 3
-            var imod:Int = i % 3
-            var img:UIImage = imgArray[i]
-            var imgView:UIImageView = UIImageView(frame: CGRect(x: CGFloat(imod) * width, y: width * CGFloat(ifactor), width: width, height: width))
+            let ifactor:Int = i / 3
+            let imod:Int = i % 3
+            let img:UIImage = imgArray[i]
+            let imgView:UIImageView = UIImageView(frame: CGRect(x: CGFloat(imod) * width, y: width * CGFloat(ifactor), width: width, height: width))
             imgView.image = img
             self.imgEditView.addSubview(imgView)
         }
         
-        println("\(factor)  \(mod)")
-        var button:UIButton = UIButton.buttonWithType(UIButtonType.ContactAdd) as! UIButton
+        print("\(factor)  \(mod)")
+        let button:UIButton = UIButton(type: UIButtonType.ContactAdd)
         button.frame = CGRect(x: CGFloat(mod) * width, y: width * CGFloat(factor), width: width, height: width)
         button.layer.borderColor = UIColor.grayColor().CGColor
         button.layer.borderWidth = 2
         button.addTarget(self, action: Selector("addImgButtonOnClick:"), forControlEvents: UIControlEvents.TouchUpInside)
-        println(button.frame.width)
+        print(button.frame.width)
         self.imgEditView.addSubview(button)
     }
     
@@ -120,8 +119,8 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         self.presentViewController(pickerController, animated: true, completion: nil)
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-        var img:UIImage = info[UIImagePickerControllerEditedImage] as! UIImage
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        let img:UIImage = info[UIImagePickerControllerEditedImage] as! UIImage
         self.imgArray.append(img)
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
             self.setupUI(self.imgArray)
@@ -143,19 +142,19 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
                             break;
                             
                         default:
-                            println("upload() failed: [\(error)]")
+                            print("upload() failed: [\(error)]")
                             break;
                         }
                     } else {
-                        println("upload() failed: [\(error)]")
+                        print("upload() failed: [\(error)]")
                     }
                 } else {
-                    println("upload() failed: [\(error)]")
+                    print("upload() failed: [\(error)]")
                 }
             }
             
             if let exception = task.exception {
-                println("upload() failed: [\(exception)]")
+                print("upload() failed: [\(exception)]")
             }
             
             if task.result != nil {
@@ -164,6 +163,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
                         self.uploadRequests[index] = nil
                         self.uploadFileURLs[index] = uploadRequest.body
                         let indexPath = NSIndexPath(forRow: index, inSection: 0)
+                        print(indexPath)
                     }
                 })
             }
@@ -172,7 +172,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func indexOfUploadRequest(array: Array<AWSS3TransferManagerUploadRequest?>, uploadRequest: AWSS3TransferManagerUploadRequest?) -> Int? {
-        for (index, object) in enumerate(array) {
+        for (index, object) in array.enumerate() {
             if object == uploadRequest {
                 return index
             }

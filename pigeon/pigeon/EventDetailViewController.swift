@@ -33,7 +33,7 @@ class EventDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func createPostButtonOnClick(sender:UIButton!) {
-        var createPostViewController:UIViewController = self.storyboard?.instantiateViewControllerWithIdentifier("CreatePostViewController") as! UIViewController
+        let createPostViewController:UIViewController = (self.storyboard?.instantiateViewControllerWithIdentifier("CreatePostViewController"))!
         createPostViewController.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
         self.presentViewController(createPostViewController, animated: true) { () -> Void in
             
@@ -41,8 +41,8 @@ class EventDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @IBAction func segmentedControlOnChanged(sender: AnyObject) {
-        var selectedIndex = self.segmentedControl.selectedSegmentIndex
-        println(selectedIndex)
+        let selectedIndex = self.segmentedControl.selectedSegmentIndex
+        print(selectedIndex)
     }
     
     
@@ -69,13 +69,13 @@ class EventDetailViewController: UIViewController, UITableViewDelegate, UITableV
         
         if indexPath.section == 0 {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "EventDetailCell")
-            var eventInfo = SampleDataEvent().eventInfo
-            var eventInfoView:UIView = self.eventDetailViewHelper.setEventInfoView(eventInfo)
+            let eventInfo = SampleDataEvent().eventInfo
+            let eventInfoView:UIView = self.eventDetailViewHelper.setEventInfoView(eventInfo)
             cell.contentView.addSubview(eventInfoView)
         } else {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "EventPostCell")
-            var eventPost = eventPosts[indexPath.row] as! [String:AnyObject]
-            var eventPostCellHelper:EventPostCellHelper = EventPostCellHelper(view: self.view, eventPost: eventPost)
+            let eventPost = eventPosts[indexPath.row] as! [String:AnyObject]
+            let eventPostCellHelper:EventPostCellHelper = EventPostCellHelper(view: self.view, eventPost: eventPost)
             eventPostCellHelper.setupCell(cell)
         }
         return cell
@@ -85,9 +85,9 @@ class EventDetailViewController: UIViewController, UITableViewDelegate, UITableV
         if indexPath.section == 0 {
             return 300
         } else {
-            var eventPost = eventPosts[indexPath.row] as! [String:AnyObject]
-            var eventPostCellHelper:EventPostCellHelper = EventPostCellHelper(view: self.view, eventPost: eventPost)
-            var cellHeight:CGFloat = eventPostCellHelper.getCellHeight()
+            let eventPost = eventPosts[indexPath.row] as! [String:AnyObject]
+            let eventPostCellHelper:EventPostCellHelper = EventPostCellHelper(view: self.view, eventPost: eventPost)
+            let cellHeight:CGFloat = eventPostCellHelper.getCellHeight()
             return cellHeight
         }
         
@@ -103,8 +103,8 @@ class EventDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if section == 0 {
-            var view = self.eventDetailViewHelper.setupFooterView()
-            var createPostButton:UIButton = self.eventDetailViewHelper.createPostButton
+            let view = self.eventDetailViewHelper.setupFooterView()
+            let createPostButton:UIButton = self.eventDetailViewHelper.createPostButton
             createPostButton.addTarget(self, action: Selector("createPostButtonOnClick:"), forControlEvents: UIControlEvents.TouchUpInside)
             return view
         } else {
@@ -121,7 +121,7 @@ class EventDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        var yOffset:CGFloat = scrollView.contentOffset.y
+        let yOffset:CGFloat = scrollView.contentOffset.y
         self.eventDetailViewHelper.changeViewByScroll(yOffset)
     }
 }

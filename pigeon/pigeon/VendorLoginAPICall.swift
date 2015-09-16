@@ -29,11 +29,12 @@ class VendorLoginAPICall:NSObject, BaseAPIHelperDelegate {
     }
     
     func run() {
-        var reqData:[String:String] = [
+        let reqData:[String:String] = [
             "vendor_id": self.vendorId,
             "vendor_type": self.vendorType,
             "access_token": self.accessToken
         ]
+        print(reqData)
         BaseAPIHelper(token:nil, delegate:self).GET(self.url, requestData: reqData)
     }
     
@@ -43,8 +44,8 @@ class VendorLoginAPICall:NSObject, BaseAPIHelperDelegate {
     
     func afterReceiveResponse(responseData: AnyObject) {
         var data = responseData as! [String:String]
-        var token = data["token"]!
-        println(token)
+        let token = data["token"]!
+        print(token)
         NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(token), forKey: "token")
         MBProgressHUD.hideHUDForView(self.view, animated: true)
     }

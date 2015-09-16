@@ -22,7 +22,7 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        println(self.tableView.backgroundColor)
+        print(self.tableView.backgroundColor)
         self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1), atScrollPosition: UITableViewScrollPosition.Top, animated: false)
     }
 
@@ -59,14 +59,14 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "EventUpdateCell")
             cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             cell.textLabel?.text = EventTypeArray[indexPath.row]["name"]
-            var imgName:String = EventTypeArray[indexPath.row]["img"]!
+            let imgName:String = EventTypeArray[indexPath.row]["img"]!
             cell.imageView?.image = UIImage(named: imgName)
         } else {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "MyEventCell")
-            var postInfo = newPosts[indexPath.row] as! [String:AnyObject]
-            var renderCellHelper = RenderEventCellHelper(view:self.view, postInfo:postInfo)
+            let postInfo = newPosts[indexPath.row] as! [String:AnyObject]
+            let renderCellHelper = RenderEventCellHelper(view:self.view, postInfo:postInfo)
             renderCellHelper.setCell(cell, view: self.view)
-            var eventButton:UIButton = renderCellHelper.eventButton
+            let eventButton:UIButton = renderCellHelper.eventButton
             eventButton.tag = indexPath.row
             eventButton.addTarget(self, action: "eventButtonPressDown:", forControlEvents: UIControlEvents.TouchDown)
             eventButton.addTarget(self, action: "eventButtonOnClick:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -98,8 +98,8 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func eventButtonOnClick(sender:UIButton!) {
-        var index = sender.tag
-        println("test \(index)")
+        let index = sender.tag
+        print("test \(index)")
         sender.backgroundColor = UIColor.clearColor()
         
         self.performSegueWithIdentifier("EventDetailSegue", sender: self)
@@ -114,12 +114,11 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func pictureButton0OnClick(sender:UIButton!) {
-        println(111)
         self.currentIndex["row"] = sender.tag
         self.currentIndex["col"] = 0
         var postInfo = newPosts[self.currentIndex["row"]!] as! [String:AnyObject]
-        var pictureUrls = postInfo["pictureUrls"] as! [String]
-        var browserVC:HZPhotoBrowser = HZPhotoBrowser()
+        let pictureUrls = postInfo["pictureUrls"] as! [String]
+        let browserVC:HZPhotoBrowser = HZPhotoBrowser()
         browserVC.sourceImagesContainerView = self.view
         browserVC.imageCount = pictureUrls.count
         browserVC.currentImageIndex = 0
@@ -131,8 +130,8 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
         self.currentIndex["row"] = sender.tag
         self.currentIndex["col"] = 1
         var postInfo = newPosts[self.currentIndex["row"]!] as! [String:AnyObject]
-        var pictureUrls = postInfo["pictureUrls"] as! [String]
-        var browserVC:HZPhotoBrowser = HZPhotoBrowser()
+        let pictureUrls = postInfo["pictureUrls"] as! [String]
+        let browserVC:HZPhotoBrowser = HZPhotoBrowser()
         browserVC.sourceImagesContainerView = self.view
         browserVC.imageCount = pictureUrls.count
         browserVC.currentImageIndex = 1
@@ -144,8 +143,8 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
         self.currentIndex["row"] = sender.tag
         self.currentIndex["col"] = 2
         var postInfo = newPosts[self.currentIndex["row"]!] as! [String:AnyObject]
-        var pictureUrls = postInfo["pictureUrls"] as! [String]
-        var browserVC:HZPhotoBrowser = HZPhotoBrowser()
+        let pictureUrls = postInfo["pictureUrls"] as! [String]
+        let browserVC:HZPhotoBrowser = HZPhotoBrowser()
         browserVC.sourceImagesContainerView = self.view
         browserVC.imageCount = pictureUrls.count
         browserVC.currentImageIndex = 2
@@ -157,9 +156,9 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
         if indexPath.section == 0 {
             return 46
         } else {
-            var postInfo = newPosts[indexPath.row] as! [String:AnyObject]
-            var renderCellHelper = RenderEventCellHelper(view:self.view, postInfo:postInfo)
-            var cellHeight:CGFloat = renderCellHelper.getCellHeight()
+            let postInfo = newPosts[indexPath.row] as! [String:AnyObject]
+            let renderCellHelper = RenderEventCellHelper(view:self.view, postInfo:postInfo)
+            let cellHeight:CGFloat = renderCellHelper.getCellHeight()
             return cellHeight
         }
     }

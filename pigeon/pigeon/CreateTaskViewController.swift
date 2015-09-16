@@ -54,7 +54,7 @@ class CreateTaskViewController: UIViewController, LocationTimeEditViewDelegate {
     }
     
     func locationTimeReceiveLocation(mapItem: MKMapItem) {
-        println(mapItem)
+        print(mapItem)
         self.locationTimeEditViewHelper.rootViewController = self
     }
     
@@ -68,7 +68,7 @@ class CreateTaskViewController: UIViewController, LocationTimeEditViewDelegate {
     func keyboardShown(notification:NSNotification) {
         let info = notification.userInfo!
         let value:AnyObject = info[UIKeyboardFrameEndUserInfoKey]!
-        let rawFrame = value.CGRectValue()
+        let rawFrame = value.CGRectValue
         self.keyboardFrame = self.view.convertRect(rawFrame, fromView: nil)
         self.locationTimeEditViewHelper.adjustViewHeight(self.keyboardFrame.height)
     }

@@ -28,21 +28,37 @@ class BaseAPIHelper: NSObject {
             self.headers["Authorization"] = "Token \(token)"
         }
         
-        Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders = headers
+        // Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders = headers
     }
     
     func GET(url:String, requestData:[String: String]) {
         basePIHelperDelegate?.beforeSendRequest()
-        Alamofire.request(.GET, url, parameters: requestData).responseJSON(options: NSJSONReadingOptions.AllowFragments) { (request, response, data, error) -> Void in
-            println(data)
-            self.basePIHelperDelegate?.afterReceiveResponse(data!)
+        
+        request(.GET, url, parameters: requestData, headers: self.headers).responseJSON(options: NSJSONReadingOptions.AllowFragments) { (request, response, result) -> Void in
+            switch result {
+            case .Success(let JSON):
+                print(JSON)
+                self.basePIHelperDelegate?.afterReceiveResponse(JSON)
+            case .Failure(let data, let error):
+                print(data)
+                print(error)
+            }
         }
+
     }
     
     func POST(url:String, requestData:[String: AnyObject]) {
         basePIHelperDelegate?.beforeSendRequest()
-        Alamofire.request(.POST, url, parameters: requestData, encoding: .JSON).responseJSON { (request, response, data, error) -> Void in
-            self.basePIHelperDelegate?.afterReceiveResponse(data!)
+        
+        request(.POST, url, parameters: requestData, encoding: .JSON, headers: self.headers).responseJSON(options: NSJSONReadingOptions.AllowFragments) { (request, response, result) -> Void in
+            switch result {
+            case .Success(let JSON):
+                print(JSON)
+                self.basePIHelperDelegate?.afterReceiveResponse(JSON)
+            case .Failure(let data, let error):
+                print(data)
+                print(error)
+            }
         }
     }
 }

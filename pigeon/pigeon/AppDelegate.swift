@@ -33,29 +33,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
         
         if NSUserDefaults.standardUserDefaults().objectForKey("token") != nil {
             token = NSKeyedUnarchiver.unarchiveObjectWithData(NSUserDefaults.standardUserDefaults().objectForKey("token") as! NSData) as? String
-            println(token)
+            print(token)
         }
         
         if token == nil {
-            println(444)
-            authLoginViewController = authStoryBoard.instantiateViewControllerWithIdentifier("AuthLogin") as! UIViewController
+            authLoginViewController = authStoryBoard.instantiateViewControllerWithIdentifier("AuthLogin") 
             self.window?.rootViewController = authLoginViewController
         } else {
-            var mainTabBarViewController:UITabBarController = mainStoryBoard.instantiateViewControllerWithIdentifier("MainTabBarController") as! UITabBarController
-            var eventNavigationController:UINavigationController = eventStoryboard.instantiateViewControllerWithIdentifier("EventNavigationController") as! UINavigationController
+            let mainTabBarViewController:UITabBarController = mainStoryBoard.instantiateViewControllerWithIdentifier("MainTabBarController") as! UITabBarController
+            let eventNavigationController:UINavigationController = eventStoryboard.instantiateViewControllerWithIdentifier("EventNavigationController") as! UINavigationController
             eventNavigationController.tabBarItem.title = "我的事件"
             // eventNavigationController.tabBarItem.image = UIImage(named: "Apple")
-            var contactNavigationController:UINavigationController = contactStoryboard.instantiateViewControllerWithIdentifier("ContactNavigationController") as! UINavigationController
+            let contactNavigationController:UINavigationController = contactStoryboard.instantiateViewControllerWithIdentifier("ContactNavigationController") as! UINavigationController
             contactNavigationController.tabBarItem.title = "联系人"
             // contactNavigationController.tabBarItem.image = UIImage(named: "Apple")
-            var historyNavigationController:UINavigationController = historyStoryboard.instantiateViewControllerWithIdentifier("HistoryNavigationController") as! UINavigationController
+            let historyNavigationController:UINavigationController = historyStoryboard.instantiateViewControllerWithIdentifier("HistoryNavigationController") as! UINavigationController
             historyNavigationController.tabBarItem.title = "历史"
             // historyNavigationController.tabBarItem.image = UIImage(named: "Apple")
-            var meNavigationController:UINavigationController = meStoryboard.instantiateViewControllerWithIdentifier("MeNavigationController") as! UINavigationController
+            let meNavigationController:UINavigationController = meStoryboard.instantiateViewControllerWithIdentifier("MeNavigationController") as! UINavigationController
             meNavigationController.tabBarItem.title = "我"
             // meNavigationController.tabBarItem.image = UIImage(named: "Apple")
             
-            var middleViewController:UIViewController = UIViewController()
+            let middleViewController:UIViewController = UIViewController()
             
             mainTabBarViewController.setViewControllers([eventNavigationController, contactNavigationController, middleViewController, historyNavigationController, meNavigationController], animated: false)
             self.window?.rootViewController = mainTabBarViewController
@@ -96,7 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
         return WeiboSDK.handleOpenURL(url, delegate: self)
     }
 
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         // return WXApi.handleOpenURL(url, delegate: self)
         return WeiboSDK.handleOpenURL(url, delegate: self)
     }
@@ -119,19 +118,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
     
     func didReceiveWeiboResponse(response: WBBaseResponse!) {
         if response.isKindOfClass(WBSendMessageToWeiboResponse) {
-            println(1)
-            var sendMessageToWeiboResponse:WBSendMessageToWeiboResponse = response as! WBSendMessageToWeiboResponse
-            var accessToken = sendMessageToWeiboResponse.authResponse.accessToken
-            println("accessToken:\(accessToken)")
-            var userID = sendMessageToWeiboResponse.authResponse.userID
-            println("userID:\(userID)")
+            print(1)
+            let sendMessageToWeiboResponse:WBSendMessageToWeiboResponse = response as! WBSendMessageToWeiboResponse
+            let accessToken = sendMessageToWeiboResponse.authResponse.accessToken
+            print("accessToken:\(accessToken)")
+            let userID = sendMessageToWeiboResponse.authResponse.userID
+            print("userID:\(userID)")
         } else if response.isKindOfClass(WBAuthorizeResponse) {
-            var authResponse = response as! WBAuthorizeResponse
-            var accessToken = authResponse.accessToken
-            var userID = authResponse.userID
-            println(1)
+            let authResponse = response as! WBAuthorizeResponse
+            let accessToken = authResponse.accessToken
+            let userID = authResponse.userID
             VendorLoginAPICall(view: authLoginViewController.view, vendorType: "wb", vendorId: userID, accessToken: accessToken).run()
-            println(2)
         }
         
     }

@@ -38,7 +38,7 @@ class ContactSearchResultsTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("ContactSearchResultsCell", forIndexPath: indexPath) as? UITableViewCell
+        var cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("ContactSearchResultsCell", forIndexPath: indexPath)
         
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "ContactSearchResultsCell")

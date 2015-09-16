@@ -61,16 +61,16 @@ class EditLocationViewController: UIViewController, UITableViewDelegate, UITable
     
     func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String!) -> Bool {
         self.searchResult.removeAllObjects()
-        var request:MKLocalSearchRequest = MKLocalSearchRequest()
+        let request:MKLocalSearchRequest = MKLocalSearchRequest()
         request.naturalLanguageQuery = searchString
-        var localSearch:MKLocalSearch = MKLocalSearch(request: request)
+        let localSearch:MKLocalSearch = MKLocalSearch(request: request)
         localSearch.startWithCompletionHandler { (response, error) -> Void in
             var places:NSArray = NSArray()
             if response != nil {
-                places = response.mapItems
+                places = response!.mapItems
             }
             for place in places {
-                var mapItem:MKMapItem = place as! MKMapItem
+                let mapItem:MKMapItem = place as! MKMapItem
                 self.searchResult.addObject(mapItem)
             }
             self.searchDisplayController?.searchResultsTableView.reloadData()
@@ -92,10 +92,10 @@ class EditLocationViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if self.searchResult.count == 0 {
-            var cell:UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "NoResultCell")
+            let cell:UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "NoResultCell")
             return cell
         } else {
-            var cell:UITableViewCell = self.searchDisplayController?.searchResultsTableView.dequeueReusableCellWithIdentifier("ResultCell") as! UITableViewCell
+            let cell:UITableViewCell = (self.searchDisplayController?.searchResultsTableView.dequeueReusableCellWithIdentifier("ResultCell")!)!
             cell.textLabel!.text = (self.searchResult.objectAtIndex(indexPath.row) as! MKMapItem).placemark.title
             return cell
         }
@@ -103,34 +103,34 @@ class EditLocationViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.searchDisplayController?.setActive(false, animated: true)
-        var selectMapItem = self.searchResult.objectAtIndex(indexPath.row) as! MKMapItem
-        var latDelta: CLLocationDegrees = 0.01
-        var longDelta: CLLocationDegrees = 0.01
-        var theSpan: MKCoordinateSpan = MKCoordinateSpanMake(latDelta, longDelta)
+        let selectMapItem = self.searchResult.objectAtIndex(indexPath.row) as! MKMapItem
+        let latDelta: CLLocationDegrees = 0.01
+        let longDelta: CLLocationDegrees = 0.01
+        let theSpan: MKCoordinateSpan = MKCoordinateSpanMake(latDelta, longDelta)
         
         self.mapView.centerCoordinate = selectMapItem.placemark.coordinate
-        var testLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(selectMapItem.placemark.coordinate.latitude, selectMapItem.placemark.coordinate.longitude)
-        var theRegion:MKCoordinateRegion = MKCoordinateRegionMake(testLocation, theSpan)
+        let testLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(selectMapItem.placemark.coordinate.latitude, selectMapItem.placemark.coordinate.longitude)
+        let theRegion:MKCoordinateRegion = MKCoordinateRegionMake(testLocation, theSpan)
         self.mapView.setRegion(theRegion, animated: true)
-        self.mapView.addAnnotation(self.customizeAnnotation(testLocation, theTitle: selectMapItem.placemark.title, theSubtitle: "目标地点"))
+        self.mapView.addAnnotation(self.customizeAnnotation(testLocation, theTitle: selectMapItem.placemark.title!, theSubtitle: "目标地点"))
         self.addressMapItem = selectMapItem
     }
     
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        self.userLocation = manager.location.coordinate
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        self.userLocation = manager.location!.coordinate
         self.locationManager.stopUpdatingLocation()
         let latDelta: CLLocationDegrees = 0.01
-        var longDelta: CLLocationDegrees = 0.01
-        var theSpan: MKCoordinateSpan = MKCoordinateSpanMake(latDelta, longDelta)
-        var testLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(self.userLocation.latitude, self.userLocation.longitude)
-        var theRegion: MKCoordinateRegion = MKCoordinateRegionMake(testLocation, theSpan)
+        let longDelta: CLLocationDegrees = 0.01
+        let theSpan: MKCoordinateSpan = MKCoordinateSpanMake(latDelta, longDelta)
+        let testLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(self.userLocation.latitude, self.userLocation.longitude)
+        let theRegion: MKCoordinateRegion = MKCoordinateRegionMake(testLocation, theSpan)
         self.mapView.setRegion(theRegion, animated: true)
         self.mapView.addAnnotation(self.customizeAnnotation(testLocation, theTitle: "当前地点", theSubtitle: ""))
         self.addressMapItem = MKMapItem.mapItemForCurrentLocation()
     }
     
     func customizeAnnotation(theLocation:CLLocationCoordinate2D, theTitle:NSString, theSubtitle:NSString) -> MKPointAnnotation{
-        var testAnnotation = MKPointAnnotation()
+        let testAnnotation = MKPointAnnotation()
         testAnnotation.coordinate = theLocation
         testAnnotation.title = theTitle as String
         testAnnotation.subtitle = theSubtitle as String

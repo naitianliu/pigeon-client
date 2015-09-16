@@ -65,6 +65,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
                 imageData.writeToFile(filePath, atomically: true)
                 
                 let uploadRequest = AWSS3TransferManagerUploadRequest()
+                uploadRequest.ACL = AWSS3ObjectCannedACL.PublicRead
                 uploadRequest.body = NSURL(fileURLWithPath: filePath)
                 uploadRequest.key = fileName
                 uploadRequest.bucket = const_S3BucketName

@@ -15,7 +15,7 @@ let const_EventTypeArray = [
     ["img": "icon-weixin", "name": "查看提醒"],
 ]
 
-let const_CognitoRegionType = AWSRegionType.USWest1
+let const_CognitoRegionType = AWSRegionType.USEast1
 let const_DefaultServiceRegionType = AWSRegionType.USWest1
 let const_CognitoIdentityPoolId = "us-east-1:71d07ad0-24bb-4995-93ff-2719b2d0190b"
 let const_S3BucketName = "banyansocial"

@@ -261,7 +261,11 @@
                                                 <action selector="cancelButtonOnClick:" destination="ugF-Lg-wiq" id="EOg-9z-tih"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="发送" id="ekN-Px-72m"/>
+                                        <barButtonItem key="rightBarButtonItem" title="发送" id="ekN-Px-72m">
+                                            <connections>
+                                                <action selector="sendButtonOnClick:" destination="ugF-Lg-wiq" id="QOE-35-okg"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

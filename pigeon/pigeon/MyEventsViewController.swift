@@ -12,7 +12,7 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
     
     let myProfileURL:String = "http://tp3.sinaimg.cn/2525851962/180/40000907046/1"
     let newPosts = SampleDataEvent().newPosts
-    let EventTypeArray = Constant().EventTypeArray
+    let EventTypeArray = const_EventTypeArray
     
     var currentIndex = ["row": 0, "col": 0]
 

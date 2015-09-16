@@ -62,7 +62,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
             
         }
         
-        
+        let credentialsProvider = AWSCognitoCredentialsProvider(regionType: const_CognitoRegionType, identityPoolId: const_CognitoIdentityPoolId)
+        let configuration = AWSServiceConfiguration(region: const_DefaultServiceRegionType, credentialsProvider: credentialsProvider)
+        AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = configuration
         
         return true
     }

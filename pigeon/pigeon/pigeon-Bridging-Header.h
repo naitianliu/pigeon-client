@@ -14,5 +14,8 @@
 #import "WeiboSDK.h"
 #import "BROptionsButton.h"
 #import "HZPhotoBrowser.h"
+#import <AWSCore/AWSCore.h>
+#import <AWSS3/AWSS3.h>
+#import <AWSCognito/AWSCognito.h>
 
 #endif

@@ -65,6 +65,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
         let configuration = AWSServiceConfiguration(region: const_DefaultServiceRegionType, credentialsProvider: credentialsProvider)
         AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = configuration
         
+        UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Badge, .Alert, .Sound], categories: nil))
+        UIApplication.sharedApplication().registerForRemoteNotifications()
+        
         return true
     }
 
@@ -98,6 +101,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         // return WXApi.handleOpenURL(url, delegate: self)
         return WeiboSDK.handleOpenURL(url, delegate: self)
+    }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        let tokenStr = dataToHex(deviceToken)
+        print(tokenStr)
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        print(error)
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        print(userInfo)
+    }
+    
+    func dataToHex(data: NSData) -> String
+    {
+        var str: String = String()
+        let p = UnsafePointer<UInt8>(data.bytes)
+        let len = data.length
+        
+        for var i=0; i<len; ++i {
+            str += String(format: "%02.2X", p[i])
+        }
+        return str
     }
     
     /*

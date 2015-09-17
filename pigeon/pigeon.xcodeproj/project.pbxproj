@@ -905,6 +905,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.naitianliu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "326557ca-b987-439d-8f91-a6426c824127";
 				SWIFT_OBJC_BRIDGING_HEADER = "pigeon/pigeon-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = NO;
@@ -935,6 +936,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.naitianliu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "326557ca-b987-439d-8f91-a6426c824127";
 				SWIFT_OBJC_BRIDGING_HEADER = "pigeon/pigeon-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";

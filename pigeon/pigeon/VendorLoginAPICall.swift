@@ -11,7 +11,7 @@ import MBProgressHUD
 
 class VendorLoginAPICall:NSObject, BaseAPIHelperDelegate {
     
-    let url = "http://localhost:9000/user/vendor_login/"
+    let url = "http://192.168.102.44:9000/user/vendor_login/"
     
     var view:UIView!
     var vendorType:String!

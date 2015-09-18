@@ -9,11 +9,33 @@
 import UIKit
 
 class MainTabBarViewController: UITabBarController, BROptionButtonDelegate {
+    
+    let eventStoryboard:UIStoryboard = UIStoryboard(name: "Event", bundle: nil)
+    let contactStoryboard:UIStoryboard = UIStoryboard(name: "Contact", bundle: nil)
+    let historyStoryboard:UIStoryboard = UIStoryboard(name: "History", bundle: nil)
+    let meStoryboard:UIStoryboard = UIStoryboard(name: "Me", bundle: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        let eventNavigationController:UINavigationController = eventStoryboard.instantiateViewControllerWithIdentifier("EventNavigationController") as! UINavigationController
+        eventNavigationController.tabBarItem.title = "我的事件"
+        // eventNavigationController.tabBarItem.image = UIImage(named: "Apple")
+        let contactNavigationController:UINavigationController = contactStoryboard.instantiateViewControllerWithIdentifier("ContactNavigationController") as! UINavigationController
+        contactNavigationController.tabBarItem.title = "联系人"
+        // contactNavigationController.tabBarItem.image = UIImage(named: "Apple")
+        let historyNavigationController:UINavigationController = historyStoryboard.instantiateViewControllerWithIdentifier("HistoryNavigationController") as! UINavigationController
+        historyNavigationController.tabBarItem.title = "历史"
+        // historyNavigationController.tabBarItem.image = UIImage(named: "Apple")
+        let meNavigationController:UINavigationController = meStoryboard.instantiateViewControllerWithIdentifier("MeNavigationController") as! UINavigationController
+        meNavigationController.tabBarItem.title = "我"
+        // meNavigationController.tabBarItem.image = UIImage(named: "Apple")
+        
+        let middleViewController:UIViewController = UIViewController()
+        
+        self.setViewControllers([eventNavigationController, contactNavigationController, middleViewController, historyNavigationController, meNavigationController], animated: false)
         
         let brOptions:BROptionsButton = BROptionsButton(tabBar: self.tabBar, forItemIndex: 2, delegate: self)
         brOptions.setImage(UIImage(named: "Apple"), forBROptionsButtonState: BROptionsButtonStateNormal)
@@ -35,7 +57,7 @@ class MainTabBarViewController: UITabBarController, BROptionButtonDelegate {
         let index = item.index
         switch (index) {
         case 0:
-            let createTaskViewController:UIViewController = eventStoryboard.instantiateViewControllerWithIdentifier("CreateTaskViewController") as! UIViewController
+            let createTaskViewController:UIViewController = eventStoryboard.instantiateViewControllerWithIdentifier("CreateTaskViewController")
             createTaskViewController.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
             self.presentViewController(createTaskViewController, animated: true, completion: { () -> Void in
                 

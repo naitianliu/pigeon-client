@@ -27,6 +27,8 @@ class LocationTimeEditViewHelper: NSObject, EditLocationViewControllerDelegate {
     var locationLabel:UILabel!
     var timeLabel:UILabel!
     
+    var datetime:String?
+    
     var dateSelectionController:RMDateSelectionViewController!
     
     var locationTimeEditViewDelegate:LocationTimeEditViewDelegate?
@@ -104,6 +106,7 @@ class LocationTimeEditViewHelper: NSObject, EditLocationViewControllerDelegate {
             formatter.dateFormat = "yyyy-MM-dd hh:mm a"
             let datetime:String = formatter.stringFromDate((controller.contentView as! UIDatePicker).date)
             self.timeLabel.text = datetime
+            self.datetime = datetime
         }
         let cancelAction:RMAction = RMAction(title: "取消", style: RMActionStyle.Cancel) { (controller) -> Void in
             print("Cancelled")

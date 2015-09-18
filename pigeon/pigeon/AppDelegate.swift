@@ -15,10 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
     
     let authStoryBoard:UIStoryboard = UIStoryboard(name: "Auth", bundle: nil)
     let mainStoryBoard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-    let eventStoryboard:UIStoryboard = UIStoryboard(name: "Event", bundle: nil)
-    let contactStoryboard:UIStoryboard = UIStoryboard(name: "Contact", bundle: nil)
-    let historyStoryboard:UIStoryboard = UIStoryboard(name: "History", bundle: nil)
-    let meStoryboard:UIStoryboard = UIStoryboard(name: "Me", bundle: nil)
+    
     
     var authLoginViewController:UIViewController!
 
@@ -41,22 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
             self.window?.rootViewController = authLoginViewController
         } else {
             let mainTabBarViewController:UITabBarController = mainStoryBoard.instantiateViewControllerWithIdentifier("MainTabBarController") as! UITabBarController
-            let eventNavigationController:UINavigationController = eventStoryboard.instantiateViewControllerWithIdentifier("EventNavigationController") as! UINavigationController
-            eventNavigationController.tabBarItem.title = "我的事件"
-            // eventNavigationController.tabBarItem.image = UIImage(named: "Apple")
-            let contactNavigationController:UINavigationController = contactStoryboard.instantiateViewControllerWithIdentifier("ContactNavigationController") as! UINavigationController
-            contactNavigationController.tabBarItem.title = "联系人"
-            // contactNavigationController.tabBarItem.image = UIImage(named: "Apple")
-            let historyNavigationController:UINavigationController = historyStoryboard.instantiateViewControllerWithIdentifier("HistoryNavigationController") as! UINavigationController
-            historyNavigationController.tabBarItem.title = "历史"
-            // historyNavigationController.tabBarItem.image = UIImage(named: "Apple")
-            let meNavigationController:UINavigationController = meStoryboard.instantiateViewControllerWithIdentifier("MeNavigationController") as! UINavigationController
-            meNavigationController.tabBarItem.title = "我"
-            // meNavigationController.tabBarItem.image = UIImage(named: "Apple")
             
-            let middleViewController:UIViewController = UIViewController()
-            
-            mainTabBarViewController.setViewControllers([eventNavigationController, contactNavigationController, middleViewController, historyNavigationController, meNavigationController], animated: false)
             self.window?.rootViewController = mainTabBarViewController
             
         }

@@ -11,7 +11,7 @@ import MBProgressHUD
 
 class VendorLoginAPICall:NSObject, BaseAPIHelperDelegate {
     
-    let url = "http://192.168.102.44:9000/user/vendor_login/"
+    let url = "\(const_APIEndpoint)/user/vendor_login/"
     
     var view:UIView!
     var vendorType:String!
@@ -48,5 +48,9 @@ class VendorLoginAPICall:NSObject, BaseAPIHelperDelegate {
         print(token)
         NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(token), forKey: "token")
         MBProgressHUD.hideHUDForView(self.view, animated: true)
+        
+        let mainStoryBoard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainTabBarViewController:UITabBarController = mainStoryBoard.instantiateViewControllerWithIdentifier("MainTabBarController") as! UITabBarController
+        self.view.window?.rootViewController = mainTabBarViewController
     }
 }

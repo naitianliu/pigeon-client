@@ -11,7 +11,9 @@ import SZTextView
 import MapKit
 
 
-class CreateTaskViewController: UIViewController, LocationTimeEditViewDelegate {
+class CreateTaskViewController: UIViewController, LocationTimeEditViewDelegate, APIEventHelperDelegate {
+    
+    let apiUrl:String = "\(const_APIEndpoint)/main/create_new_event/"
     
     let kOFFSET_FOR_KEYBOARD:CGFloat = 20
     
@@ -22,6 +24,8 @@ class CreateTaskViewController: UIViewController, LocationTimeEditViewDelegate {
     
     var locationTimeEditViewHelper:LocationTimeEditViewHelper!
     var addMembersViewHelper:AddMembersViewHelper!
+    
+    var locationData:[String:AnyObject] = ["name": "unknown"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,15 +59,24 @@ class CreateTaskViewController: UIViewController, LocationTimeEditViewDelegate {
     
     func locationTimeReceiveLocation(mapItem: MKMapItem) {
         print(mapItem)
+        let locationName = mapItem.name
+        let x = mapItem.placemark.location?.coordinate.latitude
+        let y = mapItem.placemark.location?.coordinate.longitude
+        let coordination:[String] = [String(Double(x!)), String(Double(y!))]
+        self.locationData["name"] = locationName
+        self.locationData["coordination"] = coordination 
         self.locationTimeEditViewHelper.rootViewController = self
     }
     
-    
     @IBAction func sendButtonOnClick(sender: AnyObject) {
+        var requestData:[String: AnyObject] = [:]
+        requestData["description"] = self.descriptionTextView.text
+        requestData["location"] = self.locationData
+        requestData["time"] = self.locationTimeEditViewHelper.datetime
+        requestData["members"] = []
         
+        APIEventHelper(url:self.apiUrl, data: requestData, delegate: self).POST()
     }
-    
-    
     
     func keyboardShown(notification:NSNotification) {
         let info = notification.userInfo!
@@ -72,16 +85,16 @@ class CreateTaskViewController: UIViewController, LocationTimeEditViewDelegate {
         self.keyboardFrame = self.view.convertRect(rawFrame, fromView: nil)
         self.locationTimeEditViewHelper.adjustViewHeight(self.keyboardFrame.height)
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func beforeSendRequest() {
+        
     }
-    */
+    
+    func afterReceiveResponse(responseData: AnyObject) {
+        print(responseData)
+        self.dismissViewControllerAnimated(true) { () -> Void in
+            
+        }
+    }
 
 }

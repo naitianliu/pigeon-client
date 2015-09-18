@@ -34,6 +34,7 @@
 		462680D31BA4F50600656F81 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 462680D21BA4F50600656F81 /* libstdc++.dylib */; };
 		462680DB1BA7C60000656F81 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462680DA1BA7C60000656F81 /* CreatePostViewController.swift */; };
 		462680DD1BA7C85500656F81 /* CreatePostViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462680DC1BA7C85500656F81 /* CreatePostViewHelper.swift */; };
+		462FBA931BABAD9D00828156 /* APIEventHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462FBA921BABAD9D00828156 /* APIEventHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		4631638B1B902B9C00C6A30F /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 4631638A1B902B9C00C6A30F /* Podfile */; };
 		4651AAAE1B883F02005C2B67 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AAAD1B883F02005C2B67 /* UIKit.framework */; };
 		4651AAB01B883F12005C2B67 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AAAF1B883F12005C2B67 /* Foundation.framework */; };
@@ -121,6 +122,7 @@
 		462680D21BA4F50600656F81 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		462680DA1BA7C60000656F81 /* CreatePostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		462680DC1BA7C85500656F81 /* CreatePostViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostViewHelper.swift; sourceTree = "<group>"; };
+		462FBA921BABAD9D00828156 /* APIEventHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIEventHelper.swift; sourceTree = "<group>"; };
 		4631638A1B902B9C00C6A30F /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		4651AAAD1B883F02005C2B67 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4651AAAF1B883F12005C2B67 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -431,6 +433,7 @@
 		46BB01711B92753F0026CB6E /* API */ = {
 			isa = PBXGroup;
 			children = (
+				462FBA921BABAD9D00828156 /* APIEventHelper.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -748,6 +751,7 @@
 				46BB01831B92929A0026CB6E /* EventNavigationController.swift in Sources */,
 				462680781B9C1D1F00656F81 /* HZIndicatorView.m in Sources */,
 				46A5689F1B96BADB00FC63F7 /* TableViewHelper.swift in Sources */,
+				462FBA931BABAD9D00828156 /* APIEventHelper.swift in Sources */,
 				462680C31BA4F03C00656F81 /* PostDetailCellHelper.swift in Sources */,
 				46BB01AC1B93FE500026CB6E /* AddMembersViewHelper.swift in Sources */,
 				462680C71BA4F0C000656F81 /* SampleDataEvent.swift in Sources */,

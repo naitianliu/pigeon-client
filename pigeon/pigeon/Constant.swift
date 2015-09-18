@@ -8,6 +8,8 @@
 
 import Foundation
 
+let const_APIEndpoint = "http://localhost:9000"
+
 let const_EventTypeArray = [
     ["img": "icon-weixin", "name": "查看任务"],
     ["img": "icon-qq", "name": "查看活动"],

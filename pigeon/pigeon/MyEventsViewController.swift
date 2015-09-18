@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import SVPullToRefresh
 
-class MyEventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, HZPhotoBrowserDelegate {
+class MyEventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, HZPhotoBrowserDelegate, APIEventHelperDelegate {
+    
+    // let apiUrl:String = "\(const_APIEndpoint)/main/get_event_list/"
     
     let myProfileURL:String = "http://tp3.sinaimg.cn/2525851962/180/40000907046/1"
     let newPosts = SampleDataEvent().newPosts
@@ -18,17 +21,34 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
 
     @IBOutlet weak var tableView: UITableView!
     
+    var tableData:[AnyObject] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableData = self.newPosts
 
         // Do any additional setup after loading the view.
         print(self.tableView.backgroundColor)
         self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1), atScrollPosition: UITableViewScrollPosition.Top, animated: false)
+        
+        self.tableView.addPullToRefreshWithActionHandler { () -> Void in
+            // APIEventHelper(url: self.apiUrl, data: nil, delegate: self).GET()
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func beforeSendRequest() {
+        
+    }
+    
+    func afterReceiveResponse(responseData: AnyObject) {
+        self.tableData = responseData as! [AnyObject]
+        self.tableData = self.newPosts
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -39,9 +59,8 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
         if section == 0 {
             return 4
         } else {
-            return newPosts.count
+            return tableData.count
         }
-        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -63,7 +82,7 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
             cell.imageView?.image = UIImage(named: imgName)
         } else {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "MyEventCell")
-            let postInfo = newPosts[indexPath.row] as! [String:AnyObject]
+            let postInfo = self.tableData[indexPath.row] as! [String:AnyObject]
             let renderCellHelper = RenderEventCellHelper(view:self.view, postInfo:postInfo)
             renderCellHelper.setCell(cell, view: self.view)
             let eventButton:UIButton = renderCellHelper.eventButton
@@ -116,7 +135,7 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
     func pictureButton0OnClick(sender:UIButton!) {
         self.currentIndex["row"] = sender.tag
         self.currentIndex["col"] = 0
-        var postInfo = newPosts[self.currentIndex["row"]!] as! [String:AnyObject]
+        var postInfo = self.tableData[self.currentIndex["row"]!] as! [String:AnyObject]
         let pictureUrls = postInfo["pictureUrls"] as! [String]
         let browserVC:HZPhotoBrowser = HZPhotoBrowser()
         browserVC.sourceImagesContainerView = self.view
@@ -129,7 +148,7 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
     func pictureButton1OnClick(sender:UIButton!) {
         self.currentIndex["row"] = sender.tag
         self.currentIndex["col"] = 1
-        var postInfo = newPosts[self.currentIndex["row"]!] as! [String:AnyObject]
+        var postInfo = self.tableData[self.currentIndex["row"]!] as! [String:AnyObject]
         let pictureUrls = postInfo["pictureUrls"] as! [String]
         let browserVC:HZPhotoBrowser = HZPhotoBrowser()
         browserVC.sourceImagesContainerView = self.view
@@ -142,7 +161,7 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
     func pictureButton2OnClick(sender:UIButton!) {
         self.currentIndex["row"] = sender.tag
         self.currentIndex["col"] = 2
-        var postInfo = newPosts[self.currentIndex["row"]!] as! [String:AnyObject]
+        var postInfo = self.tableData[self.currentIndex["row"]!] as! [String:AnyObject]
         let pictureUrls = postInfo["pictureUrls"] as! [String]
         let browserVC:HZPhotoBrowser = HZPhotoBrowser()
         browserVC.sourceImagesContainerView = self.view
@@ -156,7 +175,7 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
         if indexPath.section == 0 {
             return 46
         } else {
-            let postInfo = newPosts[indexPath.row] as! [String:AnyObject]
+            let postInfo = self.tableData[indexPath.row] as! [String:AnyObject]
             let renderCellHelper = RenderEventCellHelper(view:self.view, postInfo:postInfo)
             let cellHeight:CGFloat = renderCellHelper.getCellHeight()
             return cellHeight
@@ -186,7 +205,7 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func photoBrowser(browser: HZPhotoBrowser!, highQualityImageURLForIndex index: Int) -> NSURL! {
-        var postInfo = newPosts[self.currentIndex["row"]!] as! [String:AnyObject]
+        var postInfo = self.tableData[self.currentIndex["row"]!] as! [String:AnyObject]
         var pictureUrls = postInfo["pictureUrls"] as! [String]
         return NSURL(string: pictureUrls[index])
     }

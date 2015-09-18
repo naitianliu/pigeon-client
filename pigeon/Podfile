@@ -14,5 +14,6 @@ pod 'STTweetLabel', '~> 3.1.21'
 pod 'AWSCore'
 pod 'AWSS3'
 pod 'AWSCognito'
+pod 'SVPullToRefresh'
 
 link_with 'pigeon'

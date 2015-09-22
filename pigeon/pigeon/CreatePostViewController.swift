@@ -10,11 +10,15 @@ import UIKit
 import SZTextView
 import AWSS3
 
-class CreatePostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class CreatePostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, APIEventHelperDelegate {
 
+    let apiUrl:String = "\(const_APIEndpoint)/main/create_new_post/"
+    
     @IBOutlet weak var textView: SZTextView!
     
     var pickerController:UIImagePickerController!
+    
+    var eventId:String = ""
     
     var imgArray:[UIImage]!
     
@@ -52,6 +56,14 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         // Dispose of any resources that can be recreated.
     }
     
+    func beforeSendRequest() {
+        
+    }
+    
+    func afterReceiveResponse(responseData: AnyObject) {
+        
+    }
+    
     @IBAction func sendButtonOnClick(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
             var imgUrls:[String] = []
@@ -74,6 +86,13 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
                 self.upload(uploadRequest)
                 imgUrls.append(const_S3URL + fileName)
             }
+            let event_id = ""
+            let description = self.textView.text
+            var requestData:[String: AnyObject] = [:]
+            requestData["event_id"] = event_id
+            requestData["description"] = description
+            requestData["img_urls"] = imgUrls
+            APIEventHelper(url: self.apiUrl, data: requestData, delegate: self).POST()
         })
     }
     

@@ -35,6 +35,9 @@
 		462680DB1BA7C60000656F81 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462680DA1BA7C60000656F81 /* CreatePostViewController.swift */; };
 		462680DD1BA7C85500656F81 /* CreatePostViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462680DC1BA7C85500656F81 /* CreatePostViewHelper.swift */; };
 		462FBA931BABAD9D00828156 /* APIEventHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462FBA921BABAD9D00828156 /* APIEventHelper.swift */; settings = {ASSET_TAGS = (); }; };
+		462FBA971BB0F90300828156 /* GroupContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462FBA961BB0F90300828156 /* GroupContactViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		462FBA991BB0FC1700828156 /* CAPSPageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462FBA981BB0FC1700828156 /* CAPSPageMenu.swift */; settings = {ASSET_TAGS = (); }; };
+		462FBA9B1BB0FE2F00828156 /* SingleContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462FBA9A1BB0FE2F00828156 /* SingleContactViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		4631638B1B902B9C00C6A30F /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 4631638A1B902B9C00C6A30F /* Podfile */; };
 		4651AAAE1B883F02005C2B67 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AAAD1B883F02005C2B67 /* UIKit.framework */; };
 		4651AAB01B883F12005C2B67 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AAAF1B883F12005C2B67 /* Foundation.framework */; };
@@ -123,6 +126,9 @@
 		462680DA1BA7C60000656F81 /* CreatePostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		462680DC1BA7C85500656F81 /* CreatePostViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostViewHelper.swift; sourceTree = "<group>"; };
 		462FBA921BABAD9D00828156 /* APIEventHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIEventHelper.swift; sourceTree = "<group>"; };
+		462FBA961BB0F90300828156 /* GroupContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupContactViewController.swift; sourceTree = "<group>"; };
+		462FBA981BB0FC1700828156 /* CAPSPageMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAPSPageMenu.swift; sourceTree = "<group>"; };
+		462FBA9A1BB0FE2F00828156 /* SingleContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleContactViewController.swift; sourceTree = "<group>"; };
 		4631638A1B902B9C00C6A30F /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		4651AAAD1B883F02005C2B67 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4651AAAF1B883F12005C2B67 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -370,6 +376,7 @@
 		46A79CE41B8828AD00B60B43 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				462FBA981BB0FC1700828156 /* CAPSPageMenu.swift */,
 				462680601B9C1B2A00656F81 /* HZImagesGroupView */,
 				460909631B904E13006FF85D /* WeiboSDK.bundle */,
 				46BB01771B928DB60026CB6E /* BROptionsButton */,
@@ -477,6 +484,8 @@
 				46A568A51B96DD8900FC63F7 /* AddContactTableViewController.swift */,
 				469540041B980A6C00E0F4D0 /* VendorContactViewController.swift */,
 				469540061B982DC200E0F4D0 /* ContactSearchResultsTableViewController.swift */,
+				462FBA961BB0F90300828156 /* GroupContactViewController.swift */,
+				462FBA9A1BB0FE2F00828156 /* SingleContactViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -729,9 +738,11 @@
 				46A5689D1B96A10F00FC63F7 /* GroupViewHelper.swift in Sources */,
 				46A568991B96969500FC63F7 /* ContactViewController.swift in Sources */,
 				46BB01911B92A09E0026CB6E /* HistoryNavigationController.swift in Sources */,
+				462FBA971BB0F90300828156 /* GroupContactViewController.swift in Sources */,
 				46BB018A1B929D2E0026CB6E /* ContactNavigationController.swift in Sources */,
 				46BB01981B92A2930026CB6E /* MeNavigationController.swift in Sources */,
 				46BB01A61B9397D30026CB6E /* EditLocationViewController.swift in Sources */,
+				462FBA991BB0FC1700828156 /* CAPSPageMenu.swift in Sources */,
 				469540071B982DC200E0F4D0 /* ContactSearchResultsTableViewController.swift in Sources */,
 				4695400F1B994A0100E0F4D0 /* RenderEventCellHelper.swift in Sources */,
 				469540051B980A6C00E0F4D0 /* VendorContactViewController.swift in Sources */,
@@ -750,6 +761,7 @@
 				462680901B9D5CE800656F81 /* Constant.swift in Sources */,
 				46BB01831B92929A0026CB6E /* EventNavigationController.swift in Sources */,
 				462680781B9C1D1F00656F81 /* HZIndicatorView.m in Sources */,
+				462FBA9B1BB0FE2F00828156 /* SingleContactViewController.swift in Sources */,
 				46A5689F1B96BADB00FC63F7 /* TableViewHelper.swift in Sources */,
 				462FBA931BABAD9D00828156 /* APIEventHelper.swift in Sources */,
 				462680C31BA4F03C00656F81 /* PostDetailCellHelper.swift in Sources */,

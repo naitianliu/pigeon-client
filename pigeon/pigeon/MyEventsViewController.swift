@@ -18,6 +18,7 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
     let EventTypeArray = const_EventTypeArray
     
     var currentIndex = ["row": 0, "col": 0]
+    var currentEventId:String = ""
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -126,7 +127,8 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "EventDetailSegue" {
-            
+            let vc:EventDetailViewController = segue.destinationViewController as! EventDetailViewController
+            vc.eventId = self.currentEventId
         } else if segue.identifier == "PostDetailSegue" {
             
         }
@@ -197,7 +199,8 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         self.performSegueWithIdentifier("PostDetailSegue", sender: nil)
-
+        let postInfo = self.tableData[indexPath.row] as! [String:AnyObject]
+        self.currentEventId = postInfo["eventId"] as! String
     }
     
     func photoBrowser(browser: HZPhotoBrowser!, placeholderImageForIndex index: Int) -> UIImage! {

@@ -15,6 +15,8 @@ class EventDetailViewController: UIViewController, UITableViewDelegate, UITableV
     let eventPosts = SampleDataEvent().eventPosts
     var eventDetailViewHelper:EventDetailViewHelper!
     
+    var eventId:String = ""
+    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     override func viewDidLoad() {
@@ -33,8 +35,9 @@ class EventDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func createPostButtonOnClick(sender:UIButton!) {
-        let createPostViewController:UIViewController = (self.storyboard?.instantiateViewControllerWithIdentifier("CreatePostViewController"))!
+        let createPostViewController:CreatePostViewController = self.storyboard?.instantiateViewControllerWithIdentifier("CreatePostViewController") as! CreatePostViewController
         createPostViewController.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
+        createPostViewController.eventId = self.eventId
         self.presentViewController(createPostViewController, animated: true) { () -> Void in
             
         }

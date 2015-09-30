@@ -7,18 +7,23 @@
 //
 
 import UIKit
+import MBProgressHUD
 
-class AddContactTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
+class AddContactTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate, APIEventHelperDelegate {
 
+    let url_DisplayUserList = "\(const_APIEndpoint)/contacts/person/display_user_list_by_keyword/"
+    
     var searchController:UISearchController!
-    var searchResults = ["test1", "test2", "test3", "test4"]
+    var searchResultsController:UINavigationController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let searchResultsController:UINavigationController = self.storyboard?.instantiateViewControllerWithIdentifier("SearchContactNavigationController") as! UINavigationController
+        self.searchResultsController = self.storyboard?.instantiateViewControllerWithIdentifier("SearchContactNavigationController") as! UINavigationController
         self.searchController = UISearchController(searchResultsController: searchResultsController)
         self.searchController.searchResultsUpdater = self
         self.searchController.searchBar.delegate = self
+        self.searchController.searchBar.placeholder = "板眼ID/昵称"
         self.searchController.searchBar.frame = CGRect(x: self.searchController.searchBar.frame.origin.x, y: self.searchController.searchBar.frame.origin.y, width: self.searchController.searchBar.frame.size.width, height: 44.0)
         self.tableView.tableHeaderView = self.searchController.searchBar
     }
@@ -136,12 +141,31 @@ class AddContactTableViewController: UITableViewController, UISearchResultsUpdat
     }
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        if (self.searchController.searchResultsController != nil) {
-            let navController:UINavigationController = self.searchController.searchResultsController as! UINavigationController
-            let vc:ContactSearchResultsTableViewController = navController.topViewController as! ContactSearchResultsTableViewController
-            vc.searchResults = self.searchResults
-            vc.tableView.reloadData()
-        }
+        
     }
     
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        print("clicked00")
+        var data:[String:AnyObject] = [:]
+        data["keyword"] = searchBar.text
+        APIEventHelper(url: url_DisplayUserList, data: data, delegate: self).GET()
+    }
+    
+    func beforeSendRequest() {
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+    }
+    
+    func afterReceiveResponse(responseData: AnyObject) {
+        let userListDict:[String:AnyObject] = responseData as! [String:AnyObject]
+        let userListById:[AnyObject] = userListDict["user_list_by_id"]! as! [AnyObject]
+        let userListByNickname:[AnyObject] = userListDict["user_list_by_nickname"]! as! [AnyObject]
+        let userListArray = [userListById, userListByNickname]
+        if (self.searchController.searchResultsController != nil) {
+            print(123)
+            let vc:ContactSearchViewController = self.searchResultsController.topViewController as! ContactSearchViewController
+            vc.userListArray = userListArray
+            vc.tableView.reloadData()
+        }
+        MBProgressHUD.hideHUDForView(self.view, animated: true)
+    }
 }

@@ -15,6 +15,9 @@
 		460909641B904E13006FF85D /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 460909631B904E13006FF85D /* WeiboSDK.bundle */; };
 		460909681B92438A006FF85D /* BaseAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460909671B92438A006FF85D /* BaseAPIHelper.swift */; };
 		4609096B1B92584B006FF85D /* VendorLoginAPICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4609096A1B92584B006FF85D /* VendorLoginAPICall.swift */; };
+		461AD2871BB23923005EFF13 /* SampleDataContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461AD2861BB23923005EFF13 /* SampleDataContact.swift */; settings = {ASSET_TAGS = (); }; };
+		461AD28F1BB23D98005EFF13 /* ChineseString.m in Sources */ = {isa = PBXBuildFile; fileRef = 461AD28C1BB23D98005EFF13 /* ChineseString.m */; settings = {ASSET_TAGS = (); }; };
+		461AD2901BB23D98005EFF13 /* pinyin.c in Sources */ = {isa = PBXBuildFile; fileRef = 461AD28D1BB23D98005EFF13 /* pinyin.c */; settings = {ASSET_TAGS = (); }; };
 		462680781B9C1D1F00656F81 /* HZIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 462680711B9C1D1F00656F81 /* HZIndicatorView.m */; };
 		462680791B9C1D1F00656F81 /* HZPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 462680731B9C1D1F00656F81 /* HZPhotoBrowser.m */; };
 		4626807A1B9C1D1F00656F81 /* HZPhotoBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 462680761B9C1D1F00656F81 /* HZPhotoBrowserView.m */; };
@@ -37,7 +40,7 @@
 		462FBA931BABAD9D00828156 /* APIEventHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462FBA921BABAD9D00828156 /* APIEventHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		462FBA971BB0F90300828156 /* GroupContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462FBA961BB0F90300828156 /* GroupContactViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		462FBA991BB0FC1700828156 /* CAPSPageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462FBA981BB0FC1700828156 /* CAPSPageMenu.swift */; settings = {ASSET_TAGS = (); }; };
-		462FBA9B1BB0FE2F00828156 /* SingleContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462FBA9A1BB0FE2F00828156 /* SingleContactViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		462FBA9B1BB0FE2F00828156 /* PersonContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462FBA9A1BB0FE2F00828156 /* PersonContactViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		4631638B1B902B9C00C6A30F /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 4631638A1B902B9C00C6A30F /* Podfile */; };
 		4651AAAE1B883F02005C2B67 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AAAD1B883F02005C2B67 /* UIKit.framework */; };
 		4651AAB01B883F12005C2B67 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AAAF1B883F12005C2B67 /* Foundation.framework */; };
@@ -46,8 +49,8 @@
 		4651AAB81B88407F005C2B67 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AAB71B88407F005C2B67 /* SystemConfiguration.framework */; };
 		4651AABA1B88408F005C2B67 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AAB91B88408F005C2B67 /* libz.dylib */; };
 		4651AABC1B884099005C2B67 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AABB1B884099005C2B67 /* libsqlite3.0.dylib */; };
+		4660E3771BBB81B400F3773D /* ContactSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4660E3761BBB81B400F3773D /* ContactSearchViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		469540051B980A6C00E0F4D0 /* VendorContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469540041B980A6C00E0F4D0 /* VendorContactViewController.swift */; };
-		469540071B982DC200E0F4D0 /* ContactSearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469540061B982DC200E0F4D0 /* ContactSearchResultsTableViewController.swift */; };
 		4695400D1B993FDC00E0F4D0 /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4695400C1B993FDC00E0F4D0 /* MyEventsViewController.swift */; };
 		4695400F1B994A0100E0F4D0 /* RenderEventCellHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4695400E1B994A0100E0F4D0 /* RenderEventCellHelper.swift */; };
 		46A568991B96969500FC63F7 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A568981B96969500FC63F7 /* ContactViewController.swift */; };
@@ -100,6 +103,11 @@
 		460909651B9242A6006FF85D /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Config.xcconfig; path = ../Config.xcconfig; sourceTree = "<group>"; };
 		460909671B92438A006FF85D /* BaseAPIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPIHelper.swift; sourceTree = "<group>"; };
 		4609096A1B92584B006FF85D /* VendorLoginAPICall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorLoginAPICall.swift; sourceTree = "<group>"; };
+		461AD2861BB23923005EFF13 /* SampleDataContact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleDataContact.swift; sourceTree = "<group>"; };
+		461AD28B1BB23D98005EFF13 /* ChineseString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseString.h; sourceTree = "<group>"; };
+		461AD28C1BB23D98005EFF13 /* ChineseString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseString.m; sourceTree = "<group>"; };
+		461AD28D1BB23D98005EFF13 /* pinyin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pinyin.c; sourceTree = "<group>"; };
+		461AD28E1BB23D98005EFF13 /* pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pinyin.h; sourceTree = "<group>"; };
 		462680701B9C1D1F00656F81 /* HZIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZIndicatorView.h; sourceTree = "<group>"; };
 		462680711B9C1D1F00656F81 /* HZIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZIndicatorView.m; sourceTree = "<group>"; };
 		462680721B9C1D1F00656F81 /* HZPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZPhotoBrowser.h; sourceTree = "<group>"; };
@@ -128,7 +136,7 @@
 		462FBA921BABAD9D00828156 /* APIEventHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIEventHelper.swift; sourceTree = "<group>"; };
 		462FBA961BB0F90300828156 /* GroupContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupContactViewController.swift; sourceTree = "<group>"; };
 		462FBA981BB0FC1700828156 /* CAPSPageMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAPSPageMenu.swift; sourceTree = "<group>"; };
-		462FBA9A1BB0FE2F00828156 /* SingleContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleContactViewController.swift; sourceTree = "<group>"; };
+		462FBA9A1BB0FE2F00828156 /* PersonContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonContactViewController.swift; sourceTree = "<group>"; };
 		4631638A1B902B9C00C6A30F /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		4651AAAD1B883F02005C2B67 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4651AAAF1B883F12005C2B67 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -139,8 +147,8 @@
 		4651AAB71B88407F005C2B67 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4651AAB91B88408F005C2B67 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		4651AABB1B884099005C2B67 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		4660E3761BBB81B400F3773D /* ContactSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactSearchViewController.swift; sourceTree = "<group>"; };
 		469540041B980A6C00E0F4D0 /* VendorContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorContactViewController.swift; sourceTree = "<group>"; };
-		469540061B982DC200E0F4D0 /* ContactSearchResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactSearchResultsTableViewController.swift; sourceTree = "<group>"; };
 		4695400C1B993FDC00E0F4D0 /* MyEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
 		4695400E1B994A0100E0F4D0 /* RenderEventCellHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderEventCellHelper.swift; sourceTree = "<group>"; };
 		46A568981B96969500FC63F7 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
@@ -234,6 +242,25 @@
 			name = API;
 			sourceTree = "<group>";
 		};
+		461AD2851BB238F4005EFF13 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				461AD2861BB23923005EFF13 /* SampleDataContact.swift */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
+		461AD28A1BB23D79005EFF13 /* ChineseSorting */ = {
+			isa = PBXGroup;
+			children = (
+				461AD28B1BB23D98005EFF13 /* ChineseString.h */,
+				461AD28C1BB23D98005EFF13 /* ChineseString.m */,
+				461AD28D1BB23D98005EFF13 /* pinyin.c */,
+				461AD28E1BB23D98005EFF13 /* pinyin.h */,
+			);
+			name = ChineseSorting;
+			sourceTree = "<group>";
+		};
 		462680601B9C1B2A00656F81 /* HZImagesGroupView */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +274,15 @@
 				462680771B9C1D1F00656F81 /* whiteplaceholder.png */,
 			);
 			name = HZImagesGroupView;
+			sourceTree = "<group>";
+		};
+		4660E3781BBB8CC600F3773D /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				46A568A51B96DD8900FC63F7 /* AddContactTableViewController.swift */,
+				4660E3761BBB81B400F3773D /* ContactSearchViewController.swift */,
+			);
+			name = Add;
 			sourceTree = "<group>";
 		};
 		469540081B99399600E0F4D0 /* Model */ = {
@@ -376,6 +412,7 @@
 		46A79CE41B8828AD00B60B43 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				461AD28A1BB23D79005EFF13 /* ChineseSorting */,
 				462FBA981BB0FC1700828156 /* CAPSPageMenu.swift */,
 				462680601B9C1B2A00656F81 /* HZImagesGroupView */,
 				460909631B904E13006FF85D /* WeiboSDK.bundle */,
@@ -467,6 +504,7 @@
 		46BB01841B929B320026CB6E /* Contact */ = {
 			isa = PBXGroup;
 			children = (
+				461AD2851BB238F4005EFF13 /* Other */,
 				469540081B99399600E0F4D0 /* Model */,
 				46BB01851B929B440026CB6E /* Controller */,
 				46BB01861B929B510026CB6E /* View */,
@@ -477,15 +515,14 @@
 		46BB01851B929B440026CB6E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4660E3781BBB8CC600F3773D /* Add */,
 				46BB01891B929D2E0026CB6E /* ContactNavigationController.swift */,
 				46A568981B96969500FC63F7 /* ContactViewController.swift */,
 				46A5689C1B96A10F00FC63F7 /* GroupViewHelper.swift */,
 				46A5689E1B96BADB00FC63F7 /* TableViewHelper.swift */,
-				46A568A51B96DD8900FC63F7 /* AddContactTableViewController.swift */,
 				469540041B980A6C00E0F4D0 /* VendorContactViewController.swift */,
-				469540061B982DC200E0F4D0 /* ContactSearchResultsTableViewController.swift */,
 				462FBA961BB0F90300828156 /* GroupContactViewController.swift */,
-				462FBA9A1BB0FE2F00828156 /* SingleContactViewController.swift */,
+				462FBA9A1BB0FE2F00828156 /* PersonContactViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -743,9 +780,9 @@
 				46BB01981B92A2930026CB6E /* MeNavigationController.swift in Sources */,
 				46BB01A61B9397D30026CB6E /* EditLocationViewController.swift in Sources */,
 				462FBA991BB0FC1700828156 /* CAPSPageMenu.swift in Sources */,
-				469540071B982DC200E0F4D0 /* ContactSearchResultsTableViewController.swift in Sources */,
 				4695400F1B994A0100E0F4D0 /* RenderEventCellHelper.swift in Sources */,
 				469540051B980A6C00E0F4D0 /* VendorContactViewController.swift in Sources */,
+				461AD2901BB23D98005EFF13 /* pinyin.c in Sources */,
 				4626808C1B9D03B200656F81 /* EventDetailViewHelper.swift in Sources */,
 				4695400D1B993FDC00E0F4D0 /* MyEventsViewController.swift in Sources */,
 				46A79CB41B8823AB00B60B43 /* AppDelegate.swift in Sources */,
@@ -754,17 +791,20 @@
 				462680DB1BA7C60000656F81 /* CreatePostViewController.swift in Sources */,
 				4626808E1B9D294A00656F81 /* EventPostCellHelper.swift in Sources */,
 				462680CD1BA4F1BC00656F81 /* BROptionsButton.m in Sources */,
+				461AD28F1BB23D98005EFF13 /* ChineseString.m in Sources */,
 				462680791B9C1D1F00656F81 /* HZPhotoBrowser.m in Sources */,
+				4660E3771BBB81B400F3773D /* ContactSearchViewController.swift in Sources */,
 				46BB01741B9276030026CB6E /* MainTabBarViewController.swift in Sources */,
 				462680CC1BA4F1BC00656F81 /* BROptionItem.m in Sources */,
 				46A79CE21B88283000B60B43 /* AuthLoginViewController.swift in Sources */,
 				462680901B9D5CE800656F81 /* Constant.swift in Sources */,
 				46BB01831B92929A0026CB6E /* EventNavigationController.swift in Sources */,
 				462680781B9C1D1F00656F81 /* HZIndicatorView.m in Sources */,
-				462FBA9B1BB0FE2F00828156 /* SingleContactViewController.swift in Sources */,
+				462FBA9B1BB0FE2F00828156 /* PersonContactViewController.swift in Sources */,
 				46A5689F1B96BADB00FC63F7 /* TableViewHelper.swift in Sources */,
 				462FBA931BABAD9D00828156 /* APIEventHelper.swift in Sources */,
 				462680C31BA4F03C00656F81 /* PostDetailCellHelper.swift in Sources */,
+				461AD2871BB23923005EFF13 /* SampleDataContact.swift in Sources */,
 				46BB01AC1B93FE500026CB6E /* AddMembersViewHelper.swift in Sources */,
 				462680C71BA4F0C000656F81 /* SampleDataEvent.swift in Sources */,
 				462680C11BA4F02F00656F81 /* PostDetailViewController.swift in Sources */,

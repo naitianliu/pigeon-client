@@ -62,6 +62,10 @@ class MainTabBarViewController: UITabBarController, BROptionButtonDelegate {
             self.presentViewController(createTaskViewController, animated: true, completion: { () -> Void in
                 
             })
+        case 1:
+            let createReminderViewController:UIViewController = eventStoryboard.instantiateViewControllerWithIdentifier("CreateReminderViewController")
+            createReminderViewController.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
+            self.presentViewController(createReminderViewController, animated: true, completion: nil)
         default:
             break;
         }

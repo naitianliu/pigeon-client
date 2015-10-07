@@ -9,12 +9,10 @@
 import UIKit
 import SVPullToRefresh
 
-class MyEventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, HZPhotoBrowserDelegate, APIEventHelperDelegate {
+class MyEventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, APIEventHelperDelegate {
     
-    // let apiUrl:String = "\(const_APIEndpoint)/main/get_event_list/"
+    let apiUrl:String = "\(const_APIEndpoint)/main/event/list/updated_events/"
     
-    let myProfileURL:String = "http://tp3.sinaimg.cn/2525851962/180/40000907046/1"
-    let newPosts = SampleDataEvent().newPosts
     let EventTypeArray = const_EventTypeArray
     
     var currentIndex = ["row": 0, "col": 0]
@@ -26,15 +24,12 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.tableData = self.newPosts
 
         // Do any additional setup after loading the view.
-        print(self.tableView.backgroundColor)
-        self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1), atScrollPosition: UITableViewScrollPosition.Top, animated: false)
+        // self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1), atScrollPosition: UITableViewScrollPosition.Top, animated: false)
         
         self.tableView.addPullToRefreshWithActionHandler { () -> Void in
-            // APIEventHelper(url: self.apiUrl, data: nil, delegate: self).GET()
+            APIEventHelper(url: self.apiUrl, data: nil, delegate: self).GET()
         }
     }
 
@@ -48,8 +43,9 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func afterReceiveResponse(responseData: AnyObject) {
-        self.tableData = responseData as! [AnyObject]
-        self.tableData = self.newPosts
+        self.tableData = responseData["result"] as! [AnyObject]
+        self.tableView.reloadData()
+        self.tableView.pullToRefreshView.stopAnimating()
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -65,13 +61,6 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        /*
-        var cell = tableView.dequeueReusableCellWithIdentifier("MyEventCell", forIndexPath: indexPath) as? UITableViewCell
-        
-        if cell == nil {
-            print("cell null")
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "MyEventCell")
-        }*/
         
         var cell:UITableViewCell!
         
@@ -83,103 +72,20 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
             cell.imageView?.image = UIImage(named: imgName)
         } else {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "MyEventCell")
-            let postInfo = self.tableData[indexPath.row] as! [String:AnyObject]
-            let renderCellHelper = RenderEventCellHelper(view:self.view, postInfo:postInfo)
-            renderCellHelper.setCell(cell, view: self.view)
-            let eventButton:UIButton = renderCellHelper.eventButton
-            eventButton.tag = indexPath.row
-            eventButton.addTarget(self, action: "eventButtonPressDown:", forControlEvents: UIControlEvents.TouchDown)
-            eventButton.addTarget(self, action: "eventButtonOnClick:", forControlEvents: UIControlEvents.TouchUpInside)
-            var pictureButtonArray:[UIButton] = renderCellHelper.pictureButtonArray
-            if pictureButtonArray.count == 1 {
-                pictureButtonArray[0].addTarget(self, action: "pictureButton0OnClick:", forControlEvents: UIControlEvents.TouchUpInside)
-                pictureButtonArray[0].tag = indexPath.row
-            } else if pictureButtonArray.count == 2 {
-                pictureButtonArray[0].addTarget(self, action: "pictureButton0OnClick:", forControlEvents: UIControlEvents.TouchUpInside)
-                pictureButtonArray[0].tag = indexPath.row
-                pictureButtonArray[1].addTarget(self, action: "pictureButton1OnClick:", forControlEvents: UIControlEvents.TouchUpInside)
-                pictureButtonArray[1].tag = indexPath.row
-            } else if pictureButtonArray.count == 3 {
-                pictureButtonArray[0].addTarget(self, action: "pictureButton0OnClick:", forControlEvents: UIControlEvents.TouchUpInside)
-                pictureButtonArray[0].tag = indexPath.row
-                pictureButtonArray[1].addTarget(self, action: "pictureButton1OnClick:", forControlEvents: UIControlEvents.TouchUpInside)
-                pictureButtonArray[1].tag = indexPath.row
-                pictureButtonArray[2].addTarget(self, action: "pictureButton2OnClick:", forControlEvents: UIControlEvents.TouchUpInside)
-                pictureButtonArray[2].tag = indexPath.row
-            }
+            let eventInfo = self.tableData[indexPath.row] as! [String:AnyObject]
+            ReminderCellViewHelper(rootViewController: self, eventInfo: eventInfo).setupCell(cell)
         }
         
         return cell
-    }
-    
-    func eventButtonPressDown(sender:UIButton!) {
-        sender.backgroundColor = UIColor.lightGrayColor()
-        sender.alpha = 0.3
-    }
-    
-    func eventButtonOnClick(sender:UIButton!) {
-        let index = sender.tag
-        print("test \(index)")
-        sender.backgroundColor = UIColor.clearColor()
-        
-        self.performSegueWithIdentifier("EventDetailSegue", sender: self)
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "EventDetailSegue" {
-            let vc:EventDetailViewController = segue.destinationViewController as! EventDetailViewController
-            vc.eventId = self.currentEventId
-        } else if segue.identifier == "PostDetailSegue" {
-            
-        }
-    }
-    
-    func pictureButton0OnClick(sender:UIButton!) {
-        self.currentIndex["row"] = sender.tag
-        self.currentIndex["col"] = 0
-        var postInfo = self.tableData[self.currentIndex["row"]!] as! [String:AnyObject]
-        let pictureUrls = postInfo["pictureUrls"] as! [String]
-        let browserVC:HZPhotoBrowser = HZPhotoBrowser()
-        browserVC.sourceImagesContainerView = self.view
-        browserVC.imageCount = pictureUrls.count
-        browserVC.currentImageIndex = 0
-        browserVC.delegate = self
-        browserVC.show()
-    }
-    
-    func pictureButton1OnClick(sender:UIButton!) {
-        self.currentIndex["row"] = sender.tag
-        self.currentIndex["col"] = 1
-        var postInfo = self.tableData[self.currentIndex["row"]!] as! [String:AnyObject]
-        let pictureUrls = postInfo["pictureUrls"] as! [String]
-        let browserVC:HZPhotoBrowser = HZPhotoBrowser()
-        browserVC.sourceImagesContainerView = self.view
-        browserVC.imageCount = pictureUrls.count
-        browserVC.currentImageIndex = 1
-        browserVC.delegate = self
-        browserVC.show()
-    }
-    
-    func pictureButton2OnClick(sender:UIButton!) {
-        self.currentIndex["row"] = sender.tag
-        self.currentIndex["col"] = 2
-        var postInfo = self.tableData[self.currentIndex["row"]!] as! [String:AnyObject]
-        let pictureUrls = postInfo["pictureUrls"] as! [String]
-        let browserVC:HZPhotoBrowser = HZPhotoBrowser()
-        browserVC.sourceImagesContainerView = self.view
-        browserVC.imageCount = pictureUrls.count
-        browserVC.currentImageIndex = 2
-        browserVC.delegate = self
-        browserVC.show()
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 0 {
             return 46
         } else {
-            let postInfo = self.tableData[indexPath.row] as! [String:AnyObject]
-            let renderCellHelper = RenderEventCellHelper(view:self.view, postInfo:postInfo)
-            let cellHeight:CGFloat = renderCellHelper.getCellHeight()
+            let eventInfo = self.tableData[indexPath.row] as! [String:AnyObject]
+            let cellHelper = ReminderCellViewHelper(rootViewController: self, eventInfo: eventInfo)
+            let cellHeight:CGFloat = cellHelper.getCellHeight()
             return cellHeight
         }
     }
@@ -202,15 +108,4 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
         let postInfo = self.tableData[indexPath.row] as! [String:AnyObject]
         self.currentEventId = postInfo["eventId"] as! String
     }
-    
-    func photoBrowser(browser: HZPhotoBrowser!, placeholderImageForIndex index: Int) -> UIImage! {
-        return UIImage(named: "Apple")
-    }
-    
-    func photoBrowser(browser: HZPhotoBrowser!, highQualityImageURLForIndex index: Int) -> NSURL! {
-        var postInfo = self.tableData[self.currentIndex["row"]!] as! [String:AnyObject]
-        var pictureUrls = postInfo["pictureUrls"] as! [String]
-        return NSURL(string: pictureUrls[index])
-    }
-
 }

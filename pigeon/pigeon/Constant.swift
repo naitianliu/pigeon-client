@@ -8,6 +8,8 @@
 
 import Foundation
 
+let const_MyUserId = NSKeyedUnarchiver.unarchiveObjectWithData(NSUserDefaults.standardUserDefaults().objectForKey("user_id") as! NSData) as! String
+
 let const_APIEndpoint = "http://localhost:9000"
 
 let const_EventTypeArray = [

@@ -42,6 +42,10 @@
 		462FBA991BB0FC1700828156 /* CAPSPageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462FBA981BB0FC1700828156 /* CAPSPageMenu.swift */; settings = {ASSET_TAGS = (); }; };
 		462FBA9B1BB0FE2F00828156 /* PersonContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462FBA9A1BB0FE2F00828156 /* PersonContactViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		4631638B1B902B9C00C6A30F /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 4631638A1B902B9C00C6A30F /* Podfile */; };
+		464EAFF01BC4490900C323AD /* CreateReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464EAFEF1BC4490900C323AD /* CreateReminderViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		464EAFF21BC4999000C323AD /* ReminderCellViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464EAFF11BC4999000C323AD /* ReminderCellViewHelper.swift */; settings = {ASSET_TAGS = (); }; };
+		464EAFF41BC499EE00C323AD /* ReminderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464EAFF31BC499EE00C323AD /* ReminderDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		464EAFF71BC4E1D600C323AD /* ListEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464EAFF61BC4E1D600C323AD /* ListEventsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		4651AAAE1B883F02005C2B67 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AAAD1B883F02005C2B67 /* UIKit.framework */; };
 		4651AAB01B883F12005C2B67 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AAAF1B883F12005C2B67 /* Foundation.framework */; };
 		4651AAB21B883F1F005C2B67 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651AAB11B883F1F005C2B67 /* CoreGraphics.framework */; };
@@ -138,6 +142,10 @@
 		462FBA981BB0FC1700828156 /* CAPSPageMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAPSPageMenu.swift; sourceTree = "<group>"; };
 		462FBA9A1BB0FE2F00828156 /* PersonContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonContactViewController.swift; sourceTree = "<group>"; };
 		4631638A1B902B9C00C6A30F /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		464EAFEF1BC4490900C323AD /* CreateReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateReminderViewController.swift; sourceTree = "<group>"; };
+		464EAFF11BC4999000C323AD /* ReminderCellViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderCellViewHelper.swift; sourceTree = "<group>"; };
+		464EAFF31BC499EE00C323AD /* ReminderDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderDetailViewController.swift; sourceTree = "<group>"; };
+		464EAFF61BC4E1D600C323AD /* ListEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListEventsViewController.swift; sourceTree = "<group>"; };
 		4651AAAD1B883F02005C2B67 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4651AAAF1B883F12005C2B67 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4651AAB11B883F1F005C2B67 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -274,6 +282,45 @@
 				462680771B9C1D1F00656F81 /* whiteplaceholder.png */,
 			);
 			name = HZImagesGroupView;
+			sourceTree = "<group>";
+		};
+		464EAFEB1BC444AF00C323AD /* Task */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Task;
+			sourceTree = "<group>";
+		};
+		464EAFEC1BC444C100C323AD /* Topic */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Topic;
+			sourceTree = "<group>";
+		};
+		464EAFED1BC444CD00C323AD /* Reminder */ = {
+			isa = PBXGroup;
+			children = (
+				464EAFEF1BC4490900C323AD /* CreateReminderViewController.swift */,
+				464EAFF11BC4999000C323AD /* ReminderCellViewHelper.swift */,
+				464EAFF31BC499EE00C323AD /* ReminderDetailViewController.swift */,
+			);
+			name = Reminder;
+			sourceTree = "<group>";
+		};
+		464EAFEE1BC444E100C323AD /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Activity;
+			sourceTree = "<group>";
+		};
+		464EAFF51BC4E19E00C323AD /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				464EAFF61BC4E1D600C323AD /* ListEventsViewController.swift */,
+			);
+			name = Main;
 			sourceTree = "<group>";
 		};
 		4660E3781BBB8CC600F3773D /* Add */ = {
@@ -462,6 +509,11 @@
 		46BB01701B9275270026CB6E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				464EAFF51BC4E19E00C323AD /* Main */,
+				464EAFEE1BC444E100C323AD /* Activity */,
+				464EAFED1BC444CD00C323AD /* Reminder */,
+				464EAFEC1BC444C100C323AD /* Topic */,
+				464EAFEB1BC444AF00C323AD /* Task */,
 				46BB01A01B92D1D00026CB6E /* LocationTimeEditViewHelper.swift */,
 				46BB01821B92929A0026CB6E /* EventNavigationController.swift */,
 				46BB019B1B92BD340026CB6E /* CreateTaskViewController.swift */,
@@ -786,6 +838,7 @@
 				4626808C1B9D03B200656F81 /* EventDetailViewHelper.swift in Sources */,
 				4695400D1B993FDC00E0F4D0 /* MyEventsViewController.swift in Sources */,
 				46A79CB41B8823AB00B60B43 /* AppDelegate.swift in Sources */,
+				464EAFF41BC499EE00C323AD /* ReminderDetailViewController.swift in Sources */,
 				46A568A61B96DD8900FC63F7 /* AddContactTableViewController.swift in Sources */,
 				46BB01A11B92D1D00026CB6E /* LocationTimeEditViewHelper.swift in Sources */,
 				462680DB1BA7C60000656F81 /* CreatePostViewController.swift in Sources */,
@@ -793,6 +846,7 @@
 				462680CD1BA4F1BC00656F81 /* BROptionsButton.m in Sources */,
 				461AD28F1BB23D98005EFF13 /* ChineseString.m in Sources */,
 				462680791B9C1D1F00656F81 /* HZPhotoBrowser.m in Sources */,
+				464EAFF21BC4999000C323AD /* ReminderCellViewHelper.swift in Sources */,
 				4660E3771BBB81B400F3773D /* ContactSearchViewController.swift in Sources */,
 				46BB01741B9276030026CB6E /* MainTabBarViewController.swift in Sources */,
 				462680CC1BA4F1BC00656F81 /* BROptionItem.m in Sources */,
@@ -813,6 +867,8 @@
 				4626807A1B9C1D1F00656F81 /* HZPhotoBrowserView.m in Sources */,
 				462680881B9CDFE400656F81 /* EventDetailViewController.swift in Sources */,
 				462680DD1BA7C85500656F81 /* CreatePostViewHelper.swift in Sources */,
+				464EAFF71BC4E1D600C323AD /* ListEventsViewController.swift in Sources */,
+				464EAFF01BC4490900C323AD /* CreateReminderViewController.swift in Sources */,
 				46BB019C1B92BD340026CB6E /* CreateTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

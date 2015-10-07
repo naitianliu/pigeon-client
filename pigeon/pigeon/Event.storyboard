@@ -189,6 +189,79 @@
             </objects>
             <point key="canvasLocation" x="328" y="1935"/>
         </scene>
+        <!--Create Reminder View Controller-->
+        <scene sceneID="Jd9-mo-DSj">
+            <objects>
+                <viewController storyboardIdentifier="CreateReminderViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="752-zo-oky" customClass="CreateReminderViewController" customModule="pigeon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UyZ-2I-D2B"/>
+                        <viewControllerLayoutGuide type="bottom" id="48U-qr-eFQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ycK-9O-RTG">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nm8-PJ-sXP">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="dzr-RS-5jS"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="创建提醒" id="L38-TW-Ewt">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="XZn-FR-15B">
+                                            <connections>
+                                                <action selector="cancelButtonOnClick:" destination="752-zo-oky" id="BIB-uN-Phx"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Send" id="kHX-hK-RLv">
+                                            <connections>
+                                                <action selector="sendButtonOnClick:" destination="752-zo-oky" id="pVw-8f-KDF"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3oE-zN-cwW" customClass="SZTextView">
+                                <rect key="frame" x="20" y="79" width="560" height="146"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="4sy-V8-IuH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="edit reminder content here"/>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Czf-eZ-cwN">
+                                <rect key="frame" x="20" y="233" width="560" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="VW3-JP-SRW"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3oE-zN-cwW" firstAttribute="trailing" secondItem="ycK-9O-RTG" secondAttribute="trailingMargin" id="28g-aw-V7g"/>
+                            <constraint firstItem="Nm8-PJ-sXP" firstAttribute="leading" secondItem="ycK-9O-RTG" secondAttribute="leadingMargin" constant="-20" id="4hi-rI-ah9"/>
+                            <constraint firstItem="Czf-eZ-cwN" firstAttribute="leading" secondItem="ycK-9O-RTG" secondAttribute="leadingMargin" id="9fG-HX-yEa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Nm8-PJ-sXP" secondAttribute="trailing" constant="-20" id="GZq-Lz-G5H"/>
+                            <constraint firstItem="Nm8-PJ-sXP" firstAttribute="top" secondItem="UyZ-2I-D2B" secondAttribute="bottom" constant="-20" id="JEL-Gm-AcT"/>
+                            <constraint firstItem="3oE-zN-cwW" firstAttribute="leading" secondItem="ycK-9O-RTG" secondAttribute="leadingMargin" id="QaH-3v-oHW"/>
+                            <constraint firstItem="Czf-eZ-cwN" firstAttribute="top" secondItem="3oE-zN-cwW" secondAttribute="bottom" constant="10" id="eQJ-6B-TFa"/>
+                            <constraint firstItem="Czf-eZ-cwN" firstAttribute="trailing" secondItem="ycK-9O-RTG" secondAttribute="trailingMargin" id="tWB-vl-ZxS"/>
+                            <constraint firstItem="3oE-zN-cwW" firstAttribute="top" secondItem="Nm8-PJ-sXP" secondAttribute="bottom" constant="15" id="xLf-7O-kGh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="addMembersView" destination="Czf-eZ-cwN" id="ibq-rh-Id3"/>
+                        <outlet property="editTextView" destination="3oE-zN-cwW" id="6zi-OE-aYv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wBQ-PZ-RcV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1003" y="-285"/>
+        </scene>
         <!--我的事件-->
         <scene sceneID="GDh-BG-E1v">
             <objects>

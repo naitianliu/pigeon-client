@@ -75,7 +75,7 @@ class CreateTaskViewController: UIViewController, LocationTimeEditViewDelegate, 
         requestData["time"] = self.locationTimeEditViewHelper.datetime
         requestData["members"] = []
         
-        APIEventHelper(url:self.apiUrl, data: requestData, delegate: self).POST()
+        APIEventHelper(url:self.apiUrl, data: requestData, delegate: self).POST(nil)
     }
     
     func keyboardShown(notification:NSNotification) {
@@ -90,7 +90,7 @@ class CreateTaskViewController: UIViewController, LocationTimeEditViewDelegate, 
         
     }
     
-    func afterReceiveResponse(responseData: AnyObject) {
+    func afterReceiveResponse(responseData: AnyObject, index:String?) {
         print(responseData)
         self.dismissViewControllerAnimated(true) { () -> Void in
             

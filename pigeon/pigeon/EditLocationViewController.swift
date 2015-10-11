@@ -23,7 +23,7 @@ class EditLocationViewController: UIViewController, UITableViewDelegate, UITable
     var userLocation:CLLocationCoordinate2D!
     var addressMapItem:MKMapItem!
     
-    var editLocationDelegate:EditLocationViewControllerDelegate?
+    var delegate:EditLocationViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +49,7 @@ class EditLocationViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBAction func confirmButtonOnClick(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
-            self.editLocationDelegate?.finishEditLocation(self.addressMapItem)
+            self.delegate?.finishEditLocation(self.addressMapItem)
         })
     }
     

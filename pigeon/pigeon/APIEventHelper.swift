@@ -11,7 +11,7 @@ import Alamofire
 
 protocol APIEventHelperDelegate {
     func beforeSendRequest()
-    func afterReceiveResponse(responseData:AnyObject)
+    func afterReceiveResponse(responseData:AnyObject, index:String?)
 }
 
 class APIEventHelper: NSObject {
@@ -35,13 +35,13 @@ class APIEventHelper: NSObject {
         
     }
     
-    func POST() {
+    func POST(index:String?) {
         self.delegate?.beforeSendRequest()
         request(.POST, self.url, parameters: self.data, encoding: .JSON, headers: self.headers).responseJSON(options: NSJSONReadingOptions.AllowFragments) { (request, response, result) -> Void in
             switch result {
             case .Success(let JSON):
                 print(JSON)
-                self.delegate?.afterReceiveResponse(JSON)
+                self.delegate?.afterReceiveResponse(JSON, index:index)
             case .Failure(let data, let error):
                 print(data)
                 print(error)
@@ -49,13 +49,13 @@ class APIEventHelper: NSObject {
         }
     }
     
-    func GET() {
+    func GET(index:String?) {
         self.delegate?.beforeSendRequest()
         request(.GET, self.url, parameters: self.data, headers: self.headers).responseJSON(options: NSJSONReadingOptions.AllowFragments) { (request, response, result) -> Void in
             switch result {
             case .Success(let JSON):
                 print(JSON)
-                self.delegate?.afterReceiveResponse(JSON)
+                self.delegate?.afterReceiveResponse(JSON, index:index)
             case .Failure(let data, let error):
                 print(data)
                 print(error)

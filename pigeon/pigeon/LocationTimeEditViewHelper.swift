@@ -40,7 +40,7 @@ class LocationTimeEditViewHelper: NSObject, EditLocationViewControllerDelegate {
         self.locationTimeEditViewDelegate = delegate
         let eventStoryboard:UIStoryboard = UIStoryboard(name: "Event", bundle: nil)
         self.editLocationViewController = eventStoryboard.instantiateViewControllerWithIdentifier("EditLocationViewController") as! EditLocationViewController
-        self.editLocationViewController.editLocationDelegate = self
+        self.editLocationViewController.delegate = self
         self.rootViewController = rootViewController
         self.rootView = rootViewController.view
         self.rootViewRect = self.rootView.frame

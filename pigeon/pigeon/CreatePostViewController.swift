@@ -60,7 +60,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
         
     }
     
-    func afterReceiveResponse(responseData: AnyObject) {
+    func afterReceiveResponse(responseData: AnyObject, index:String?) {
         
     }
     
@@ -92,7 +92,7 @@ class CreatePostViewController: UIViewController, UIImagePickerControllerDelegat
             requestData["event_id"] = event_id
             requestData["description"] = description
             requestData["img_urls"] = imgUrls
-            APIEventHelper(url: self.apiUrl, data: requestData, delegate: self).POST()
+            APIEventHelper(url: self.apiUrl, data: requestData, delegate: self).POST(nil)
         })
     }
     

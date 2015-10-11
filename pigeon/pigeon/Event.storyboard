@@ -22,10 +22,10 @@
             </objects>
             <point key="canvasLocation" x="328" y="415"/>
         </scene>
-        <!--Create Task View Controller-->
+        <!--Create Task-->
         <scene sceneID="uxQ-h6-n3X">
             <objects>
-                <viewController storyboardIdentifier="CreateTaskViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3qb-La-NLc" customClass="CreateTaskViewController" customModule="pigeon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateTaskViewController" title="Create Task" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3qb-La-NLc" customClass="CreateTaskViewController" customModule="pigeon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5gy-AE-kzv"/>
                         <viewControllerLayoutGuide type="bottom" id="pH5-OP-tbJ"/>
@@ -105,7 +105,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rqS-O3-OdE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="322" y="1196"/>
+            <point key="canvasLocation" x="961" y="-278"/>
         </scene>
         <!--Edit Location View Controller-->
         <scene sceneID="owd-PY-BuY">
@@ -128,7 +128,7 @@
                                     <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="设置地点" id="xZQ-3z-TiD">
+                                    <navigationItem title="Edit Location" id="xZQ-3z-TiD">
                                         <barButtonItem key="leftBarButtonItem" title="取消" id="MMJ-jj-cuh">
                                             <connections>
                                                 <action selector="cancelButtonOnClick:" destination="gih-IQ-RYY" id="6JG-Xa-Y30"/>
@@ -187,7 +187,69 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="328" y="1935"/>
+            <point key="canvasLocation" x="-406" y="421"/>
+        </scene>
+        <!--Edit Reminder Description View Controller-->
+        <scene sceneID="JyT-bO-3hZ">
+            <objects>
+                <viewController storyboardIdentifier="EditReminderDescriptionViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VRx-nk-vSN" customClass="EditReminderDescriptionViewController" customModule="pigeon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="byM-QK-YKj"/>
+                        <viewControllerLayoutGuide type="bottom" id="YHm-j6-kag"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FTb-ry-jm0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dit-S0-QCz">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="d0P-dC-2Ww"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Edit Description" id="vEb-Tq-Xaa">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="yBv-Ey-2jP">
+                                            <connections>
+                                                <action selector="cancelButtonOnClick:" destination="VRx-nk-vSN" id="L3p-Ng-JNr"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Done" id="iTN-Ta-LAQ">
+                                            <connections>
+                                                <action selector="doneButtonOnClick:" destination="VRx-nk-vSN" id="md8-0u-g5c"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1dM-xw-90w" customClass="SZTextView">
+                                <rect key="frame" x="20" y="62" width="560" height="110"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="drw-yc-f4v"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Edit Reminder Description"/>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dit-S0-QCz" firstAttribute="leading" secondItem="FTb-ry-jm0" secondAttribute="leadingMargin" constant="-20" id="85a-kN-4cy"/>
+                            <constraint firstItem="dit-S0-QCz" firstAttribute="top" secondItem="FTb-ry-jm0" secondAttribute="topMargin" id="Iu7-Eh-wFG"/>
+                            <constraint firstItem="1dM-xw-90w" firstAttribute="leading" secondItem="FTb-ry-jm0" secondAttribute="leadingMargin" id="PMt-Pw-xz9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dit-S0-QCz" secondAttribute="trailing" constant="-20" id="jar-mh-WA3"/>
+                            <constraint firstItem="1dM-xw-90w" firstAttribute="top" secondItem="dit-S0-QCz" secondAttribute="bottom" constant="20" id="ot2-AM-oit"/>
+                            <constraint firstItem="1dM-xw-90w" firstAttribute="trailing" secondItem="FTb-ry-jm0" secondAttribute="trailingMargin" id="yhm-sG-ci6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionTextView" destination="1dM-xw-90w" id="fhE-K7-tBG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="an7-Al-pgA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="263" y="-965"/>
         </scene>
         <!--Create Reminder View Controller-->
         <scene sceneID="Jd9-mo-DSj">
@@ -207,7 +269,7 @@
                                     <constraint firstAttribute="height" constant="64" id="dzr-RS-5jS"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="创建提醒" id="L38-TW-Ewt">
+                                    <navigationItem title="Create Reminder" id="L38-TW-Ewt">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="XZn-FR-15B">
                                             <connections>
                                                 <action selector="cancelButtonOnClick:" destination="752-zo-oky" id="BIB-uN-Phx"/>
@@ -221,46 +283,34 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3oE-zN-cwW" customClass="SZTextView">
-                                <rect key="frame" x="20" y="79" width="560" height="146"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="4sy-V8-IuH"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="edit reminder content here"/>
-                                </userDefinedRuntimeAttributes>
-                            </textView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Czf-eZ-cwN">
-                                <rect key="frame" x="20" y="233" width="560" height="60"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="VW3-JP-SRW"/>
-                                </constraints>
-                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="yxD-u2-HRA">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="752-zo-oky" id="YWz-TU-Uo2"/>
+                                    <outlet property="delegate" destination="752-zo-oky" id="lM8-7G-gPF"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="3oE-zN-cwW" firstAttribute="trailing" secondItem="ycK-9O-RTG" secondAttribute="trailingMargin" id="28g-aw-V7g"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yxD-u2-HRA" secondAttribute="trailing" constant="-20" id="1pM-Fa-Mdn"/>
                             <constraint firstItem="Nm8-PJ-sXP" firstAttribute="leading" secondItem="ycK-9O-RTG" secondAttribute="leadingMargin" constant="-20" id="4hi-rI-ah9"/>
-                            <constraint firstItem="Czf-eZ-cwN" firstAttribute="leading" secondItem="ycK-9O-RTG" secondAttribute="leadingMargin" id="9fG-HX-yEa"/>
+                            <constraint firstItem="yxD-u2-HRA" firstAttribute="leading" secondItem="ycK-9O-RTG" secondAttribute="leadingMargin" constant="-20" id="7UU-8v-Ddc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Nm8-PJ-sXP" secondAttribute="trailing" constant="-20" id="GZq-Lz-G5H"/>
                             <constraint firstItem="Nm8-PJ-sXP" firstAttribute="top" secondItem="UyZ-2I-D2B" secondAttribute="bottom" constant="-20" id="JEL-Gm-AcT"/>
-                            <constraint firstItem="3oE-zN-cwW" firstAttribute="leading" secondItem="ycK-9O-RTG" secondAttribute="leadingMargin" id="QaH-3v-oHW"/>
-                            <constraint firstItem="Czf-eZ-cwN" firstAttribute="top" secondItem="3oE-zN-cwW" secondAttribute="bottom" constant="10" id="eQJ-6B-TFa"/>
-                            <constraint firstItem="Czf-eZ-cwN" firstAttribute="trailing" secondItem="ycK-9O-RTG" secondAttribute="trailingMargin" id="tWB-vl-ZxS"/>
-                            <constraint firstItem="3oE-zN-cwW" firstAttribute="top" secondItem="Nm8-PJ-sXP" secondAttribute="bottom" constant="15" id="xLf-7O-kGh"/>
+                            <constraint firstItem="48U-qr-eFQ" firstAttribute="top" secondItem="yxD-u2-HRA" secondAttribute="bottom" id="Xrq-k7-Oxn"/>
+                            <constraint firstItem="yxD-u2-HRA" firstAttribute="top" secondItem="Nm8-PJ-sXP" secondAttribute="bottom" id="qFg-LU-Chk"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="addMembersView" destination="Czf-eZ-cwN" id="ibq-rh-Id3"/>
-                        <outlet property="editTextView" destination="3oE-zN-cwW" id="6zi-OE-aYv"/>
+                        <outlet property="tableView" destination="yxD-u2-HRA" id="ttr-xJ-KrU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wBQ-PZ-RcV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1003" y="-285"/>
+            <point key="canvasLocation" x="263" y="-273"/>
         </scene>
         <!--我的事件-->
         <scene sceneID="GDh-BG-E1v">
@@ -276,7 +326,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="rbs-Ac-3Ds">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyEventCell" rowHeight="100" id="UOy-ru-zZu">
                                         <rect key="frame" x="0.0" y="50" width="600" height="100"/>
@@ -307,6 +357,7 @@
                         <outlet property="tableView" destination="rbs-Ac-3Ds" id="H3I-pH-x1V"/>
                         <segue destination="oQr-vL-YRv" kind="show" identifier="EventDetailSegue" id="fnR-MQ-n1d"/>
                         <segue destination="s5y-T8-BbR" kind="show" identifier="PostDetailSegue" id="UNL-Sr-btx"/>
+                        <segue destination="9wg-si-bdC" kind="show" identifier="ReminderDetailSegue" id="4bd-bR-xM0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8vK-8U-dGE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -374,7 +425,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sBx-dR-cGw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1075" y="1196"/>
+            <point key="canvasLocation" x="-392" y="-278"/>
         </scene>
         <!--新鲜事-->
         <scene sceneID="vDR-Xj-ud9">
@@ -390,7 +441,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="hak-bU-164">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="s5y-T8-BbR" id="EyN-pt-gJB"/>
                                     <outlet property="delegate" destination="s5y-T8-BbR" id="0SG-LO-qu4"/>
@@ -411,7 +462,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xxJ-fa-7TK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1875" y="750"/>
+            <point key="canvasLocation" x="1873" y="362"/>
+        </scene>
+        <!--Reminder Detail View Controller-->
+        <scene sceneID="Bxe-lq-nQ9">
+            <objects>
+                <viewController id="9wg-si-bdC" customClass="ReminderDetailViewController" customModule="pigeon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XAe-vn-zJ0"/>
+                        <viewControllerLayoutGuide type="bottom" id="DKd-8Q-0GQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TaF-eT-ZWs">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZeH-vL-5uV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="432" y="1161"/>
         </scene>
         <!--Event Detail View Controller-->
         <scene sceneID="g41-kf-yIK">
@@ -472,7 +541,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r3W-NY-Soz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1875" y="38"/>
+            <point key="canvasLocation" x="1873" y="-300"/>
         </scene>
     </scenes>
 </document>

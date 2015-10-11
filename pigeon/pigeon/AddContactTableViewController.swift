@@ -148,14 +148,14 @@ class AddContactTableViewController: UITableViewController, UISearchResultsUpdat
         print("clicked00")
         var data:[String:AnyObject] = [:]
         data["keyword"] = searchBar.text
-        APIEventHelper(url: url_DisplayUserList, data: data, delegate: self).GET()
+        APIEventHelper(url: url_DisplayUserList, data: data, delegate: self).GET(nil)
     }
     
     func beforeSendRequest() {
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
     }
     
-    func afterReceiveResponse(responseData: AnyObject) {
+    func afterReceiveResponse(responseData: AnyObject, index:String?) {
         let userListDict:[String:AnyObject] = responseData as! [String:AnyObject]
         let userListById:[AnyObject] = userListDict["user_list_by_id"]! as! [AnyObject]
         let userListByNickname:[AnyObject] = userListDict["user_list_by_nickname"]! as! [AnyObject]

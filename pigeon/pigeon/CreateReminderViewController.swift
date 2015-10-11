@@ -7,54 +7,38 @@
 //
 
 import UIKit
-import SZTextView
 import MapKit
+import RMDateSelectionViewController
 
-class CreateReminderViewController: UIViewController, LocationTimeEditViewDelegate, APIEventHelperDelegate {
+class CreateReminderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, APIEventHelperDelegate, EditReminderDescriptionViewControllerDelegate, EditLocationViewControllerDelegate {
     
     let apiUrl:String = "\(const_APIEndpoint)/main/event/reminder/create/"
     
-    let kOFFSET_FOR_KEYBOARD:CGFloat = 20
+    @IBOutlet weak var tableView: UITableView!
     
-    var keyboardFrame:CGRect = CGRect(x: 0, y: 0, width: 0, height: 0)
-
-    @IBOutlet weak var editTextView: SZTextView!
-    @IBOutlet weak var addMembersView: UIView!
+    var reminderDescription:String!
+    var location:[String:AnyObject]!
+    var startTime:[String:AnyObject]!
+    var endTime:[String:AnyObject]!
+    var receivers:[String]!
     
-    var locationTimeEditViewHelper:LocationTimeEditViewHelper!
-    var addMembersViewHelper:AddMembersViewHelper!
+    var reminderDescriptionCellHeight:CGFloat!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        self.editTextView.becomeFirstResponder()
-        
-        self.locationTimeEditViewHelper = LocationTimeEditViewHelper(rootViewController:self, delegate:self)
-        
-        self.addMembersViewHelper = AddMembersViewHelper(rootViewController: self, addMembersView: self.addMembersView)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShown:", name: UIKeyboardDidShowNotification, object: nil)
         
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-        self.editTextView.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func keyboardShown(notification:NSNotification) {
-        let info = notification.userInfo!
-        let value:AnyObject = info[UIKeyboardFrameEndUserInfoKey]!
-        let rawFrame = value.CGRectValue
-        self.keyboardFrame = self.view.convertRect(rawFrame, fromView: nil)
-        self.locationTimeEditViewHelper.adjustViewHeight(self.keyboardFrame.height)
     }
     
     @IBAction func cancelButtonOnClick(sender: AnyObject) {
@@ -65,16 +49,199 @@ class CreateReminderViewController: UIViewController, LocationTimeEditViewDelega
         
     }
     
-    func locationTimeReceiveLocation(mapItem: MKMapItem) {
-        
-    }
-    
     func beforeSendRequest() {
         
     }
     
-    func afterReceiveResponse(responseData: AnyObject) {
+    func afterReceiveResponse(responseData: AnyObject, index:String?) {
         
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var rows = 0
+        if section == 0 {
+            rows = 2
+        } else if section == 1 {
+            rows = 3
+        }
+        return rows
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .Subtitle, reuseIdentifier: "CreateReminderCell")
+        if indexPath.section == 0 && indexPath.row == 0 {
+            if self.reminderDescription == nil {
+                cell.textLabel?.text = "Description"
+                cell.textLabel?.textColor = UIColor.lightGrayColor()
+            } else {
+                let content:NSString = "\(self.reminderDescription)"
+                let contentSize:CGSize = content.boundingRectWithSize(CGSize(width: self.view.frame.width - 20, height: CGFloat.infinity), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFontOfSize(15)], context: nil).size
+                let lineNum:Int = Int(contentSize.height / 17)
+                self.reminderDescriptionCellHeight = contentSize.height + CGFloat(3*lineNum) + 30
+                print(self.reminderDescriptionCellHeight)
+                let style:NSMutableParagraphStyle = NSMutableParagraphStyle()
+                style.lineSpacing = 3
+                let attributedText:NSAttributedString = NSAttributedString(string: content as String, attributes: [
+                    NSParagraphStyleAttributeName: style,
+                    NSForegroundColorAttributeName: UIColor.blackColor()
+                    ])
+                cell.textLabel?.attributedText = attributedText
+                cell.textLabel?.numberOfLines = 0
+                cell.textLabel?.frame.origin.y = 20
+            }
+        } else if indexPath.section == 0 && indexPath.row == 1 {
+            if self.receivers == nil {
+                cell.textLabel?.text = "Add Receivers"
+                cell.textLabel?.textColor = UIColor.lightGrayColor()
+            }
+        } else if indexPath.section == 1 && indexPath.row == 0 {
+            if self.location == nil {
+                cell.textLabel?.text = "Location"
+                cell.textLabel?.textColor = UIColor.lightGrayColor()
+            } else {
+                cell.textLabel?.text = self.location["name"] as? String
+                cell.textLabel?.textColor = UIColor.blackColor()
+                cell.detailTextLabel?.text = self.location["placemark"] as? String
+            }
+        } else if indexPath.section == 1 && indexPath.row == 1 {
+            if self.startTime == nil {
+                cell.textLabel?.text = "Start Time"
+                cell.textLabel?.textColor = UIColor.lightGrayColor()
+            } else {
+                let timeLabel:UILabel = UILabel(frame: CGRect(x: 100, y: 0, width: cell.contentView.frame.width - 80 , height: cell.contentView.frame.height))
+                timeLabel.textAlignment = NSTextAlignment.Right
+                timeLabel.text = self.startTime["datetime"] as? String
+                cell.contentView.addSubview(timeLabel)
+                cell.textLabel?.text = "Starts"
+            }
+        } else if indexPath.section == 1 && indexPath.row == 2 {
+            if self.endTime == nil {
+                cell.textLabel?.text = "End Time"
+                cell.textLabel?.textColor = UIColor.lightGrayColor()
+            } else {
+                let timeLabel:UILabel = UILabel(frame: CGRect(x: 100, y: 0, width: cell.contentView.frame.width - 80 , height: cell.contentView.frame.height))
+                timeLabel.textAlignment = NSTextAlignment.Right
+                timeLabel.text = self.endTime["datetime"] as? String
+                cell.contentView.addSubview(timeLabel)
+                cell.textLabel?.text = "Ends"
+            }
+        }
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.section == 0 && indexPath.row == 0 {
+            if self.reminderDescriptionCellHeight == nil {
+                return 46
+            } else {
+                return self.reminderDescriptionCellHeight
+            }
+        } else {
+            return 46
+        }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 0 && indexPath.row == 0 {
+            let editReminderDescriptionVC:EditReminderDescriptionViewController = self.storyboard?.instantiateViewControllerWithIdentifier("EditReminderDescriptionViewController") as! EditReminderDescriptionViewController
+            editReminderDescriptionVC.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
+            editReminderDescriptionVC.delegate = self
+            if self.reminderDescription != nil {
+                editReminderDescriptionVC.textString = self.reminderDescription
+            }
+            self.presentViewController(editReminderDescriptionVC, animated: true, completion: nil)
+        } else if indexPath.section == 0 && indexPath.row == 1 {
+            
+        } else if indexPath.section == 1 && indexPath.row == 0 {
+            let editLocationVC:EditLocationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("EditLocationViewController") as! EditLocationViewController
+            editLocationVC.delegate = self
+            self.presentViewController(editLocationVC, animated: true, completion: nil)
+        } else if indexPath.section == 1 && indexPath.row == 1 {
+            self.pickTimeForStart()
+        } else if indexPath.section == 1 && indexPath.row == 2 {
+            self.pickTimeForEnd()
+        }
+    }
+    
+    func finishEditReminderDescription(description: String) {
+        print(description)
+        self.reminderDescription = description
+        self.tableView.reloadData()
+    }
+    
+    func finishEditLocation(mapItem: MKMapItem) {
+        print(mapItem)
+        let name = mapItem.name
+        var thoroughfare:String! = ""
+        if mapItem.placemark.thoroughfare != nil {
+            thoroughfare = mapItem.placemark.thoroughfare!
+        }
+        var locality:String! = ""
+        if mapItem.placemark.locality != nil {
+            locality = mapItem.placemark.locality!
+        }
+        var administrativeArea:String! = ""
+        if mapItem.placemark.administrativeArea != nil {
+            administrativeArea = mapItem.placemark.administrativeArea!
+        }
+        var postalCode:String! = ""
+        if mapItem.placemark.postalCode != nil {
+            postalCode = mapItem.placemark.postalCode!
+        }
+        let placemark:String = "\(thoroughfare), \(locality), \(administrativeArea), \(postalCode)"
+        print(placemark)
+        let x = mapItem.placemark.location?.coordinate.latitude
+        let y = mapItem.placemark.location?.coordinate.longitude
+        let coordination:[String] = [String(Double(x!)), String(Double(y!))]
+        self.location = [:]
+        self.location["name"] = name
+        self.location["placemark"] = placemark
+        self.location["coordination"] = coordination
+        self.tableView.reloadData()
+    }
+    
+    func pickTimeForStart() {
+        let selectAction:RMAction = RMAction(title: "确定", style: RMActionStyle.Done) { (controller:RMActionController!) -> Void in
+            let formatter:NSDateFormatter = NSDateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd hh:mm a"
+            let datetime:String = formatter.stringFromDate((controller.contentView as! UIDatePicker).date)
+            self.startTime = [:]
+            self.startTime["datetime"] = datetime
+            self.tableView.reloadData()
+        }
+        let cancelAction:RMAction = RMAction(title: "取消", style: RMActionStyle.Cancel) { (controller) -> Void in
+            print("Cancelled")
+        }
+        let dateSelectionController:RMDateSelectionViewController = RMDateSelectionViewController(style: RMActionControllerStyle.White, selectAction: selectAction, andCancelAction: cancelAction)
+        dateSelectionController.title = "选择时间"
+        dateSelectionController.message = "请设置时间发生时间"
+        dateSelectionController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+        dateSelectionController.disableBlurEffectsForBackgroundView = true
+        self.presentViewController(dateSelectionController, animated: true, completion: nil)
+    }
+    
+    func pickTimeForEnd() {
+        let selectAction:RMAction = RMAction(title: "确定", style: RMActionStyle.Done) { (controller:RMActionController!) -> Void in
+            let formatter:NSDateFormatter = NSDateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd hh:mm a"
+            let datetime:String = formatter.stringFromDate((controller.contentView as! UIDatePicker).date)
+            self.endTime = [:]
+            self.endTime["datetime"] = datetime
+            self.tableView.reloadData()
+        }
+        let cancelAction:RMAction = RMAction(title: "取消", style: RMActionStyle.Cancel) { (controller) -> Void in
+            print("Cancelled")
+        }
+        let dateSelectionController:RMDateSelectionViewController = RMDateSelectionViewController(style: RMActionControllerStyle.White, selectAction: selectAction, andCancelAction: cancelAction)
+        dateSelectionController.title = "选择时间"
+        dateSelectionController.message = "请设置时间发生时间"
+        dateSelectionController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+        dateSelectionController.disableBlurEffectsForBackgroundView = true
+        self.presentViewController(dateSelectionController, animated: true, completion: nil)
     }
 
 }

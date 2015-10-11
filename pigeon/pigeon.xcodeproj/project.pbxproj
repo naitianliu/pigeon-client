@@ -84,6 +84,7 @@
 		46BB01A81B939C080026CB6E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46BB01A71B939C080026CB6E /* MapKit.framework */; };
 		46BB01AA1B939C170026CB6E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46BB01A91B939C170026CB6E /* CoreLocation.framework */; };
 		46BB01AC1B93FE500026CB6E /* AddMembersViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BB01AB1B93FE500026CB6E /* AddMembersViewHelper.swift */; };
+		46CD743B1BCA17780049599B /* EditReminderDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CD743A1BCA17780049599B /* EditReminderDescriptionViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EC03105B27AE9B30D09FAEFF /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6B7EB05FDC0CC77A857B349 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -191,6 +192,7 @@
 		46BB01A71B939C080026CB6E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		46BB01A91B939C170026CB6E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		46BB01AB1B93FE500026CB6E /* AddMembersViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMembersViewHelper.swift; sourceTree = "<group>"; };
+		46CD743A1BCA17780049599B /* EditReminderDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditReminderDescriptionViewController.swift; sourceTree = "<group>"; };
 		B6B7EB05FDC0CC77A857B349 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C43AF1B09D0587414C965081 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F30ACB44CA899943E7CCAAC9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 				464EAFEF1BC4490900C323AD /* CreateReminderViewController.swift */,
 				464EAFF11BC4999000C323AD /* ReminderCellViewHelper.swift */,
 				464EAFF31BC499EE00C323AD /* ReminderDetailViewController.swift */,
+				46CD743A1BCA17780049599B /* EditReminderDescriptionViewController.swift */,
 			);
 			name = Reminder;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				464EAFF61BC4E1D600C323AD /* ListEventsViewController.swift */,
+				4695400C1B993FDC00E0F4D0 /* MyEventsViewController.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -518,7 +522,6 @@
 				46BB01821B92929A0026CB6E /* EventNavigationController.swift */,
 				46BB019B1B92BD340026CB6E /* CreateTaskViewController.swift */,
 				46BB01A51B9397D30026CB6E /* EditLocationViewController.swift */,
-				4695400C1B993FDC00E0F4D0 /* MyEventsViewController.swift */,
 				462680871B9CDFE400656F81 /* EventDetailViewController.swift */,
 				462680C01BA4F02F00656F81 /* PostDetailViewController.swift */,
 				462680DA1BA7C60000656F81 /* CreatePostViewController.swift */,
@@ -860,6 +863,7 @@
 				462680C31BA4F03C00656F81 /* PostDetailCellHelper.swift in Sources */,
 				461AD2871BB23923005EFF13 /* SampleDataContact.swift in Sources */,
 				46BB01AC1B93FE500026CB6E /* AddMembersViewHelper.swift in Sources */,
+				46CD743B1BCA17780049599B /* EditReminderDescriptionViewController.swift in Sources */,
 				462680C71BA4F0C000656F81 /* SampleDataEvent.swift in Sources */,
 				462680C11BA4F02F00656F81 /* PostDetailViewController.swift in Sources */,
 				4609096B1B92584B006FF85D /* VendorLoginAPICall.swift in Sources */,

@@ -9,13 +9,13 @@
 import UIKit
 import SVPullToRefresh
 
-class MyEventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, APIEventHelperDelegate {
+class MyEventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, APIEventHelperDelegate {
     
     let apiUrl:String = "\(const_APIEndpoint)/main/event/list/updated_events/"
     
     let EventTypeArray = const_EventTypeArray
     
-    var currentIndex = ["row": 0, "col": 0]
+    var currentIndex = 0
     var currentEventId:String = ""
 
     @IBOutlet weak var tableView: UITableView!
@@ -29,7 +29,7 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
         // self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1), atScrollPosition: UITableViewScrollPosition.Top, animated: false)
         
         self.tableView.addPullToRefreshWithActionHandler { () -> Void in
-            APIEventHelper(url: self.apiUrl, data: nil, delegate: self).GET()
+            APIEventHelper(url: self.apiUrl, data: nil, delegate: self).GET("list_all")
         }
     }
 
@@ -42,10 +42,15 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
-    func afterReceiveResponse(responseData: AnyObject) {
-        self.tableData = responseData["result"] as! [AnyObject]
-        self.tableView.reloadData()
-        self.tableView.pullToRefreshView.stopAnimating()
+    func afterReceiveResponse(responseData: AnyObject, index:String?) {
+        if index == "list_all" {
+            self.tableData = responseData["result"] as! [AnyObject]
+            self.tableView.reloadData()
+            self.tableView.pullToRefreshView.stopAnimating()
+        } else if index == "reminder" {
+            
+        }
+        
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -71,9 +76,13 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
             let imgName:String = EventTypeArray[indexPath.row]["img"]!
             cell.imageView?.image = UIImage(named: imgName)
         } else {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "MyEventCell")
+            cell = UITableViewCell(style: .Default, reuseIdentifier: "MyEventCell")
             let eventInfo = self.tableData[indexPath.row] as! [String:AnyObject]
-            ReminderCellViewHelper(rootViewController: self, eventInfo: eventInfo).setupCell(cell)
+            let reminderCellHelper = ReminderCellViewHelper(rootViewController: self, eventInfo: eventInfo)
+            reminderCellHelper.setupCell(cell)
+            reminderCellHelper.actionButton.tag = indexPath.row
+            reminderCellHelper.actionButton.addTarget(self, action: "reminderActionButtonOnClick:", forControlEvents: UIControlEvents.TouchUpInside)
+
         }
         
         return cell
@@ -86,6 +95,7 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
             let eventInfo = self.tableData[indexPath.row] as! [String:AnyObject]
             let cellHelper = ReminderCellViewHelper(rootViewController: self, eventInfo: eventInfo)
             let cellHeight:CGFloat = cellHelper.getCellHeight()
+            print("cell height \(cellHeight)")
             return cellHeight
         }
     }
@@ -104,8 +114,46 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        self.performSegueWithIdentifier("PostDetailSegue", sender: nil)
+        self.performSegueWithIdentifier("ReminderDetailSegue", sender: nil)
         let postInfo = self.tableData[indexPath.row] as! [String:AnyObject]
         self.currentEventId = postInfo["eventId"] as! String
+    }
+    
+    override func performSegueWithIdentifier(identifier: String, sender: AnyObject?) {
+        if identifier == "ReminderDetailSegue" {
+            
+        }
+    }
+    
+    func reminderActionButtonOnClick(sender:UIButton!) {
+        print("action button clicked: \(sender.tag)")
+        self.currentIndex = sender.tag
+        let eventInfo = self.tableData[self.currentIndex] as! [String:AnyObject]
+        self.currentEventId = eventInfo["event_id"] as! String
+        let popup:UIActionSheet = UIActionSheet(title: "Select Reminder Action:", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles:
+            "Complete",
+            "Reject",
+            "Delay")
+        popup.showInView(self.view)
+    }
+    
+    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+        print(buttonIndex)
+        var reminderApiUrl:String!
+        switch buttonIndex {
+        case 1:
+            reminderApiUrl = "\(const_APIEndpoint)/main/event/reminder/complete/"
+            break
+        case 2:
+            reminderApiUrl = "\(const_APIEndpoint)/main/event/reminder/reject/"
+            break;
+        case 3:
+            reminderApiUrl = "\(const_APIEndpoint)/main/event/reminder/delay/"
+            break;
+        default:
+            break
+        }
+        let postData = ["event_id": self.currentEventId]
+        APIEventHelper(url: reminderApiUrl, data: postData, delegate: self).POST("reminder")
     }
 }

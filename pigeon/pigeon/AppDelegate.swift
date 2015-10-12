@@ -50,6 +50,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
         UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Badge, .Alert, .Sound], categories: nil))
         UIApplication.sharedApplication().registerForRemoteNotifications()
         
+        if !NSUserDefaults.standardUserDefaults().boolForKey("HasLaunchedOnce") {
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "HasLaunchedOnce")
+            NSUserDefaults.standardUserDefaults().synchronize()
+            // functions which need to run at the first time app launch
+            ContactAPIHelper().syncContactList()
+        }
+        
         return true
     }
 

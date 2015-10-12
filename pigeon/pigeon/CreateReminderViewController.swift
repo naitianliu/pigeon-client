@@ -22,13 +22,14 @@ class CreateReminderViewController: UIViewController, UITableViewDelegate, UITab
     var endTime:[String:AnyObject]!
     var receivers:[String]!
     
-    var reminderDescriptionCellHeight:CGFloat!
+    var reminderUIHelper:ReminderUIHelper!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
+        self.reminderUIHelper = ReminderUIHelper(view: self.view)
         
     }
     
@@ -78,20 +79,9 @@ class CreateReminderViewController: UIViewController, UITableViewDelegate, UITab
                 cell.textLabel?.text = "Description"
                 cell.textLabel?.textColor = UIColor.lightGrayColor()
             } else {
-                let content:NSString = "\(self.reminderDescription)"
-                let contentSize:CGSize = content.boundingRectWithSize(CGSize(width: self.view.frame.width - 20, height: CGFloat.infinity), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFontOfSize(15)], context: nil).size
-                let lineNum:Int = Int(contentSize.height / 17)
-                self.reminderDescriptionCellHeight = contentSize.height + CGFloat(3*lineNum) + 30
-                print(self.reminderDescriptionCellHeight)
-                let style:NSMutableParagraphStyle = NSMutableParagraphStyle()
-                style.lineSpacing = 3
-                let attributedText:NSAttributedString = NSAttributedString(string: content as String, attributes: [
-                    NSParagraphStyleAttributeName: style,
-                    NSForegroundColorAttributeName: UIColor.blackColor()
-                    ])
-                cell.textLabel?.attributedText = attributedText
-                cell.textLabel?.numberOfLines = 0
-                cell.textLabel?.frame.origin.y = 20
+                print(const_MyImgURL)
+                let descriptionView = self.reminderUIHelper.setupDescriptionView(self.reminderDescription, nickname: const_MyNickname, imgUrl: const_MyImgURL)
+                cell.contentView.addSubview(descriptionView)
             }
         } else if indexPath.section == 0 && indexPath.row == 1 {
             if self.receivers == nil {
@@ -135,10 +125,10 @@ class CreateReminderViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 0 && indexPath.row == 0 {
-            if self.reminderDescriptionCellHeight == nil {
+            if self.reminderDescription == nil {
                 return 46
             } else {
-                return self.reminderDescriptionCellHeight
+                return self.reminderUIHelper.descriptionViewHeight
             }
         } else {
             return 46
@@ -147,6 +137,7 @@ class CreateReminderViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 0 && indexPath.row == 0 {
+            // edit description
             let editReminderDescriptionVC:EditReminderDescriptionViewController = self.storyboard?.instantiateViewControllerWithIdentifier("EditReminderDescriptionViewController") as! EditReminderDescriptionViewController
             editReminderDescriptionVC.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
             editReminderDescriptionVC.delegate = self
@@ -155,16 +146,24 @@ class CreateReminderViewController: UIViewController, UITableViewDelegate, UITab
             }
             self.presentViewController(editReminderDescriptionVC, animated: true, completion: nil)
         } else if indexPath.section == 0 && indexPath.row == 1 {
-            
+            // add members
+            let contactStoryboard:UIStoryboard = UIStoryboard(name: "Contact", bundle: nil)
+            let selectContactsVC:SelectContactsViewController = contactStoryboard.instantiateViewControllerWithIdentifier("SelectContactsViewController") as! SelectContactsViewController
+            selectContactsVC.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
+            self.presentViewController(selectContactsVC, animated: true, completion: nil)
         } else if indexPath.section == 1 && indexPath.row == 0 {
+            // edit location
             let editLocationVC:EditLocationViewController = self.storyboard?.instantiateViewControllerWithIdentifier("EditLocationViewController") as! EditLocationViewController
             editLocationVC.delegate = self
             self.presentViewController(editLocationVC, animated: true, completion: nil)
         } else if indexPath.section == 1 && indexPath.row == 1 {
+            // edit start time
             self.pickTimeForStart()
         } else if indexPath.section == 1 && indexPath.row == 2 {
+            // edit end time
             self.pickTimeForEnd()
         }
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     func finishEditReminderDescription(description: String) {

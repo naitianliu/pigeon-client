@@ -46,9 +46,13 @@ class VendorLoginAPICall:NSObject, BaseAPIHelperDelegate {
         var data = responseData as! [String:String]
         let token = data["token"]!
         let userId = data["user_id"]!
+        let nickname = data["nickname"]!
+        let imgURL = data["img_url"]!
         print(token)
         NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(token), forKey: "token")
         NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(userId), forKey: "user_id")
+        NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(nickname), forKey: "nickname")
+        NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(imgURL), forKey: "img_url")
         MBProgressHUD.hideHUDForView(self.view, animated: true)
         
         let mainStoryBoard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)

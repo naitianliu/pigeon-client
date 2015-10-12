@@ -107,6 +107,66 @@
             </objects>
             <point key="canvasLocation" x="2589" y="416"/>
         </scene>
+        <!--Select Contacts View Controller-->
+        <scene sceneID="UeS-6l-7wt">
+            <objects>
+                <viewController storyboardIdentifier="SelectContactsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4Hw-wc-HNZ" customClass="SelectContactsViewController" customModule="pigeon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wqz-ZW-xLB"/>
+                        <viewControllerLayoutGuide type="bottom" id="6yA-Zr-ozU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9ZH-tq-QxP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1oD-6w-Wvf">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="gFN-Tm-xWZ"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Select Contacts" id="7rD-pv-tbK">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="GQ6-gN-jvx">
+                                            <connections>
+                                                <action selector="cancelButtonOnClick:" destination="4Hw-wc-HNZ" id="ibV-gH-EmL"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Done" id="015-24-1lP">
+                                            <connections>
+                                                <action selector="doneButtonOnClick:" destination="4Hw-wc-HNZ" id="ATn-Ui-LqG"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Znq-P6-n5c">
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="4Hw-wc-HNZ" id="hOi-75-7kS"/>
+                                    <outlet property="delegate" destination="4Hw-wc-HNZ" id="grR-GD-VeX"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6yA-Zr-ozU" firstAttribute="top" secondItem="Znq-P6-n5c" secondAttribute="bottom" id="47A-vn-jCp"/>
+                            <constraint firstItem="Znq-P6-n5c" firstAttribute="leading" secondItem="9ZH-tq-QxP" secondAttribute="leadingMargin" constant="-20" id="Brw-hU-0u4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1oD-6w-Wvf" secondAttribute="trailing" constant="-20" id="CAk-8f-mEn"/>
+                            <constraint firstItem="1oD-6w-Wvf" firstAttribute="leading" secondItem="9ZH-tq-QxP" secondAttribute="leadingMargin" constant="-20" id="HPc-Bn-1jE"/>
+                            <constraint firstItem="1oD-6w-Wvf" firstAttribute="top" secondItem="9ZH-tq-QxP" secondAttribute="topMargin" id="ZP1-Wf-qaj"/>
+                            <constraint firstItem="Znq-P6-n5c" firstAttribute="top" secondItem="1oD-6w-Wvf" secondAttribute="bottom" id="dQ1-St-PZc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Znq-P6-n5c" secondAttribute="trailing" constant="-20" id="lma-MK-Rr5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="Znq-P6-n5c" id="Pl0-lD-ZCX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6x1-lz-Mxf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2589" y="1130"/>
+        </scene>
         <!--Contact Search View Controller-->
         <scene sceneID="CsN-6p-GbF">
             <objects>

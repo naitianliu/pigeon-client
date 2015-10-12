@@ -85,6 +85,10 @@
 		46BB01AA1B939C170026CB6E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46BB01A91B939C170026CB6E /* CoreLocation.framework */; };
 		46BB01AC1B93FE500026CB6E /* AddMembersViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BB01AB1B93FE500026CB6E /* AddMembersViewHelper.swift */; };
 		46CD743B1BCA17780049599B /* EditReminderDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CD743A1BCA17780049599B /* EditReminderDescriptionViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		46CD743D1BCB03BA0049599B /* ReminderUIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CD743C1BCB03BA0049599B /* ReminderUIHelper.swift */; settings = {ASSET_TAGS = (); }; };
+		46CD743F1BCB50E40049599B /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CD743E1BCB50E40049599B /* Contact.swift */; settings = {ASSET_TAGS = (); }; };
+		46CD74421BCB65A80049599B /* ContactAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CD74411BCB65A80049599B /* ContactAPIHelper.swift */; settings = {ASSET_TAGS = (); }; };
+		46CD74451BCB762F0049599B /* SelectContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CD74441BCB762F0049599B /* SelectContactsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EC03105B27AE9B30D09FAEFF /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6B7EB05FDC0CC77A857B349 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -193,6 +197,10 @@
 		46BB01A91B939C170026CB6E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		46BB01AB1B93FE500026CB6E /* AddMembersViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMembersViewHelper.swift; sourceTree = "<group>"; };
 		46CD743A1BCA17780049599B /* EditReminderDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditReminderDescriptionViewController.swift; sourceTree = "<group>"; };
+		46CD743C1BCB03BA0049599B /* ReminderUIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderUIHelper.swift; sourceTree = "<group>"; };
+		46CD743E1BCB50E40049599B /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		46CD74411BCB65A80049599B /* ContactAPIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactAPIHelper.swift; sourceTree = "<group>"; };
+		46CD74441BCB762F0049599B /* SelectContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectContactsViewController.swift; sourceTree = "<group>"; };
 		B6B7EB05FDC0CC77A857B349 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C43AF1B09D0587414C965081 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F30ACB44CA899943E7CCAAC9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -307,6 +315,7 @@
 				464EAFF11BC4999000C323AD /* ReminderCellViewHelper.swift */,
 				464EAFF31BC499EE00C323AD /* ReminderDetailViewController.swift */,
 				46CD743A1BCA17780049599B /* EditReminderDescriptionViewController.swift */,
+				46CD743C1BCB03BA0049599B /* ReminderUIHelper.swift */,
 			);
 			name = Reminder;
 			sourceTree = "<group>";
@@ -339,6 +348,7 @@
 		469540081B99399600E0F4D0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				46CD743E1BCB50E40049599B /* Contact.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -559,6 +569,7 @@
 		46BB01841B929B320026CB6E /* Contact */ = {
 			isa = PBXGroup;
 			children = (
+				46CD74401BCB645E0049599B /* API */,
 				461AD2851BB238F4005EFF13 /* Other */,
 				469540081B99399600E0F4D0 /* Model */,
 				46BB01851B929B440026CB6E /* Controller */,
@@ -570,6 +581,7 @@
 		46BB01851B929B440026CB6E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				46CD74431BCB6F610049599B /* Get */,
 				4660E3781BBB8CC600F3773D /* Add */,
 				46BB01891B929D2E0026CB6E /* ContactNavigationController.swift */,
 				46A568981B96969500FC63F7 /* ContactViewController.swift */,
@@ -639,6 +651,22 @@
 				46BB01951B92A2500026CB6E /* Me.storyboard */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		46CD74401BCB645E0049599B /* API */ = {
+			isa = PBXGroup;
+			children = (
+				46CD74411BCB65A80049599B /* ContactAPIHelper.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		46CD74431BCB6F610049599B /* Get */ = {
+			isa = PBXGroup;
+			children = (
+				46CD74441BCB762F0049599B /* SelectContactsViewController.swift */,
+			);
+			name = Get;
 			sourceTree = "<group>";
 		};
 		9EBB59CC81AD2F52571769D8 /* Frameworks */ = {
@@ -828,6 +856,7 @@
 			files = (
 				460909681B92438A006FF85D /* BaseAPIHelper.swift in Sources */,
 				46A5689D1B96A10F00FC63F7 /* GroupViewHelper.swift in Sources */,
+				46CD743F1BCB50E40049599B /* Contact.swift in Sources */,
 				46A568991B96969500FC63F7 /* ContactViewController.swift in Sources */,
 				46BB01911B92A09E0026CB6E /* HistoryNavigationController.swift in Sources */,
 				462FBA971BB0F90300828156 /* GroupContactViewController.swift in Sources */,
@@ -836,6 +865,7 @@
 				46BB01A61B9397D30026CB6E /* EditLocationViewController.swift in Sources */,
 				462FBA991BB0FC1700828156 /* CAPSPageMenu.swift in Sources */,
 				4695400F1B994A0100E0F4D0 /* RenderEventCellHelper.swift in Sources */,
+				46CD74451BCB762F0049599B /* SelectContactsViewController.swift in Sources */,
 				469540051B980A6C00E0F4D0 /* VendorContactViewController.swift in Sources */,
 				461AD2901BB23D98005EFF13 /* pinyin.c in Sources */,
 				4626808C1B9D03B200656F81 /* EventDetailViewHelper.swift in Sources */,
@@ -850,6 +880,7 @@
 				461AD28F1BB23D98005EFF13 /* ChineseString.m in Sources */,
 				462680791B9C1D1F00656F81 /* HZPhotoBrowser.m in Sources */,
 				464EAFF21BC4999000C323AD /* ReminderCellViewHelper.swift in Sources */,
+				46CD743D1BCB03BA0049599B /* ReminderUIHelper.swift in Sources */,
 				4660E3771BBB81B400F3773D /* ContactSearchViewController.swift in Sources */,
 				46BB01741B9276030026CB6E /* MainTabBarViewController.swift in Sources */,
 				462680CC1BA4F1BC00656F81 /* BROptionItem.m in Sources */,
@@ -864,6 +895,7 @@
 				461AD2871BB23923005EFF13 /* SampleDataContact.swift in Sources */,
 				46BB01AC1B93FE500026CB6E /* AddMembersViewHelper.swift in Sources */,
 				46CD743B1BCA17780049599B /* EditReminderDescriptionViewController.swift in Sources */,
+				46CD74421BCB65A80049599B /* ContactAPIHelper.swift in Sources */,
 				462680C71BA4F0C000656F81 /* SampleDataEvent.swift in Sources */,
 				462680C11BA4F02F00656F81 /* PostDetailViewController.swift in Sources */,
 				4609096B1B92584B006FF85D /* VendorLoginAPICall.swift in Sources */,

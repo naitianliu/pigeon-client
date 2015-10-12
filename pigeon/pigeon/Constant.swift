@@ -9,6 +9,8 @@
 import Foundation
 
 let const_MyUserId = NSKeyedUnarchiver.unarchiveObjectWithData(NSUserDefaults.standardUserDefaults().objectForKey("user_id") as! NSData) as! String
+let const_MyNickname = NSKeyedUnarchiver.unarchiveObjectWithData(NSUserDefaults.standardUserDefaults().objectForKey("nickname") as! NSData) as! String
+let const_MyImgURL = NSKeyedUnarchiver.unarchiveObjectWithData(NSUserDefaults.standardUserDefaults().objectForKey("img_url") as! NSData) as! String
 
 let const_APIEndpoint = "http://localhost:9000"
 

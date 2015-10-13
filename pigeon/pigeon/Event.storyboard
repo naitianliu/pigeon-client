@@ -352,7 +352,13 @@
                             <constraint firstItem="rbs-Ac-3Ds" firstAttribute="top" secondItem="Pod-9j-lyh" secondAttribute="bottom" id="yh7-4e-qQA"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="我的事件" id="J4M-gc-WTk"/>
+                    <navigationItem key="navigationItem" title="我的事件" id="J4M-gc-WTk">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="bvl-eb-Dq6">
+                            <connections>
+                                <action selector="addButtonOnClick:" destination="LP8-Ur-5pn" id="QYJ-pM-aZL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="rbs-Ac-3Ds" id="H3I-pH-x1V"/>
                         <segue destination="oQr-vL-YRv" kind="show" identifier="EventDetailSegue" id="fnR-MQ-n1d"/>

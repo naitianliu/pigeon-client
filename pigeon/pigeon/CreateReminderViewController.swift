@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import RMDateSelectionViewController
 
-class CreateReminderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, APIEventHelperDelegate, EditReminderDescriptionViewControllerDelegate, EditLocationViewControllerDelegate {
+class CreateReminderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, APIEventHelperDelegate, EditReminderDescriptionViewControllerDelegate, EditLocationViewControllerDelegate, SelectContactsViewControllerDelegate {
     
     let apiUrl:String = "\(const_APIEndpoint)/main/event/reminder/create/"
     
@@ -20,7 +20,7 @@ class CreateReminderViewController: UIViewController, UITableViewDelegate, UITab
     var location:[String:AnyObject]!
     var startTime:[String:AnyObject]!
     var endTime:[String:AnyObject]!
-    var receivers:[String]!
+    var receivers:[AnyObject]!
     
     var reminderUIHelper:ReminderUIHelper!
     
@@ -87,6 +87,9 @@ class CreateReminderViewController: UIViewController, UITableViewDelegate, UITab
             if self.receivers == nil {
                 cell.textLabel?.text = "Add Receivers"
                 cell.textLabel?.textColor = UIColor.lightGrayColor()
+            } else {
+                let receiversView = self.reminderUIHelper.setupReceiversView(self.receivers)
+                cell.contentView.addSubview(receiversView)
             }
         } else if indexPath.section == 1 && indexPath.row == 0 {
             if self.location == nil {
@@ -130,6 +133,8 @@ class CreateReminderViewController: UIViewController, UITableViewDelegate, UITab
             } else {
                 return self.reminderUIHelper.descriptionViewHeight
             }
+        } else if indexPath.section == 0 && indexPath.row == 1 {
+            return self.reminderUIHelper.receiversViewHeight
         } else {
             return 46
         }
@@ -149,6 +154,7 @@ class CreateReminderViewController: UIViewController, UITableViewDelegate, UITab
             // add members
             let contactStoryboard:UIStoryboard = UIStoryboard(name: "Contact", bundle: nil)
             let selectContactsVC:SelectContactsViewController = contactStoryboard.instantiateViewControllerWithIdentifier("SelectContactsViewController") as! SelectContactsViewController
+            selectContactsVC.delegate = self
             selectContactsVC.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
             self.presentViewController(selectContactsVC, animated: true, completion: nil)
         } else if indexPath.section == 1 && indexPath.row == 0 {
@@ -164,6 +170,11 @@ class CreateReminderViewController: UIViewController, UITableViewDelegate, UITab
             self.pickTimeForEnd()
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func finishSelectContacts(userIdArray: [String]) {
+        self.receivers = ContactModelHelper().getContactInfoListByUserIdArray(userIdArray)
+        self.tableView.reloadData()
     }
     
     func finishEditReminderDescription(description: String) {

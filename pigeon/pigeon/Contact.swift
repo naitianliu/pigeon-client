@@ -84,4 +84,25 @@ class ContactModelHelper {
         }
         return contactList
     }
+    
+    func getContactInfoListByUserIdArray(userIdArray:[String]) -> [AnyObject] {
+        var contactList:[AnyObject] = []
+        do {
+            let realm = try Realm()
+            let contacts = realm.objects(Contact)
+            for contact in contacts {
+                if userIdArray.contains(contact.userId) {
+                    var contactDict:[String:String] = [:]
+                    contactDict["user_id"] = contact.userId
+                    contactDict["img_url"] = contact.imgURL
+                    contactDict["nickname"] = contact.nickname
+                    contactDict["gender"] = contact.gender
+                    contactList.append(contactDict)
+                }
+            }
+        } catch {
+            print(error)
+        }
+        return contactList
+    }
 }

@@ -15,6 +15,8 @@ class ReminderUIHelper: NSObject {
     
     var descriptionViewHeight:CGFloat = 46
     
+    var receiversViewHeight:CGFloat = 46
+    
     init(view:UIView) {
         super.init()
         
@@ -56,6 +58,27 @@ class ReminderUIHelper: NSObject {
         view.addSubview(nicknameLabel)
         view.addSubview(bubbleImageView)
         view.addSubview(descriptionLabel)
+        return view
+    }
+    
+    func setupReceiversView(receivers:[AnyObject]) -> UIView {
+        let height:CGFloat = 40
+        let gap:CGFloat = 20
+        let number = receivers.count
+        let rowsNumber = (number / 5) + 1
+        // init receivers view
+        self.receiversViewHeight = CGFloat(rowsNumber) * (height + gap) + gap
+        let view:UIView = UIView(frame: CGRect(x: 0, y: 0, width: self.rootView.frame.width, height: self.receiversViewHeight))
+        // add receivers profile image view into view
+        for (var i=0; i<number; i++) {
+            let info:[String:AnyObject] = receivers[i] as! [String:AnyObject]
+            let imgURL:String = info["img_url"] as! String
+            let row:Int = i / 5
+            let col:Int = i % 5
+            let profileImageView:UIImageView = UIImageView(frame: CGRect(x: gap + (gap + height) * CGFloat(col), y: gap + (gap + height) * CGFloat(row), width: height, height: height))
+            profileImageView.sd_setImageWithURL(NSURL(string: imgURL), placeholderImage: UIImage(named: "Apple"))
+            view.addSubview(profileImageView)
+        }
         return view
     }
 }

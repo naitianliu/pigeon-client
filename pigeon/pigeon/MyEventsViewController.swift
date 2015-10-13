@@ -38,13 +38,20 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func addButtonOnClick(sender: AnyObject) {
+        let createReminderViewController:CreateReminderViewController = self.storyboard!.instantiateViewControllerWithIdentifier("CreateReminderViewController") as! CreateReminderViewController
+        createReminderViewController.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
+        self.presentViewController(createReminderViewController, animated: true, completion: nil)
+    }
+    
     func beforeSendRequest() {
         
     }
     
     func afterReceiveResponse(responseData: AnyObject, index:String?) {
+        let data = responseData as! [String:AnyObject]
         if index == "list_all" {
-            self.tableData = responseData["result"] as! [AnyObject]
+            self.tableData = data["result"] as! [AnyObject]
             self.tableView.reloadData()
             self.tableView.pullToRefreshView.stopAnimating()
         } else if index == "reminder" {

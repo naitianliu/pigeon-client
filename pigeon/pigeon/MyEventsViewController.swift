@@ -123,7 +123,7 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         self.performSegueWithIdentifier("ReminderDetailSegue", sender: nil)
         let postInfo = self.tableData[indexPath.row] as! [String:AnyObject]
-        self.currentEventId = postInfo["eventId"] as! String
+        self.currentEventId = postInfo["event_id"] as! String
     }
     
     override func performSegueWithIdentifier(identifier: String, sender: AnyObject?) {

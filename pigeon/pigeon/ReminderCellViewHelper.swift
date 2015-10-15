@@ -97,7 +97,7 @@ class ReminderCellViewHelper: NSObject {
     }
     
     private func initContentLabel() -> UILabel {
-        let creatorNickname = self.creatorInfo["user_id"]!
+        let creatorNickname = self.creatorInfo["nickname"]!
         let content:NSString = "\(creatorNickname): \(self.reminderContent)"
         let contentSize:CGSize = content.boundingRectWithSize(CGSize(width: self.rootViewController.view.frame.width - 40, height: CGFloat.infinity), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFontOfSize(15)], context: nil).size
         let lineNum:Int = Int(contentSize.height / 17)
@@ -116,48 +116,55 @@ class ReminderCellViewHelper: NSObject {
     }
     
     private func initLatestActionView() -> UIView {
-        let latestCommentInfo = self.getLatestComment(self.comments)
-        var commentContent:String!
-        if latestCommentInfo["content"] != nil {
-            commentContent = latestCommentInfo["content"] as! String
+        if self.comments.count > 0 {
+            let latestCommentInfo = self.getLatestComment(self.comments)
+            var commentContent:String!
+            if latestCommentInfo["content"] != nil {
+                commentContent = latestCommentInfo["content"] as! String
+            } else {
+                commentContent = ""
+            }
+            let action:Int = latestCommentInfo["action"] as! Int
+            var actionStr = ""
+            switch action {
+            case 2:
+                actionStr = "推迟"
+                break
+            default:
+                break
+            }
+            let time:Int = latestCommentInfo["time"] as! Int
+            let editorInfo:[String:String] = latestCommentInfo["editor_info"] as! [String:String]
+            let editorNickname:String = editorInfo["nickname"]!
+            let actionLabel:UILabel = UILabel(frame: CGRect(x: 5, y: 5, width: self.rootViewController.view.frame.width - 50, height: 15))
+            actionLabel.text = "\(editorNickname): \(actionStr)"
+            actionLabel.font = UIFont.systemFontOfSize(14)
+            
+            let content:NSString = "\(editorNickname): \(commentContent)"
+            let contentSize:CGSize = content.boundingRectWithSize(CGSize(width: self.rootViewController.view.frame.width - 50, height: CGFloat.infinity), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFontOfSize(14)], context: nil).size
+            let lineNum:Int = Int(contentSize.height / 14)
+            let commentLabelHeight = contentSize.height + CGFloat(2*lineNum)
+            let style:NSMutableParagraphStyle = NSMutableParagraphStyle()
+            style.lineSpacing = 2
+            let attributedText:NSAttributedString = NSAttributedString(string: content as String, attributes: [NSParagraphStyleAttributeName: style])
+            let messageLabel:UILabel = UILabel(frame: CGRect(x: 5, y: 20, width: contentSize.width, height: commentLabelHeight))
+            messageLabel.numberOfLines = lineNum
+            messageLabel.font = UIFont.systemFontOfSize(14)
+            messageLabel.textColor = UIColor.lightGrayColor()
+            messageLabel.attributedText = attributedText
+            messageLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
+            self.latestActionViewHeight = 30 + commentLabelHeight
+            let view:UIView = UIView(frame: CGRect(x: 10, y: self.headerViewHeight + self.contentLabelHeight + 20, width: self.rootViewController.view.frame.width - 40 , height: self.latestActionViewHeight))
+            view.backgroundColor = UIColor.lightTextColor()
+            view.addSubview(actionLabel)
+            view.addSubview(messageLabel)
+            return view
         } else {
-            commentContent = ""
+            self.latestActionViewHeight = 10
+            let view:UIView = UIView(frame: CGRect(x: 10, y: self.headerViewHeight + self.contentLabelHeight + 20, width: self.rootViewController.view.frame.width - 40 , height: self.latestActionViewHeight))
+            return view
         }
-        let action:Int = latestCommentInfo["action"] as! Int
-        var actionStr = ""
-        switch action {
-        case 2:
-            actionStr = "推迟"
-            break
-        default:
-            break
-        }
-        let time:Int = latestCommentInfo["time"] as! Int
-        let editorInfo:[String:String] = latestCommentInfo["editor_info"] as! [String:String]
-        let editorNickname:String = editorInfo["nickname"]!
-        let actionLabel:UILabel = UILabel(frame: CGRect(x: 5, y: 5, width: self.rootViewController.view.frame.width - 50, height: 15))
-        actionLabel.text = "\(editorNickname): \(actionStr)"
-        actionLabel.font = UIFont.systemFontOfSize(14)
         
-        let content:NSString = "\(editorNickname): \(commentContent)"
-        let contentSize:CGSize = content.boundingRectWithSize(CGSize(width: self.rootViewController.view.frame.width - 50, height: CGFloat.infinity), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFontOfSize(14)], context: nil).size
-        let lineNum:Int = Int(contentSize.height / 14)
-        let commentLabelHeight = contentSize.height + CGFloat(2*lineNum)
-        let style:NSMutableParagraphStyle = NSMutableParagraphStyle()
-        style.lineSpacing = 2
-        let attributedText:NSAttributedString = NSAttributedString(string: content as String, attributes: [NSParagraphStyleAttributeName: style])
-        let messageLabel:UILabel = UILabel(frame: CGRect(x: 5, y: 20, width: contentSize.width, height: commentLabelHeight))
-        messageLabel.numberOfLines = lineNum
-        messageLabel.font = UIFont.systemFontOfSize(14)
-        messageLabel.textColor = UIColor.lightGrayColor()
-        messageLabel.attributedText = attributedText
-        messageLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
-        self.latestActionViewHeight = 30 + commentLabelHeight
-        let view:UIView = UIView(frame: CGRect(x: 10, y: self.headerViewHeight + self.contentLabelHeight + 20, width: self.rootViewController.view.frame.width - 40 , height: self.latestActionViewHeight))
-        view.backgroundColor = UIColor.lightTextColor()
-        view.addSubview(actionLabel)
-        view.addSubview(messageLabel)
-        return view
     }
     
     private func getLatestComment(comments:[AnyObject]) -> [String:AnyObject] {

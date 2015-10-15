@@ -47,7 +47,28 @@ class CreateReminderViewController: UIViewController, UITableViewDelegate, UITab
     }
 
     @IBAction func sendButtonOnClick(sender: AnyObject) {
-        
+        if self.reminderDescription != nil && self.receivers != nil {
+            var postData:[String:AnyObject] = [:]
+            // add reminder description
+            postData["reminder_content"] = self.reminderDescription
+            // add receiver id list
+            var receiver_id_list:[String] = []
+            for item in self.receivers {
+                let receiverInfo:[String:String] = item as! [String:String]
+                receiver_id_list.append(receiverInfo["user_id"]!)
+            }
+            postData["receivers"] = receiver_id_list
+            // add location
+            postData["location"] = self.location
+            // add time
+            var timeInfo:[String:AnyObject] = [:]
+            timeInfo["start"] = self.startTime["epoch"]
+            timeInfo["end"] = self.endTime["epoch"]
+            postData["time"] = timeInfo
+            // call api
+            APIEventHelper(url: self.apiUrl, data: postData, delegate: self).POST(nil)
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
     func beforeSendRequest() {
@@ -55,7 +76,8 @@ class CreateReminderViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func afterReceiveResponse(responseData: AnyObject, index:String?) {
-        
+        let resData = responseData as! [String:AnyObject]
+        print(resData)
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -218,9 +240,11 @@ class CreateReminderViewController: UIViewController, UITableViewDelegate, UITab
         let selectAction:RMAction = RMAction(title: "确定", style: RMActionStyle.Done) { (controller:RMActionController!) -> Void in
             let formatter:NSDateFormatter = NSDateFormatter()
             formatter.dateFormat = "yyyy-MM-dd hh:mm a"
-            let datetime:String = formatter.stringFromDate((controller.contentView as! UIDatePicker).date)
+            let timePicked:NSDate = (controller.contentView as! UIDatePicker).date
+            let datetime:String = formatter.stringFromDate(timePicked)
             self.startTime = [:]
             self.startTime["datetime"] = datetime
+            self.startTime["epoch"] = timePicked.timeIntervalSince1970
             self.tableView.reloadData()
         }
         let cancelAction:RMAction = RMAction(title: "取消", style: RMActionStyle.Cancel) { (controller) -> Void in
@@ -238,9 +262,11 @@ class CreateReminderViewController: UIViewController, UITableViewDelegate, UITab
         let selectAction:RMAction = RMAction(title: "确定", style: RMActionStyle.Done) { (controller:RMActionController!) -> Void in
             let formatter:NSDateFormatter = NSDateFormatter()
             formatter.dateFormat = "yyyy-MM-dd hh:mm a"
-            let datetime:String = formatter.stringFromDate((controller.contentView as! UIDatePicker).date)
+            let timePicked:NSDate = (controller.contentView as! UIDatePicker).date
+            let datetime:String = formatter.stringFromDate(timePicked)
             self.endTime = [:]
             self.endTime["datetime"] = datetime
+            self.endTime["epoch"] = timePicked.timeIntervalSince1970
             self.tableView.reloadData()
         }
         let cancelAction:RMAction = RMAction(title: "取消", style: RMActionStyle.Cancel) { (controller) -> Void in

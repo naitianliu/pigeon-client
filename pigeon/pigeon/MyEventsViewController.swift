@@ -8,8 +8,9 @@
 
 import UIKit
 import SVPullToRefresh
+import TTTAttributedLabel
 
-class MyEventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, APIEventHelperDelegate {
+class MyEventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, APIEventHelperDelegate, TTTAttributedLabelDelegate {
     
     let apiUrl:String = "\(const_APIEndpoint)/main/event/list/updated_events/"
     
@@ -31,6 +32,7 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
         self.tableView.addPullToRefreshWithActionHandler { () -> Void in
             APIEventHelper(url: self.apiUrl, data: nil, delegate: self).GET("list_all")
         }
+        self.tableView.triggerPullToRefresh()
     }
 
     override func didReceiveMemoryWarning() {
@@ -85,7 +87,7 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
         } else {
             cell = UITableViewCell(style: .Default, reuseIdentifier: "MyEventCell")
             let eventInfo = self.tableData[indexPath.row] as! [String:AnyObject]
-            let reminderCellHelper = ReminderCellViewHelper(rootViewController: self, eventInfo: eventInfo)
+            let reminderCellHelper = ReminderCellViewHelper(rootViewController:self, delegate:self, eventInfo: eventInfo)
             reminderCellHelper.setupCell(cell)
             reminderCellHelper.actionButton.tag = indexPath.row
             reminderCellHelper.actionButton.addTarget(self, action: "reminderActionButtonOnClick:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -100,7 +102,7 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
             return 46
         } else {
             let eventInfo = self.tableData[indexPath.row] as! [String:AnyObject]
-            let cellHelper = ReminderCellViewHelper(rootViewController: self, eventInfo: eventInfo)
+            let cellHelper = ReminderCellViewHelper(rootViewController:self, delegate:self, eventInfo:eventInfo)
             let cellHeight:CGFloat = cellHelper.getCellHeight()
             print("cell height \(cellHeight)")
             return cellHeight
@@ -133,7 +135,6 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func reminderActionButtonOnClick(sender:UIButton!) {
-        print("action button clicked: \(sender.tag)")
         self.currentIndex = sender.tag
         let eventInfo = self.tableData[self.currentIndex] as! [String:AnyObject]
         self.currentEventId = eventInfo["event_id"] as! String
@@ -150,17 +151,27 @@ class MyEventsViewController: UIViewController, UITableViewDelegate, UITableView
         switch buttonIndex {
         case 1:
             reminderApiUrl = "\(const_APIEndpoint)/main/event/reminder/complete/"
+            let postData = ["event_id": self.currentEventId]
+            APIEventHelper(url: reminderApiUrl, data: postData, delegate: self).POST("reminder")
             break
         case 2:
             reminderApiUrl = "\(const_APIEndpoint)/main/event/reminder/reject/"
-            break;
+            let postData = ["event_id": self.currentEventId]
+            APIEventHelper(url: reminderApiUrl, data: postData, delegate: self).POST("reminder")
+            break
         case 3:
             reminderApiUrl = "\(const_APIEndpoint)/main/event/reminder/delay/"
-            break;
+            let postData = ["event_id": self.currentEventId]
+            APIEventHelper(url: reminderApiUrl, data: postData, delegate: self).POST("reminder")
+            break
         default:
             break
         }
-        let postData = ["event_id": self.currentEventId]
-        APIEventHelper(url: reminderApiUrl, data: postData, delegate: self).POST("reminder")
     }
+    
+    func attributedLabel(label: TTTAttributedLabel!, didSelectLinkWithURL url: NSURL!) {
+        print("label")
+        print(url.absoluteString)
+    }
+    
 }

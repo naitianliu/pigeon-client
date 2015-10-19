@@ -10,10 +10,11 @@ import Foundation
 import UIKit
 import SDWebImage
 import VENSeparatorView
+import TTTAttributedLabel
 
 class ReminderCellViewHelper: NSObject {
     
-    var rootViewController:UIViewController!
+    var rootViewController:MyEventsViewController!
     var cell:UITableViewCell!
     var viewRect:CGRect!
     var innerView:VENSeparatorView!
@@ -37,10 +38,14 @@ class ReminderCellViewHelper: NSObject {
     var reminderContent:String!
     var comments:[AnyObject]!
     
-    init(rootViewController:UIViewController, eventInfo:[String:AnyObject]) {
+    var delegate:TTTAttributedLabelDelegate?
+    
+    init(rootViewController:MyEventsViewController, delegate:TTTAttributedLabelDelegate, eventInfo:[String:AnyObject]) {
         super.init()
         
         self.rootViewController = rootViewController
+        self.delegate = delegate
+        
         let infoDict = eventInfo["info"] as! [String:AnyObject]
         self.creatorInfo = infoDict["creator_info"]! as! [String : String]
         self.reminderContent = infoDict["reminder_content"] as! String
@@ -105,13 +110,32 @@ class ReminderCellViewHelper: NSObject {
         print(self.contentLabelHeight)
         let style:NSMutableParagraphStyle = NSMutableParagraphStyle()
         style.lineSpacing = 3
-        let attributedText:NSAttributedString = NSAttributedString(string: content as String, attributes: [NSParagraphStyleAttributeName: style])
+        let attributedText:NSAttributedString = NSAttributedString(string: content as String, attributes: [
+                NSParagraphStyleAttributeName: style,
+                NSFontAttributeName: UIFont.systemFontOfSize(15),
+                NSForegroundColorAttributeName: UIColor.grayColor()
+            ])
+        /*
         let messageLabel:UILabel = UILabel(frame: CGRect(x: 10, y: 55, width: contentSize.width, height: self.contentLabelHeight))
         messageLabel.numberOfLines = lineNum
         messageLabel.font = UIFont.systemFontOfSize(15)
         messageLabel.textColor = UIColor.blackColor()
         messageLabel.attributedText = attributedText
-
+        */
+        let messageLabel:TTTAttributedLabel = TTTAttributedLabel(frame: CGRect(x: 10, y: 55, width: contentSize.width, height: self.contentLabelHeight))
+        messageLabel.delegate = self.delegate
+        let linkAttributes = [
+            NSForegroundColorAttributeName: UIColor.magentaColor(),
+            NSUnderlineStyleAttributeName: NSNumber(bool:false),
+            NSFontAttributeName: UIFont.boldSystemFontOfSize(16),
+        ]
+        messageLabel.enabledTextCheckingTypes = NSTextCheckingType.Link.rawValue
+        messageLabel.numberOfLines = 0
+        let messageText:NSString = "\(creatorNickname): \(self.reminderContent)"
+        messageLabel.setText(attributedText)
+        messageLabel.linkAttributes = linkAttributes
+        let range:NSRange = messageText.rangeOfString(creatorNickname)
+        messageLabel.addLinkToURL(NSURL(string: creatorNickname), withRange: range)
         return messageLabel
     }
     
@@ -180,6 +204,5 @@ class ReminderCellViewHelper: NSObject {
         }
         return latestCommentInfo
     }
-    
 
 }

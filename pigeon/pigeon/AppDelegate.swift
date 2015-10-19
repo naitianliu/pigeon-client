@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WeiboSDKDelegate {
     let authStoryBoard:UIStoryboard = UIStoryboard(name: "Auth", bundle: nil)
     let mainStoryBoard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
     
-    
     var authLoginViewController:UIViewController!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

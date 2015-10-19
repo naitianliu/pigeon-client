@@ -10,10 +10,10 @@ pod 'Realm', :git => 'https://github.com/realm/realm-cocoa.git', :branch => 'swi
 pod 'RealmSwift', :git => 'https://github.com/realm/realm-cocoa.git', :branch => 'swift-2.0'
 pod 'VENSeparatorView', '~> 1.0.0'
 pod 'DateTools'
-pod 'STTweetLabel', '~> 3.1.21'
 pod 'AWSCore'
 pod 'AWSS3'
 pod 'AWSCognito'
 pod 'SVPullToRefresh'
+pod 'TTTAttributedLabel'
 
 link_with 'pigeon'
